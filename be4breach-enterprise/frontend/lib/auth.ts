@@ -5,8 +5,8 @@ export type SessionInfo = {
   role?: string;
 };
 
-export function getSessionInfo(): SessionInfo {
-  const store = cookies();
+export async function getSessionInfo(): Promise<SessionInfo> {
+  const store = await cookies();
   return {
     accessToken: store.get("bb_access_token")?.value,
     role: store.get("bb_role")?.value
