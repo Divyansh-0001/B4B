@@ -13,7 +13,7 @@ def get_current_user(token: str = Depends(oauth2_scheme)) -> UserPublic:
     except ValueError as exc:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=str(exc),
+            detail="Invalid or expired token.",
             headers={"WWW-Authenticate": "Bearer"},
         ) from exc
 
@@ -22,11 +22,19 @@ def get_current_user(token: str = Depends(oauth2_scheme)) -> UserPublic:
     if not email or not role:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token payload missing required fields.",
+            detail="Invalid or expired token.",
             headers={"WWW-Authenticate": "Bearer"},
         )
+    try:
+        role_value = UserRole(role)
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or expired token.",
+            headers={"WWW-Authenticate": "Bearer"},
+        ) from exc
 
-    return UserPublic(email=email, role=UserRole(role))
+    return UserPublic(email=email, role=role_value)
 
 
 def require_roles(*roles: UserRole):

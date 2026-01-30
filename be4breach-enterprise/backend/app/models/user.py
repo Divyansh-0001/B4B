@@ -28,3 +28,5 @@ class Token(BaseModel):
     token_type: str = "bearer"
     role: UserRole
     expires_in: int
+    refresh_token: str | None = None
+    refresh_expires_in: int | None = None

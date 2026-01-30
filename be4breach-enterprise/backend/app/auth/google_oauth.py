@@ -36,28 +36,24 @@ async def exchange_code_for_profile(code: str) -> dict[str, str]:
     async with httpx.AsyncClient(timeout=10) as client:
         token_response = await client.post(GOOGLE_TOKEN_URL, data=token_payload)
         if token_response.status_code != 200:
-            raise ValueError(
-                f"Google token exchange failed: {token_response.text}"
-            )
+            raise ValueError("Google authentication failed.")
 
         token_data = token_response.json()
         access_token = token_data.get("access_token")
         if not access_token:
-            raise ValueError("Google did not return an access token.")
+            raise ValueError("Google authentication failed.")
 
         userinfo_response = await client.get(
             GOOGLE_USERINFO_URL,
             headers={"Authorization": f"Bearer {access_token}"},
         )
         if userinfo_response.status_code != 200:
-            raise ValueError(
-                f"Google userinfo request failed: {userinfo_response.text}"
-            )
+            raise ValueError("Google authentication failed.")
 
     profile = userinfo_response.json()
     email = profile.get("email")
     name = profile.get("name")
     if not email:
-        raise ValueError("Google profile missing email address.")
+        raise ValueError("Google authentication failed.")
 
     return {"email": email, "name": name or "Google User"}
