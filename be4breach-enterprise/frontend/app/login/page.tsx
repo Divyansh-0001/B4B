@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import GlassCard from "@/components/GlassCard";
 import LoginPanel from "@/components/LoginPanel";
 import MotionSection from "@/components/MotionSection";
@@ -13,7 +14,20 @@ export default function LoginPage() {
           role-based controls.
         </p>
       </MotionSection>
-      <LoginPanel />
+      <Suspense
+        fallback={
+          <div className="glass-panel rounded-3xl p-8">
+            <div className="space-y-3 text-sm text-slate-400">
+              <div className="h-4 w-32 rounded-full bg-white/10" />
+              <div className="h-11 w-full rounded-2xl bg-white/10" />
+              <div className="h-11 w-full rounded-2xl bg-white/10" />
+              <div className="h-11 w-full rounded-2xl bg-white/10" />
+            </div>
+          </div>
+        }
+      >
+        <LoginPanel />
+      </Suspense>
       <MotionSection>
         <GlassCard className="rounded-3xl p-6 text-sm text-slate-300">
           <h3 className="text-base font-semibold text-white">
