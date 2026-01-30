@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Transition } from "framer-motion";
 import Link from "next/link";
 import AnimatedBadge from "@/components/AnimatedBadge";
 import StatCard from "@/components/StatCard";
@@ -36,21 +36,24 @@ export default function HeroSection({
   highlights
 }: HeroSectionProps) {
   const reduceMotion = useReducedMotion();
-  const floatTransition = reduceMotion
-    ? { duration: 0 }
-    : { duration: 12, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" };
+  const floatTransition: Transition = {
+    duration: 12,
+    repeat: Infinity,
+    repeatType: "mirror",
+    ease: "easeInOut"
+  };
 
   return (
     <section className="glass-panel relative overflow-hidden rounded-[32px] px-8 py-12 lg:px-12 lg:py-16">
       <motion.div
         className="glass-bg absolute -top-24 right-0 z-0 h-72 w-72 rounded-full bg-brand-violet/30 blur-3xl"
         animate={reduceMotion ? undefined : { y: [0, -18, 0], x: [0, 16, 0] }}
-        transition={floatTransition}
+        transition={reduceMotion ? { duration: 0 } : floatTransition}
       />
       <motion.div
         className="glass-bg absolute -bottom-24 left-0 z-0 h-80 w-80 rounded-full bg-brand-cyan/25 blur-3xl"
         animate={reduceMotion ? undefined : { y: [0, 16, 0], x: [0, -18, 0] }}
-        transition={floatTransition}
+        transition={reduceMotion ? { duration: 0 } : floatTransition}
       />
       <div className="glass-bg absolute inset-0 z-0 bg-grid opacity-70" />
 
