@@ -8,6 +8,9 @@ const stats = [
   { label: "Mean Risk Score", value: "Low" }
 ];
 
+const complianceStatement =
+  "Be4Breach is a CERT-In empanelled cybersecurity service provider, delivering security assessments, incident response, and compliance-aligned cybersecurity services in accordance with Indian regulatory frameworks.";
+
 const heroHighlights = [
   "AI-guided threat validation",
   "Zero-trust control coverage",
@@ -43,6 +46,46 @@ const differentiators = [
     title: "AI-assisted workflows",
     description:
       "Telemetry, automation, and analyst expertise converge to prioritize the actions that reduce risk fastest."
+  }
+];
+
+const trustHighlights = [
+  {
+    title: "Regulatory assurance",
+    description:
+      "Evidence-ready reporting aligned to executive, audit, and regulatory requirements."
+  },
+  {
+    title: "Operational transparency",
+    description:
+      "Clear remediation guidance, risk prioritization, and status tracking for every engagement."
+  },
+  {
+    title: "Senior practitioner delivery",
+    description:
+      "Engagements led by experienced security architects and incident responders."
+  }
+];
+
+const complianceItems = [
+  {
+    title: "CERT-In empanelment",
+    description: complianceStatement
+  },
+  {
+    title: "ISO 27001 alignment",
+    description:
+      "Security controls and assessments mapped to ISO 27001-aligned governance requirements."
+  },
+  {
+    title: "SOC 2 readiness",
+    description:
+      "Control testing and evidence mapping to support SOC 2 readiness initiatives."
+  },
+  {
+    title: "GDPR alignment",
+    description:
+      "Privacy and data protection assessments aligned to GDPR accountability principles."
   }
 ];
 
@@ -256,6 +299,34 @@ export default function HomePage() {
         </div>
       </MotionSection>
 
+      <MotionSection className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <GlassCard className="rounded-3xl p-8">
+          <p className="text-sm uppercase tracking-[0.3em] text-brand-cyan">
+            Trust &amp; Why Be4Breach
+          </p>
+          <h2 className="mt-3 text-2xl font-semibold text-white">
+            Trust built on regulatory alignment and proven delivery.
+          </h2>
+          <p className="mt-4 text-sm text-slate-300">
+            {complianceStatement}
+          </p>
+          <p className="mt-4 text-sm text-slate-300">
+            Our teams provide defensible evidence, clear remediation guidance,
+            and continuous validation to keep enterprise stakeholders informed.
+          </p>
+        </GlassCard>
+        <div className="grid gap-6 md:grid-cols-2">
+          {trustHighlights.map((item) => (
+            <GlassCard key={item.title} className="rounded-3xl p-6">
+              <h3 className="text-base font-semibold text-white">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-sm text-slate-300">{item.description}</p>
+            </GlassCard>
+          ))}
+        </div>
+      </MotionSection>
+
       <MotionSection className="grid gap-6 md:grid-cols-2">
         {visionMission.map((item) => (
           <GlassCard key={item.title} className="rounded-3xl p-8">
@@ -312,6 +383,32 @@ export default function HomePage() {
               </p>
             </GlassCard>
           ))}
+        </div>
+      </MotionSection>
+
+      <MotionSection className="glass-panel rounded-3xl p-8 lg:p-10">
+        <div className="space-y-6">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-brand-cyan">
+              Compliance &amp; Certifications
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold text-white">
+              Compliance alignment for regulated enterprises.
+            </h2>
+            <p className="mt-3 text-sm text-slate-300">
+              {complianceStatement}
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {complianceItems.map((item) => (
+              <GlassCard key={item.title} className="rounded-3xl p-6">
+                <h3 className="text-base font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm text-slate-300">{item.description}</p>
+              </GlassCard>
+            ))}
+          </div>
         </div>
       </MotionSection>
 
