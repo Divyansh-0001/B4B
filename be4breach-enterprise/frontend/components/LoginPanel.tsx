@@ -31,7 +31,7 @@ export default function LoginPanel() {
       }
       router.push(redirectTo);
       router.refresh();
-    } catch (err) {
+    } catch {
       setError("Unable to sign in right now. Please try again.");
     } finally {
       setIsLoading(false);
@@ -52,7 +52,7 @@ export default function LoginPanel() {
         return;
       }
       window.location.href = data.auth_url;
-    } catch (err) {
+    } catch {
       setError("Google SSO is unavailable. Please try again.");
     } finally {
       setIsLoading(false);
