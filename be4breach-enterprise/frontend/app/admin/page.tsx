@@ -1,24 +1,29 @@
 import Link from "next/link";
+import GlassCard from "@/components/GlassCard";
+import MotionSection from "@/components/MotionSection";
 
 export default function AdminPage() {
   return (
-    <section className="space-y-6">
-      <div className="glass-panel rounded-3xl p-8">
-        <h2 className="text-3xl font-semibold text-white">Admin control</h2>
+    <section className="space-y-8">
+      <MotionSection className="glass-panel rounded-3xl p-8">
+        <h2 className="text-3xl font-semibold text-white">
+          Be4Breach admin control
+        </h2>
         <p className="mt-2 text-slate-300">
           Govern users, compliance policies, and incident response workflows
           with enterprise-grade oversight.
         </p>
-      </div>
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-6">
+      </MotionSection>
+
+      <MotionSection className="grid gap-6 md:grid-cols-2">
+        <GlassCard className="rounded-3xl p-6">
           <h3 className="text-lg font-semibold text-white">Role governance</h3>
           <p className="mt-2 text-sm text-slate-300">
             Promote analysts, grant SOC access, and enforce least-privilege
             controls with audit-ready approvals.
           </p>
-        </div>
-        <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-6">
+        </GlassCard>
+        <GlassCard className="rounded-3xl p-6">
           <h3 className="text-lg font-semibold text-white">
             Identity monitoring
           </h3>
@@ -26,9 +31,10 @@ export default function AdminPage() {
             Review access audits, OAuth tokens, and cross-tenant identity
             policies with clear evidence trails.
           </p>
-        </div>
-      </div>
-      <div className="grid gap-6 md:grid-cols-3">
+        </GlassCard>
+      </MotionSection>
+
+      <MotionSection className="grid gap-6 md:grid-cols-3">
         {[
           {
             title: "Compliance & risk management",
@@ -46,15 +52,13 @@ export default function AdminPage() {
               "Manage vendor risk assessments, data access reviews, and contractual security requirements."
           }
         ].map((item) => (
-          <div
-            key={item.title}
-            className="rounded-3xl border border-white/10 bg-slate-900/80 p-6"
-          >
+          <GlassCard key={item.title} className="rounded-3xl p-6">
             <h3 className="text-lg font-semibold text-white">{item.title}</h3>
             <p className="mt-2 text-sm text-slate-300">{item.description}</p>
-          </div>
+          </GlassCard>
         ))}
-      </div>
+      </MotionSection>
+
       <Link href="/dashboard" className="text-brand-cyan hover:underline">
         Return to dashboard →
       </Link>

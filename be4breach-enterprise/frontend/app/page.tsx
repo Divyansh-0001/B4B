@@ -1,11 +1,18 @@
-import Link from "next/link";
-import AnimatedBadge from "@/components/AnimatedBadge";
-import StatCard from "@/components/StatCard";
+import GlassCard from "@/components/GlassCard";
+import HeroSection from "@/components/HeroSection";
+import MotionSection from "@/components/MotionSection";
 
 const stats = [
   { label: "Global Telemetry Sources", value: "130+" },
   { label: "Policy Control Coverage", value: "97%" },
   { label: "Mean Risk Score", value: "Low" }
+];
+
+const heroHighlights = [
+  "AI-guided threat validation",
+  "Zero-trust control coverage",
+  "Compliance-aligned reporting",
+  "24/7 response readiness"
 ];
 
 const visionMission = [
@@ -18,6 +25,24 @@ const visionMission = [
     title: "Mission",
     description:
       "Reduce breach likelihood with measurable security outcomes, combining deep expertise with automation that scales."
+  }
+];
+
+const differentiators = [
+  {
+    title: "Security programs that scale",
+    description:
+      "Be4Breach delivers repeatable, measurable security programs that grow with enterprise complexity."
+  },
+  {
+    title: "Evidence-first delivery",
+    description:
+      "Every assessment produces defensible findings, executive summaries, and remediation guidance."
+  },
+  {
+    title: "AI-assisted workflows",
+    description:
+      "Telemetry, automation, and analyst expertise converge to prioritize the actions that reduce risk fastest."
   }
 ];
 
@@ -176,51 +201,18 @@ const domains = [
 
 export default function HomePage() {
   return (
-    <section className="space-y-10">
-      <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-        <div className="space-y-6">
-          <AnimatedBadge>Enterprise Ready • Zero-Trust</AnimatedBadge>
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            Be4Breach delivers enterprise-grade cybersecurity programs with
-            measurable outcomes.
-          </h1>
-          <p className="text-lg text-slate-300">
-            We combine senior security expertise, continuous testing, and
-            automation to reduce risk across people, processes, and technology.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/login"
-              className="rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue/30 transition hover:-translate-y-0.5 hover:bg-blue-500"
-            >
-              Access secure console
-            </Link>
-            <Link
-              href="/dashboard"
-              className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/60"
-            >
-              View live dashboards
-            </Link>
-          </div>
-        </div>
-        <div className="glass-panel rounded-3xl p-8">
-          <div className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.3em] text-brand-cyan">
-              Security posture snapshot
-            </p>
-            <div className="grid gap-4">
-              {stats.map((stat) => (
-                <StatCard
-                  key={stat.label}
-                  label={stat.label}
-                  value={stat.value}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="glass-panel rounded-3xl p-8">
+    <section className="space-y-16">
+      <HeroSection
+        badge="Be4Breach Intelligence Core"
+        title="Be4Breach delivers enterprise-grade cybersecurity programs with measurable outcomes."
+        description="We combine senior security expertise, continuous testing, and automation to reduce risk across people, processes, and technology."
+        primaryCta={{ label: "Request secure access", href: "/login" }}
+        secondaryCta={{ label: "View SOC dashboard", href: "/dashboard" }}
+        stats={stats}
+        highlights={heroHighlights}
+      />
+
+      <MotionSection className="glass-panel rounded-3xl p-8 lg:p-10">
         <div className="space-y-6">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-brand-cyan">
@@ -246,54 +238,54 @@ export default function HomePage() {
               </p>
             </div>
             <div className="space-y-4">
-              {stats.map((stat) => (
-                <StatCard
-                  key={stat.label}
-                  label={stat.label}
-                  value={stat.value}
-                />
+              {differentiators.map((item) => (
+                <GlassCard
+                  key={item.title}
+                  className="rounded-2xl p-4"
+                >
+                  <h3 className="text-sm font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-xs text-slate-300">
+                    {item.description}
+                  </p>
+                </GlassCard>
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </MotionSection>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <MotionSection className="grid gap-6 md:grid-cols-2">
         {visionMission.map((item) => (
-          <div
-            key={item.title}
-            className="glass-panel rounded-3xl p-8"
-          >
+          <GlassCard key={item.title} className="rounded-3xl p-8">
             <h3 className="text-xl font-semibold text-white">{item.title}</h3>
             <p className="mt-3 text-sm text-slate-300">{item.description}</p>
-          </div>
+          </GlassCard>
         ))}
-      </div>
+      </MotionSection>
 
-      <div className="glass-panel rounded-3xl p-8">
+      <MotionSection className="glass-panel rounded-3xl p-8 lg:p-10">
         <div className="grid gap-6 lg:grid-cols-2">
           {offerings.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-slate-900/70 p-6"
-            >
+            <GlassCard key={item.title} className="rounded-3xl p-6">
               <h3 className="text-lg font-semibold text-white">{item.title}</h3>
               <p className="mt-3 text-sm text-slate-300">{item.description}</p>
-            </div>
+            </GlassCard>
           ))}
         </div>
-      </div>
+      </MotionSection>
 
-      <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="glass-panel rounded-3xl p-8">
+      <MotionSection className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <GlassCard className="rounded-3xl p-8">
           <h3 className="text-xl font-semibold text-white">Industries served</h3>
           <ul className="mt-4 space-y-2 text-sm text-slate-300">
             {industries.map((industry) => (
               <li key={industry}>• {industry}</li>
             ))}
           </ul>
-        </div>
-        <div className="glass-panel rounded-3xl p-8">
+        </GlassCard>
+        <GlassCard className="rounded-3xl p-8">
           <h3 className="text-xl font-semibold text-white">
             Cybersecurity expertise
           </h3>
@@ -302,31 +294,28 @@ export default function HomePage() {
               <li key={item}>• {item}</li>
             ))}
           </ul>
-        </div>
-      </div>
+        </GlassCard>
+      </MotionSection>
 
-      <div className="glass-panel rounded-3xl p-8">
+      <MotionSection className="glass-panel rounded-3xl p-8 lg:p-10">
         <h3 className="text-xl font-semibold text-white">
           Enterprise positioning
         </h3>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           {enterprisePillars.map((pillar) => (
-            <div
-              key={pillar.title}
-              className="rounded-2xl border border-white/10 bg-slate-900/70 p-6"
-            >
+            <GlassCard key={pillar.title} className="rounded-3xl p-6">
               <h4 className="text-base font-semibold text-white">
                 {pillar.title}
               </h4>
               <p className="mt-3 text-sm text-slate-300">
                 {pillar.description}
               </p>
-            </div>
+            </GlassCard>
           ))}
         </div>
-      </div>
+      </MotionSection>
 
-      <div className="space-y-6">
+      <MotionSection className="space-y-6">
         <div>
           <p className="text-sm uppercase tracking-[0.3em] text-brand-cyan">
             Cybersecurity domains
@@ -335,16 +324,13 @@ export default function HomePage() {
             Full-spectrum services and platform capabilities.
           </h2>
           <p className="mt-2 text-sm text-slate-300">
-            Each service is delivered with clear scope, risk-based prioritization,
-            and evidence-backed reporting.
+            Each service is delivered with clear scope, risk-based
+            prioritization, and evidence-backed reporting.
           </p>
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
           {domains.map((domain) => (
-            <div
-              key={domain.title}
-              className="glass-panel rounded-3xl p-6"
-            >
+            <GlassCard key={domain.title} className="rounded-3xl p-6">
               <h3 className="text-lg font-semibold text-white">
                 {domain.title}
               </h3>
@@ -354,10 +340,10 @@ export default function HomePage() {
                   <li key={bullet}>{bullet}</li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
           ))}
         </div>
-      </div>
+      </MotionSection>
     </section>
   );
 }
