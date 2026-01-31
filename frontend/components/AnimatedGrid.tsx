@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function AnimatedGrid() {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div
         className="absolute inset-0 bg-grid opacity-25"
         initial={{ backgroundPosition: "0px 0px" }}

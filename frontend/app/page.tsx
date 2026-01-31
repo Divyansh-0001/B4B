@@ -1,4 +1,3 @@
-import AnimatedGrid from "../components/AnimatedGrid";
 import CommandConsole from "../components/CommandConsole";
 import Hero from "../components/Hero";
 import HologramCard from "../components/HologramCard";
@@ -92,13 +91,10 @@ const roles = [
 export default function Home() {
   return (
     <main className="relative">
-      <div className="relative">
-        <AnimatedGrid />
-        <Navigation />
-        <Hero />
-      </div>
+      <Navigation />
+      <Hero />
 
-      <section id="command" className="relative pb-24">
+      <section className="relative pb-24">
         <div className="mx-auto grid max-w-6xl gap-12 px-6">
           <SignalTicker />
           <div className="grid gap-6 lg:grid-cols-3">
@@ -109,11 +105,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="capabilities" className="pb-24">
+      <section className="pb-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-6">
           <SectionHeading
-            eyebrow="Capability Matrix"
-            title="Defense systems engineered for mission resilience."
+            eyebrow="Defense Capabilities"
+            title="Systems engineered for mission resilience."
             description="Holographic panels surface actionable intelligence while adaptive automation powers rapid response."
           />
           <div className="grid gap-6 md:grid-cols-3">
@@ -124,7 +120,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="operations" className="pb-24">
+      <section className="pb-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <SectionHeading
             eyebrow="Operations"
@@ -148,7 +144,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="access" className="pb-24">
+      <section className="pb-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-6">
           <SectionHeading
             eyebrow="Access Protocol"
@@ -165,7 +161,8 @@ export default function Home() {
 
       <section className="pb-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-          <div className="rounded-3xl border border-white/10 bg-slate/60 p-8 shadow-2xl backdrop-blur">
+          <div className="glass-panel relative overflow-hidden p-8">
+            <div className="absolute inset-0 panel-sheen opacity-20" />
             <p className="text-xs uppercase tracking-[0.35em] text-neon/70">
               Initiate Partnership
             </p>
@@ -185,7 +182,7 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-abyss/70 p-8 text-sm text-slate-300 shadow-xl">
+          <div className="glass-panel p-8 text-sm text-slate-300">
             <p className="text-xs uppercase tracking-[0.35em] text-slate-400">
               Deployment Snapshot
             </p>

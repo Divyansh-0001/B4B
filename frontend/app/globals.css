@@ -16,6 +16,14 @@ body {
 }
 
 @layer utilities {
+  .glass-panel {
+    @apply rounded-3xl border border-white/10 bg-slate/60 shadow-2xl backdrop-blur;
+  }
+
+  .glass-card {
+    @apply rounded-2xl border border-white/10 bg-abyss/70 shadow-xl backdrop-blur;
+  }
+
   .bg-grid {
     background-image:
       linear-gradient(rgba(69, 243, 255, 0.08) 1px, transparent 1px),
@@ -48,5 +56,142 @@ body {
     opacity: 0.15;
     animation: scanline 6s linear infinite;
     pointer-events: none;
+  }
+
+  .glitch {
+    position: relative;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .glitch::before {
+    color: rgba(69, 243, 255, 0.7);
+    transform: translate3d(-1px, 0, 0);
+    animation: glitchShift 6s infinite;
+  }
+
+  .glitch::after {
+    color: rgba(246, 168, 59, 0.6);
+    transform: translate3d(1px, 0, 0);
+    animation: glitchShift 5.5s infinite reverse;
+  }
+
+  .stream-line {
+    position: absolute;
+    top: -40%;
+    width: 2px;
+    height: 140%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(69, 243, 255, 0.4) 45%,
+      transparent 100%
+    );
+    animation: dataStream var(--stream-duration, 12s) linear infinite;
+    animation-delay: var(--stream-delay, 0s);
+    opacity: 0.5;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 9999px;
+    background: rgba(69, 243, 255, 0.45);
+    box-shadow: 0 0 12px rgba(69, 243, 255, 0.6);
+    animation: particleFloat var(--particle-duration, 10s) ease-in-out infinite;
+    animation-delay: var(--particle-delay, 0s);
+    opacity: var(--particle-opacity, 0.6);
+  }
+
+  .scan-sweep {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(69, 243, 255, 0.25) 50%,
+      transparent 100%
+    );
+    animation: scanSweep 5.5s linear infinite;
+    opacity: 0.5;
+    mix-blend-mode: screen;
+  }
+
+  .pulse-ring {
+    animation: pulseRing 4s ease-in-out infinite;
+  }
+}
+
+@keyframes dataStream {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(0, 80%, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes scanSweep {
+  0% {
+    transform: translate3d(-30%, -30%, 0);
+  }
+  100% {
+    transform: translate3d(30%, 30%, 0);
+  }
+}
+
+@keyframes glitchShift {
+  0%,
+  92%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  94% {
+    transform: translate3d(-1px, -1px, 0);
+  }
+  96% {
+    transform: translate3d(1px, 1px, 0);
+  }
+  98% {
+    transform: translate3d(-1px, 0, 0);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.4;
   }
 }

@@ -16,8 +16,11 @@ export default function RolePanel({
   return (
     <motion.div
       whileHover={{ y: -4 }}
-      className="rounded-2xl border border-white/10 bg-slate/70 p-6 shadow-lg backdrop-blur"
+      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate/70 p-6 shadow-lg backdrop-blur"
     >
+      <div className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
+        <div className="h-full w-full panel-sheen" />
+      </div>
       <p className="text-xs uppercase tracking-[0.35em] text-slate-400">
         {designation}
       </p>

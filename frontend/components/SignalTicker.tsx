@@ -15,7 +15,7 @@ export default function SignalTicker() {
   const loop = [...signals, ...signals];
 
   return (
-    <div className="overflow-hidden rounded-full border border-white/10 bg-abyss/70 py-3 text-xs uppercase tracking-[0.3em] text-neon">
+    <div className="overflow-hidden rounded-full border border-white/10 bg-abyss/70 py-3 text-xs uppercase tracking-[0.3em] text-neon shadow-lg backdrop-blur">
       <motion.div
         className="flex gap-10 whitespace-nowrap px-6"
         animate={{ x: ["0%", "-50%"] }}
