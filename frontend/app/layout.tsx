@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import TransitionProvider from "../components/TransitionProvider";
 import "./globals.css";
 
 const display = Space_Grotesk({
@@ -32,7 +33,7 @@ export default function RootLayout({
         <div className="fixed inset-0 -z-10 bg-radial-glow opacity-70" />
         <div className="fixed inset-0 -z-10 bg-gradient-to-b from-void/90 via-abyss/90 to-black" />
         <div className="fixed inset-0 -z-10 scanlines" />
-        {children}
+        <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>
   );

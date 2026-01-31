@@ -20,7 +20,7 @@ def _require_google_config() -> None:
         )
 
 
-def exchange_code_for_tokens(code: str, redirect_uri: str) -> dict[str, Any]:
+async def exchange_code_for_tokens(code: str, redirect_uri: str) -> dict[str, Any]:
     _require_google_config()
     payload = {
         "code": code,
@@ -29,8 +29,14 @@ def exchange_code_for_tokens(code: str, redirect_uri: str) -> dict[str, Any]:
         "redirect_uri": redirect_uri,
         "grant_type": "authorization_code"
     }
-    with httpx.Client(timeout=10) as client:
-        response = client.post(GOOGLE_TOKEN_URL, data=payload)
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            response = await client.post(GOOGLE_TOKEN_URL, data=payload)
+    except httpx.HTTPError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Google OAuth service unavailable."
+        ) from exc
     if response.status_code != 200:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -39,10 +45,19 @@ def exchange_code_for_tokens(code: str, redirect_uri: str) -> dict[str, Any]:
     return response.json()
 
 
-def verify_id_token(id_token: str) -> dict[str, Any]:
+async def verify_id_token(id_token: str) -> dict[str, Any]:
     _require_google_config()
-    with httpx.Client(timeout=10) as client:
-        response = client.get(GOOGLE_TOKENINFO_URL, params={"id_token": id_token})
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            response = await client.get(
+                GOOGLE_TOKENINFO_URL,
+                params={"id_token": id_token}
+            )
+    except httpx.HTTPError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Google token verification unavailable."
+        ) from exc
     if response.status_code != 200:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -57,12 +72,18 @@ def verify_id_token(id_token: str) -> dict[str, Any]:
     return data
 
 
-def fetch_userinfo(access_token: str) -> dict[str, Any]:
-    with httpx.Client(timeout=10) as client:
-        response = client.get(
-            GOOGLE_USERINFO_URL,
-            headers={"Authorization": f"Bearer {access_token}"}
-        )
+async def fetch_userinfo(access_token: str) -> dict[str, Any]:
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            response = await client.get(
+                GOOGLE_USERINFO_URL,
+                headers={"Authorization": f"Bearer {access_token}"}
+            )
+    except httpx.HTTPError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Google userinfo unavailable."
+        ) from exc
     if response.status_code != 200:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -71,7 +92,7 @@ def fetch_userinfo(access_token: str) -> dict[str, Any]:
     return response.json()
 
 
-def resolve_google_profile(
+async def resolve_google_profile(
     code: str | None,
     id_token: str | None,
     redirect_uri: str | None
@@ -89,13 +110,13 @@ def resolve_google_profile(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="redirect_uri is required when using authorization code."
             )
-        token_data = exchange_code_for_tokens(code, redirect_uri)
+        token_data = await exchange_code_for_tokens(code, redirect_uri)
         id_token = token_data.get("id_token")
         access_token = token_data.get("access_token")
 
-    token_profile = verify_id_token(id_token or "")
+    token_profile = await verify_id_token(id_token or "")
     if access_token:
-        user_profile = fetch_userinfo(access_token)
+        user_profile = await fetch_userinfo(access_token)
         token_profile.update(user_profile)
 
     return token_profile

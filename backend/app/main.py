@@ -3,25 +3,29 @@ from __future__ import annotations
 import uuid
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from sqlalchemy import text
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from app.api.routes import auth, health, intel, users
 from app.core.config import settings
 from app.core.errors import ErrorResponse
 from app.core.logging import configure_logging, logger
-from app.db.init_db import init_database
+from app.db.init_db import close_database, init_database
+from app.db.session import get_session
+from app.schemas.system import HealthStatus
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     configure_logging(settings.log_level)
-    init_database()
+    await init_database()
     logger.info("Be4Breach command core initialized.")
     yield
+    await close_database()
     logger.info("Be4Breach command core shutdown complete.")
 
 
@@ -64,6 +68,10 @@ async def request_id_middleware(request: Request, call_next):
         "camera=(), microphone=(), geolocation=(), interest-cohort=()"
     )
     response.headers["Cross-Origin-Resource-Policy"] = "same-site"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+    )
+    response.headers["Cache-Control"] = "no-store"
     if settings.is_production:
         response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains"
     return response
@@ -107,3 +115,9 @@ app.include_router(health.router, prefix=settings.api_v1_prefix)
 app.include_router(auth.router, prefix=settings.api_v1_prefix)
 app.include_router(users.router, prefix=settings.api_v1_prefix)
 app.include_router(intel.router, prefix=settings.api_v1_prefix)
+
+
+@app.get("/health", include_in_schema=False, response_model=HealthStatus)
+async def root_health(session=Depends(get_session)) -> HealthStatus:
+    await session.execute(text("SELECT 1"))
+    return HealthStatus(status="ok")

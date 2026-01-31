@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import BackgroundScene from "../../components/BackgroundScene";
 import GlitchText from "../../components/GlitchText";
@@ -52,6 +52,8 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [verifiedRole, setVerifiedRole] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const oauthError = searchParams.get("error");
 
   const roleDetail = useMemo(
     () => roleOptions.find((role) => role.id === selectedRole),
@@ -145,6 +147,11 @@ export default function LoginPage() {
                 {verifiedRole ? (
                   <p className="text-xs uppercase tracking-[0.3em] text-neon/70">
                     Clearance verified: {verifiedRole}
+                  </p>
+                ) : null}
+                {oauthError ? (
+                  <p className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-xs uppercase tracking-[0.3em] text-amber-200">
+                    Google SSO unavailable. Use command credentials.
                   </p>
                 ) : null}
               </div>

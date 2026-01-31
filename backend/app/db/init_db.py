@@ -1,6 +1,8 @@
+import asyncio
 from pathlib import Path
 
 from sqlalchemy import text
+from sqlalchemy.exc import OperationalError
 
 from app.core.config import settings
 from app.db.base import Base
@@ -18,8 +20,27 @@ def _ensure_sqlite_directory() -> None:
         db_path.parent.mkdir(parents=True, exist_ok=True)
 
 
-def init_database() -> None:
+async def init_database() -> None:
     _ensure_sqlite_directory()
-    Base.metadata.create_all(bind=engine)
-    with engine.connect() as connection:
-        connection.execute(text("SELECT 1"))
+    attempts = settings.db_retry_attempts
+    delay = settings.db_retry_backoff_seconds
+    last_error: Exception | None = None
+
+    for attempt in range(1, attempts + 1):
+        try:
+            async with engine.begin() as connection:
+                await connection.run_sync(Base.metadata.create_all)
+                await connection.execute(text("SELECT 1"))
+            return
+        except OperationalError as exc:
+            last_error = exc
+            if attempt == attempts:
+                break
+            await asyncio.sleep(delay * attempt)
+
+    if last_error:
+        raise last_error
+
+
+async def close_database() -> None:
+    await engine.dispose()

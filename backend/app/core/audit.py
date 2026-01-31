@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.models import AuditEvent
 
 
 def record_audit_event(
-    db: Session,
+    db: AsyncSession,
     actor_id: str,
     action: str,
     resource: str,

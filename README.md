@@ -63,6 +63,13 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
+### Production (Gunicorn + Uvicorn)
+
+```bash
+cd backend
+gunicorn -c gunicorn.conf.py app.main:app
+```
+
 ### Environment
 
 Copy `.env.example` to `.env` and set values as needed.
@@ -72,6 +79,7 @@ Key values:
 - `JWT_SECRET` must be at least 32 characters (required in production)
 - `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` must be set together
 - `CORS_ORIGINS` and `ALLOWED_HOSTS` accept comma-separated lists
+- `AUTH_COOKIE_SECURE=true` is enforced automatically in production
 
 ## Security Notes
 

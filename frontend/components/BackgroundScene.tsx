@@ -1,8 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import AnimatedGrid from "./AnimatedGrid";
-import DataStream from "./DataStream";
-import ParticleField from "./ParticleField";
+
+const ParticleField = dynamic(() => import("./ParticleField"), { ssr: false });
+const DataStream = dynamic(() => import("./DataStream"), { ssr: false });
 
 export default function BackgroundScene() {
   return (

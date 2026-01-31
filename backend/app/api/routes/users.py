@@ -5,7 +5,8 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
+from starlette.concurrency import run_in_threadpool
 
 from app.api.deps import get_current_user, require_roles
 from app.core.audit import record_audit_event
@@ -37,26 +38,28 @@ def _password_policy(password: str) -> None:
 
 
 @router.get("/me", response_model=UserPublic)
-def read_users_me(current_user: User = Depends(get_current_user)) -> User:
+async def read_users_me(current_user: User = Depends(get_current_user)) -> User:
     return current_user
 
 
 @router.get("", response_model=list[UserPublic])
-def list_users(
-    db: Session = Depends(get_session),
+async def list_users(
+    db: AsyncSession = Depends(get_session),
     _: User = Depends(require_roles(Role.COMMAND))
 ) -> list[User]:
-    return db.scalars(select(User).order_by(User.created_at.desc())).all()
+    result = await db.execute(select(User).order_by(User.created_at.desc()))
+    return result.scalars().all()
 
 
 @router.post("", response_model=UserPublic, status_code=status.HTTP_201_CREATED)
-def create_user(
+async def create_user(
     payload: UserCreate,
-    db: Session = Depends(get_session),
+    db: AsyncSession = Depends(get_session),
     current_user: User = Depends(require_roles(Role.COMMAND))
 ) -> User:
     email = payload.email.lower().strip()
-    existing = db.scalar(select(User).where(User.email == email))
+    existing_result = await db.execute(select(User).where(User.email == email))
+    existing = existing_result.scalar_one_or_none()
     if existing:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
@@ -64,12 +67,13 @@ def create_user(
         )
 
     _password_policy(payload.password)
+    hashed_password = await run_in_threadpool(get_password_hash, payload.password)
 
     user = User(
         email=email,
         full_name=payload.full_name,
         role=payload.role,
-        hashed_password=get_password_hash(payload.password),
+        hashed_password=hashed_password,
         is_active=payload.is_active,
         last_login_at=None
     )
@@ -82,25 +86,26 @@ def create_user(
         detail={"created": email, "role": payload.role.value}
     )
     try:
-        db.commit()
+        await db.commit()
     except IntegrityError:
-        db.rollback()
+        await db.rollback()
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
             detail="Email already registered."
         )
-    db.refresh(user)
+    await db.refresh(user)
     return user
 
 
 @router.patch("/{user_id}/role", response_model=UserPublic)
-def update_user_role(
+async def update_user_role(
     user_id: str,
     payload: UserRoleUpdate,
-    db: Session = Depends(get_session),
+    db: AsyncSession = Depends(get_session),
     current_user: User = Depends(require_roles(Role.COMMAND))
 ) -> User:
-    user = db.scalar(select(User).where(User.id == user_id))
+    user_result = await db.execute(select(User).where(User.id == user_id))
+    user = user_result.scalar_one_or_none()
     if not user:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -115,6 +120,6 @@ def update_user_role(
         resource="user",
         detail={"target": user.email, "role": payload.role.value}
     )
-    db.commit()
-    db.refresh(user)
+    await db.commit()
+    await db.refresh(user)
     return user

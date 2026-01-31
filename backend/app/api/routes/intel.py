@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_user, require_roles
 from app.core.audit import record_audit_event
@@ -29,9 +29,9 @@ SEVERITY_WEIGHTS = {
     response_model=ThreatSignalPublic,
     status_code=status.HTTP_201_CREATED
 )
-def create_signal(
+async def create_signal(
     payload: ThreatSignalCreate,
-    db: Session = Depends(get_session),
+    db: AsyncSession = Depends(get_session),
     current_user: User = Depends(require_roles(Role.OPERATIVE, Role.COMMAND))
 ) -> ThreatSignal:
     signal = ThreatSignal(
@@ -50,27 +50,29 @@ def create_signal(
         resource="threat_signal",
         detail={"title": payload.title, "severity": payload.severity.value}
     )
-    db.commit()
-    db.refresh(signal)
+    await db.commit()
+    await db.refresh(signal)
     return signal
 
 
 @router.get("/signals", response_model=list[ThreatSignalPublic])
-def list_signals(
-    db: Session = Depends(get_session),
+async def list_signals(
+    db: AsyncSession = Depends(get_session),
     _: User = Depends(get_current_user)
 ) -> list[ThreatSignal]:
-    return db.scalars(
+    result = await db.execute(
         select(ThreatSignal).order_by(ThreatSignal.created_at.desc())
-    ).all()
+    )
+    return result.scalars().all()
 
 
 @router.get("/summary", response_model=IntelSummary)
-def intel_summary(
-    db: Session = Depends(get_session),
+async def intel_summary(
+    db: AsyncSession = Depends(get_session),
     _: User = Depends(get_current_user)
 ) -> IntelSummary:
-    signals = db.scalars(select(ThreatSignal)).all()
+    result = await db.execute(select(ThreatSignal))
+    signals = result.scalars().all()
     total = len(signals)
     by_severity: dict[ThreatSeverity, int] = {
         severity: 0 for severity in ThreatSeverity

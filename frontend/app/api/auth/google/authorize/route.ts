@@ -9,10 +9,7 @@ export async function GET(request: Request) {
     process.env.GOOGLE_CLIENT_ID || process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
   if (!clientId) {
-    return NextResponse.json(
-      { error: "Google SSO is not configured." },
-      { status: 501 }
-    );
+    return NextResponse.redirect(new URL("/login?error=oauth_config", request.url));
   }
 
   const redirectUri = new URL("/api/auth/google/callback", request.url).toString();
