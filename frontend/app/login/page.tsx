@@ -1,38 +1,189 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import BackgroundScene from "../../components/BackgroundScene";
 import GlitchText from "../../components/GlitchText";
 import Navigation from "../../components/Navigation";
 
+type RoleOption = {
+  id: "OPERATIVE" | "PARTNER" | "COMMAND";
+  title: string;
+  description: string;
+  clearance: string;
+};
+
+const roleOptions: RoleOption[] = [
+  {
+    id: "OPERATIVE",
+    title: "Operative",
+    description: "Front-line defenders executing containment and investigations.",
+    clearance: "Response-grade operational access."
+  },
+  {
+    id: "PARTNER",
+    title: "Partner Organization",
+    description: "Trusted enterprises sharing telemetry and response alignment.",
+    clearance: "Partner lanes with shared intelligence workflows."
+  },
+  {
+    id: "COMMAND",
+    title: "Command Authority",
+    description: "Strategic oversight with elevated mission directives.",
+    clearance: "Executive controls and escalation authority."
+  }
+];
+
+const terminalStatus = [
+  "JWT session enforcement online",
+  "Token expiry policy active",
+  "Role enforcement locked",
+  "Protected routes secured"
+];
+
 export default function LoginPage() {
+  const router = useRouter();
+  const [selectedRole, setSelectedRole] = useState<RoleOption["id"]>(
+    "OPERATIVE"
+  );
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [verifiedRole, setVerifiedRole] = useState<string | null>(null);
+
+  const roleDetail = useMemo(
+    () => roleOptions.find((role) => role.id === selectedRole),
+    [selectedRole]
+  );
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+
+    if (!response.ok) {
+      const payload = (await response.json().catch(() => ({}))) as {
+        error?: string;
+      };
+      setError(payload.error ?? "Authentication failed. Try again.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const payload = (await response.json()) as {
+      user: { role: string };
+    };
+    setVerifiedRole(payload.user.role);
+    router.push("/dashboard");
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href = "/api/auth/google/authorize";
+  };
+
   return (
     <main className="relative">
       <Navigation />
       <section className="relative overflow-hidden pb-24 pt-28">
         <BackgroundScene />
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-neon/80">
-              Secure Access Terminal
-            </p>
-            <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">
-              <GlitchText text="Secure Access Terminal" className="text-glow" />
-            </h1>
-            <p className="mt-5 text-lg text-slate-200">
-              Authenticate with command-grade credentials or trusted partner SSO
-              to enter the Be4Breach command lattice.
-            </p>
-            <div className="mt-8 glass-card p-6 text-sm text-slate-300">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-                Access Protocol
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div className="space-y-8">
+            <div>
+              <p className="text-xs uppercase tracking-[0.4em] text-neon/80">
+                Secure Access Terminal
               </p>
-              <ul className="mt-4 space-y-3">
-                <li>Multi-factor verification enforced on every session.</li>
-                <li>RBAC gates protect Command Authority workflows.</li>
-                <li>All access events are recorded in immutable audit logs.</li>
-              </ul>
+              <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">
+                <GlitchText
+                  text="Secure Access Terminal"
+                  className="text-glow"
+                />
+              </h1>
+              <p className="mt-5 text-lg text-slate-200">
+                Authenticate with command-grade credentials or trusted partner
+                SSO to enter the Be4Breach command lattice.
+              </p>
+            </div>
+            <div className="terminal-frame scanlines">
+              <div className="relative space-y-5 p-6 text-sm text-slate-300">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                    Access Verification
+                  </p>
+                  <p className="mt-2 text-lg text-white">
+                    {isSubmitting ? "Verifying credentials" : "Awaiting credentials"}
+                    {isSubmitting ? (
+                      <span className="verification-dots">
+                        <span className="verification-dot" />
+                        <span className="verification-dot" />
+                        <span className="verification-dot" />
+                      </span>
+                    ) : null}
+                  </p>
+                  <p className="mt-2 text-xs text-slate-400">
+                    Clearance profile: {roleDetail?.title}
+                  </p>
+                </div>
+                <div className="grid gap-3">
+                  {terminalStatus.map((line) => (
+                    <div
+                      key={line}
+                      className="flex items-center justify-between rounded-2xl border border-white/10 bg-abyss/80 px-4 py-3"
+                    >
+                      <span>{line}</span>
+                      <span className="text-neon">Active</span>
+                    </div>
+                  ))}
+                </div>
+                {verifiedRole ? (
+                  <p className="text-xs uppercase tracking-[0.3em] text-neon/70">
+                    Clearance verified: {verifiedRole}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+            <div className="glass-card p-6 text-sm text-slate-300">
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                Role-aware Access
+              </p>
+              <p className="mt-3">
+                Select the clearance profile that matches your mission. Your role
+                is validated against Be4Breach access policy during sign-in.
+              </p>
+              <div className="mt-4 grid gap-3 md:grid-cols-3">
+                {roleOptions.map((role) => (
+                  <button
+                    key={role.id}
+                    type="button"
+                    onClick={() => setSelectedRole(role.id)}
+                    className={`rounded-2xl border px-4 py-3 text-left text-xs uppercase tracking-[0.3em] transition ${
+                      selectedRole === role.id
+                        ? "border-neon/70 bg-neon/10 text-neon"
+                        : "border-white/10 text-slate-300 hover:border-neon/40"
+                    }`}
+                  >
+                    {role.title}
+                  </button>
+                ))}
+              </div>
+              <div className="mt-4 rounded-2xl border border-white/10 bg-abyss/80 p-4">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                  Clearance Brief
+                </p>
+                <p className="mt-2 text-white">{roleDetail?.description}</p>
+                <p className="mt-2 text-slate-300">{roleDetail?.clearance}</p>
+              </div>
             </div>
           </div>
-          <div className="glass-panel p-8">
-            <form className="space-y-6">
+          <div className="terminal-frame p-8">
+            <form className="relative z-10 space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label className="text-xs uppercase tracking-[0.3em] text-slate-400">
                   Operative Email
@@ -41,8 +192,11 @@ export default function LoginPage() {
                   type="email"
                   name="email"
                   autoComplete="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   placeholder="operative@be4breach.io"
                   className="mt-3 w-full rounded-xl border border-white/10 bg-abyss/80 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-neon/70 focus:outline-none"
+                  required
                 />
               </div>
               <div>
@@ -53,29 +207,37 @@ export default function LoginPage() {
                   type="password"
                   name="password"
                   autoComplete="current-password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
                   placeholder="********"
                   className="mt-3 w-full rounded-xl border border-white/10 bg-abyss/80 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-neon/70 focus:outline-none"
+                  required
                 />
               </div>
+              {error ? (
+                <p className="rounded-2xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+                  {error}
+                </p>
+              ) : null}
               <button
                 type="submit"
-                className="w-full rounded-full bg-neon px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-abyss shadow-glow transition hover:scale-[1.01]"
+                disabled={isSubmitting}
+                className="w-full rounded-full bg-neon px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-abyss shadow-glow transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Authenticate
+                {isSubmitting ? "Authenticating" : "Authenticate"}
               </button>
               <div className="grid gap-3 text-xs uppercase tracking-[0.25em] text-slate-400">
                 <button
                   type="button"
+                  onClick={handleGoogleLogin}
                   className="w-full rounded-full border border-white/10 px-4 py-3 text-white/80 transition hover:border-neon/60 hover:text-neon"
                 >
-                  Continue with Google
+                  Continue with Google SSO
                 </button>
-                <button
-                  type="button"
-                  className="w-full rounded-full border border-white/10 px-4 py-3 text-white/80 transition hover:border-neon/60 hover:text-neon"
-                >
-                  Request Command Authority
-                </button>
+                <div className="rounded-2xl border border-white/10 bg-abyss/80 px-4 py-3 text-[0.7rem] uppercase tracking-[0.3em]">
+                  Partner organizations can use Google SSO if their domain is
+                  allowlisted.
+                </div>
               </div>
             </form>
           </div>
