@@ -7,8 +7,6 @@ type GlitchTextProps = {
 
 export default function GlitchText({ text, className }: GlitchTextProps) {
   return (
-    <span className={`glitch ${className ?? ""}`} data-text={text}>
-      {text}
-    </span>
+    <span className={className}>{text}</span>
   );
 }

@@ -6,7 +6,13 @@ export default function AnimatedGrid() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div
-        className="absolute inset-0 bg-grid opacity-25"
+        className="absolute inset-0 opacity-25"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(69, 243, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(69, 243, 255, 0.08) 1px, transparent 1px)",
+          backgroundSize: "120px 120px",
+          backgroundPosition: "center"
+        }}
         initial={{ backgroundPosition: "0px 0px" }}
         animate={{ backgroundPosition: ["0px 0px", "120px 120px"] }}
         transition={{ duration: 18, repeat: Infinity, ease: "linear" }}

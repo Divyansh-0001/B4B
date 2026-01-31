@@ -128,7 +128,10 @@ export default function AboutPage() {
             The Agency
           </p>
           <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">
-            <GlitchText text="The Agency" className="text-glow" />
+            <GlitchText
+              text="The Agency"
+              className="drop-shadow-[0_0_12px_rgba(69,243,255,0.5)]"
+            />
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-slate-200">
             A cinematic narrative grounded in real operations. The following
@@ -145,7 +148,7 @@ export default function AboutPage() {
             title="Born from a mandate to protect information worldwide."
             description="Be4Breach was inspired by a desire to protect information across the world and is headquartered in Pune, India."
           />
-          <div className="glass-panel space-y-5 p-6 text-sm text-slate-300">
+          <div className="space-y-5 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Headquarters
@@ -186,7 +189,7 @@ export default function AboutPage() {
             description="Be4Breach emphasizes long-term partnerships and security that aligns with business risk."
           />
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="glass-panel space-y-4 p-6 text-sm text-slate-300">
+            <div className="space-y-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Mission
               </p>
@@ -202,7 +205,7 @@ export default function AboutPage() {
                 contentment and referrals.
               </p>
             </div>
-            <div className="glass-panel space-y-4 p-6 text-sm text-slate-300">
+            <div className="space-y-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Vision
               </p>
@@ -232,7 +235,7 @@ export default function AboutPage() {
             description="Be4Breach combines threat intelligence, proactive hunting, and structured assessments to stay ahead of adversarial tactics."
           />
           <div className="grid gap-6 lg:grid-cols-2">
-            <div className="glass-panel space-y-4 p-6 text-sm text-slate-300">
+            <div className="space-y-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Operational Approach
               </p>
@@ -259,7 +262,7 @@ export default function AboutPage() {
                 </li>
               </ul>
             </div>
-            <div className="glass-panel space-y-4 p-6 text-sm text-slate-300">
+            <div className="space-y-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Standards and Assurance
               </p>
@@ -314,7 +317,7 @@ export default function AboutPage() {
             ))}
           </div>
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div className="glass-panel space-y-4 p-6 text-sm text-slate-300">
+            <div className="space-y-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Values and Client Care
               </p>
@@ -344,7 +347,7 @@ export default function AboutPage() {
                 </li>
               </ul>
             </div>
-            <div className="glass-panel space-y-4 p-6 text-sm text-slate-300">
+            <div className="space-y-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Client Feedback Signals
               </p>
@@ -369,7 +372,7 @@ export default function AboutPage() {
             title="Security aligned to risk, scale, and modern adversaries."
             description="Be4Breach frames security as a response to rising intruder sophistication and the need for globally aligned defenses."
           />
-          <div className="glass-panel space-y-4 p-6 text-sm text-slate-300">
+          <div className="space-y-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
             <p>
               The company states that intruder capabilities are advancing
               alongside rapid software innovation. Security and accessibility

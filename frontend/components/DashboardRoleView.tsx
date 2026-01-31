@@ -200,7 +200,7 @@ export default function DashboardRoleView() {
 
   if (loading) {
     return (
-      <div className="glass-panel p-6 text-sm text-slate-300">
+      <div className="rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
         Loading role profile...
       </div>
     );
@@ -208,7 +208,7 @@ export default function DashboardRoleView() {
 
   if (error || !profile) {
     return (
-      <div className="glass-panel p-6 text-sm text-rose-200">
+      <div className="rounded-3xl border border-rose-500/30 bg-rose-500/10 p-6 text-sm text-rose-200 shadow-2xl backdrop-blur">
         {error ?? "Unable to load dashboard."}
       </div>
     );
@@ -216,7 +216,7 @@ export default function DashboardRoleView() {
 
   return (
     <div className="space-y-8">
-      <div className="glass-panel flex flex-col gap-4 p-6 text-sm text-slate-300 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur md:flex-row md:items-center md:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-neon/70">
             {profile.title}
@@ -240,7 +240,7 @@ export default function DashboardRoleView() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="glass-panel space-y-4 p-6 text-sm text-slate-300"
+              className="rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Activity Overview
@@ -277,7 +277,7 @@ export default function DashboardRoleView() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="glass-panel space-y-4 p-6 text-sm text-slate-300"
+              className="rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Engagement Status
@@ -291,7 +291,7 @@ export default function DashboardRoleView() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="glass-panel space-y-4 p-6 text-sm text-slate-300"
+              className="rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Risk Overview
@@ -318,7 +318,7 @@ export default function DashboardRoleView() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="glass-panel space-y-4 p-6 text-sm text-slate-300"
+              className="rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 User Management
@@ -341,7 +341,7 @@ export default function DashboardRoleView() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="glass-panel space-y-4 p-6 text-sm text-slate-300"
+                className="rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur"
               >
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                   System Status
@@ -360,7 +360,7 @@ export default function DashboardRoleView() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="glass-panel space-y-4 p-6 text-sm text-slate-300"
+                className="rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur"
               >
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                   Security Controls

@@ -68,7 +68,10 @@ export default function CompliancePage() {
             Trust & Authority
           </p>
           <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">
-            <GlitchText text="Trust & Authority" className="text-glow" />
+            <GlitchText
+              text="Trust & Authority"
+              className="drop-shadow-[0_0_12px_rgba(69,243,255,0.5)]"
+            />
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-slate-200">
             Enterprise-grade compliance built into every layer of the Be4Breach
@@ -88,9 +91,9 @@ export default function CompliancePage() {
             {frameworks.map((framework) => (
               <div
                 key={framework.title}
-                className="glass-card relative overflow-hidden p-6 text-sm text-slate-300"
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-abyss/70 p-6 text-sm text-slate-300 shadow-xl backdrop-blur"
               >
-                <div className="absolute inset-0 panel-sheen opacity-10" />
+                <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(69,243,255,0.12),transparent_55%)] opacity-20" />
                 <h3 className="relative text-lg font-semibold text-white">
                   {framework.title}
                 </h3>
@@ -98,7 +101,7 @@ export default function CompliancePage() {
               </div>
             ))}
           </div>
-          <div className="glass-panel mt-10 space-y-4 p-6 text-sm text-slate-300">
+          <div className="mt-10 space-y-4 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
             <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
               CERT-In Statement
             </p>
@@ -122,7 +125,7 @@ export default function CompliancePage() {
             title="Operational trust without compromise."
             description="Command Authority maintains full oversight while automated controls enforce policy."
           />
-          <div className="glass-panel space-y-5 p-6 text-sm text-slate-300">
+          <div className="space-y-5 rounded-3xl border border-white/10 bg-slate/60 p-6 text-sm text-slate-300 shadow-2xl backdrop-blur">
             {assurances.map((assurance) => (
               <div key={assurance.label}>
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-400">

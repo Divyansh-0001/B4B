@@ -27,16 +27,16 @@ export default function ParticleField() {
       {particles.map((particle, index) => (
         <span
           key={`particle-${index}`}
-          className="particle"
+          className="absolute rounded-full bg-neon/40 shadow-[0_0_12px_rgba(69,243,255,0.35)] animate-pulse"
           style={
             {
               top: particle.top,
               left: particle.left,
               width: `${particle.size}rem`,
               height: `${particle.size}rem`,
-              "--particle-delay": particle.delay,
-              "--particle-duration": particle.duration,
-              "--particle-opacity": 0.35
+              animationDelay: particle.delay,
+              animationDuration: particle.duration,
+              opacity: 0.35
             } as CSSProperties
           }
         />

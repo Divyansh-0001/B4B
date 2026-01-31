@@ -41,7 +41,7 @@ export default function Hero() {
           >
             <GlitchText
               text="The Digital Battlefield"
-              className="text-glow"
+              className="drop-shadow-[0_0_12px_rgba(69,243,255,0.5)]"
             />
           </motion.h1>
           <motion.p
@@ -58,7 +58,7 @@ export default function Hero() {
             {missionPoints.map((point) => (
               <span
                 key={point}
-                className="glass-card px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-200/80"
+                className="rounded-2xl border border-white/10 bg-abyss/70 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-200/80 shadow-xl backdrop-blur"
               >
                 {point}
               </span>
@@ -80,7 +80,10 @@ export default function Hero() {
           </div>
           <div className="mt-10 grid gap-4 text-sm text-slate-300 md:grid-cols-3">
             {commandStats.map((stat) => (
-              <div key={stat.label} className="glass-card px-4 py-4">
+              <div
+                key={stat.label}
+                className="rounded-2xl border border-white/10 bg-abyss/70 px-4 py-4 shadow-xl backdrop-blur"
+              >
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                   {stat.label}
                 </p>
@@ -97,9 +100,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="glass-panel relative overflow-hidden p-6"
+            className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate/60 p-6 shadow-2xl backdrop-blur"
           >
-            <div className="absolute inset-0 panel-sheen opacity-20" />
+            <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(69,243,255,0.18),transparent_55%)] opacity-25" />
             <div className="relative space-y-5">
               <div>
                 <p className="text-xs uppercase tracking-[0.35em] text-slate-400">

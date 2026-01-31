@@ -4,24 +4,21 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0 -p 3000",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -H 0.0.0.0 -p 3000"
   },
   "dependencies": {
-    "clsx": "latest",
-    "framer-motion": "latest",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "framer-motion": "12.29.2",
+    "next": "16.1.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "autoprefixer": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
-    "postcss": "latest",
-    "tailwindcss": "latest",
-    "typescript": "latest"
+    "@tailwindcss/postcss": "4.1.18",
+    "autoprefixer": "10.4.24",
+    "postcss": "8.5.6",
+    "tailwindcss": "4.1.18",
+    "typescript": "5.9.3"
   }
 }

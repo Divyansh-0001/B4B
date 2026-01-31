@@ -105,7 +105,7 @@ export default function LoginPage() {
               <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">
                 <GlitchText
                   text="Secure Access Terminal"
-                  className="text-glow"
+                  className="drop-shadow-[0_0_12px_rgba(69,243,255,0.5)]"
                 />
               </h1>
               <p className="mt-5 text-lg text-slate-200">
@@ -113,7 +113,15 @@ export default function LoginPage() {
                 SSO to enter the Be4Breach command lattice.
               </p>
             </div>
-            <div className="terminal-frame scanlines">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-abyss/80 shadow-2xl backdrop-blur">
+              <div
+                className="absolute inset-0 pointer-events-none opacity-20"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%)"
+                }}
+              />
+              <div className="absolute inset-x-0 -top-1/3 h-1/3 bg-gradient-to-b from-neon/20 to-transparent animate-pulse" />
               <div className="relative space-y-5 p-6 text-sm text-slate-300">
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
@@ -122,10 +130,14 @@ export default function LoginPage() {
                   <p className="mt-2 text-lg text-white">
                     {isSubmitting ? "Verifying credentials" : "Awaiting credentials"}
                     {isSubmitting ? (
-                      <span className="verification-dots">
-                        <span className="verification-dot" />
-                        <span className="verification-dot" />
-                        <span className="verification-dot" />
+                      <span className="ml-2 inline-flex items-center gap-2">
+                        {["0s", "0.2s", "0.4s"].map((delay) => (
+                          <span
+                            key={delay}
+                            className="h-1.5 w-1.5 rounded-full bg-neon/70 animate-pulse"
+                            style={{ animationDelay: delay }}
+                          />
+                        ))}
                       </span>
                     ) : null}
                   </p>
@@ -156,7 +168,7 @@ export default function LoginPage() {
                 ) : null}
               </div>
             </div>
-            <div className="glass-card p-6 text-sm text-slate-300">
+            <div className="rounded-2xl border border-white/10 bg-abyss/70 p-6 text-sm text-slate-300 shadow-xl backdrop-blur">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 Role-aware Access
               </p>
@@ -189,7 +201,10 @@ export default function LoginPage() {
               </div>
             </div>
           </div>
-          <div className="terminal-frame p-8">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-abyss/80 p-8 shadow-2xl backdrop-blur">
+            <div className="absolute inset-0 pointer-events-none opacity-15">
+              <div className="h-full w-full bg-[linear-gradient(120deg,rgba(69,243,255,0.12),transparent_55%)]" />
+            </div>
             <form className="relative z-10 space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label className="text-xs uppercase tracking-[0.3em] text-slate-400">

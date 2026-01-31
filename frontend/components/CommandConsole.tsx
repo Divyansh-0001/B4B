@@ -18,7 +18,7 @@ export default function CommandConsole() {
       transition={{ duration: 0.8 }}
       className="relative overflow-hidden rounded-3xl border border-white/10 bg-abyss/80 p-6 shadow-2xl backdrop-blur"
     >
-      <div className="absolute inset-0 panel-sheen opacity-10" />
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(69,243,255,0.12),transparent_55%)] opacity-20" />
       <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-slate-400">
         <span>Command Console</span>
         <span className="text-neon">Live</span>

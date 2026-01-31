@@ -19,7 +19,7 @@ export default function HologramCard({
       className="group relative overflow-hidden rounded-2xl border border-white/10 bg-abyss/80 p-6 shadow-xl backdrop-blur"
     >
       <div className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
-        <div className="h-full w-full panel-sheen" />
+        <div className="h-full w-full bg-[linear-gradient(120deg,rgba(69,243,255,0.16),transparent_55%)]" />
       </div>
       <p className="text-xs uppercase tracking-[0.35em] text-neon/70">{tag}</p>
       <h3 className="mt-3 text-xl font-semibold text-white">{title}</h3>

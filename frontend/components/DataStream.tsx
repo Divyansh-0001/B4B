@@ -17,12 +17,12 @@ export default function DataStream() {
       {streams.map((stream, index) => (
         <span
           key={`stream-${index}`}
-          className="stream-line"
+          className="absolute top-0 h-full w-px bg-gradient-to-b from-transparent via-neon/40 to-transparent animate-pulse"
           style={
             {
               left: stream.left,
-              "--stream-delay": stream.delay,
-              "--stream-duration": stream.duration,
+              animationDelay: stream.delay,
+              animationDuration: stream.duration,
               opacity: stream.opacity
             } as CSSProperties
           }

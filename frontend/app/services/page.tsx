@@ -108,7 +108,10 @@ export default function ServicesPage() {
             Defense Capabilities
           </p>
           <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">
-            <GlitchText text="Defense Capabilities" className="text-glow" />
+            <GlitchText
+              text="Defense Capabilities"
+              className="drop-shadow-[0_0_12px_rgba(69,243,255,0.5)]"
+            />
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-slate-200">
             Modular, intelligence-driven services engineered to secure every
@@ -128,10 +131,10 @@ export default function ServicesPage() {
             {serviceMappings.map((service) => (
               <div
                 key={service.cinematic}
-                className="glass-card group relative overflow-hidden p-6 text-sm text-slate-300"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-abyss/70 p-6 text-sm text-slate-300 shadow-xl backdrop-blur"
               >
                 <div className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
-                  <div className="h-full w-full panel-sheen" />
+                  <div className="h-full w-full bg-[linear-gradient(120deg,rgba(69,243,255,0.16),transparent_55%)]" />
                 </div>
                 <p className="relative text-xs uppercase tracking-[0.3em] text-neon/70">
                   {service.real}
@@ -163,9 +166,9 @@ export default function ServicesPage() {
           {responseSteps.map((step) => (
             <div
               key={step.title}
-              className="glass-card relative overflow-hidden p-6 text-sm text-slate-300"
+              className="relative overflow-hidden rounded-2xl border border-white/10 bg-abyss/70 p-6 text-sm text-slate-300 shadow-xl backdrop-blur"
             >
-              <div className="absolute inset-0 panel-sheen opacity-10" />
+              <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(69,243,255,0.12),transparent_55%)] opacity-20" />
               <h3 className="relative text-base font-semibold text-white">
                 {step.title}
               </h3>

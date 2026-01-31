@@ -15,7 +15,10 @@ export default function DashboardPage() {
             Command Center
           </p>
           <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">
-            <GlitchText text="Command Center" className="text-glow" />
+            <GlitchText
+              text="Command Center"
+              className="drop-shadow-[0_0_12px_rgba(69,243,255,0.5)]"
+            />
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-slate-200">
             Real-time operational oversight, threat telemetry, and partner
