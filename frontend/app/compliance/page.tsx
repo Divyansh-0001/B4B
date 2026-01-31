@@ -15,6 +15,11 @@ const frameworks = [
       "Aligned policies, asset governance, and risk management across global operations."
   },
   {
+    title: "CERT-In Alignment",
+    detail:
+      "Programs designed to operate within Indian regulatory frameworks without implying endorsement."
+  },
+  {
     title: "Zero-Trust Mandates",
     detail:
       "Continuous verification, least privilege enforcement, and adaptive access control."
@@ -33,6 +38,18 @@ const assurances = [
   {
     label: "Operational resilience",
     value: "Zero-crash architecture with automatic failover readiness."
+  },
+  {
+    label: "ISO 27001 readiness",
+    value: "Controls mapped for readiness assessments and certification planning."
+  },
+  {
+    label: "SOC 2 alignment",
+    value: "Policies and evidence structured to support SOC 2 requirements."
+  },
+  {
+    label: "GDPR awareness",
+    value: "Data handling practices aligned to privacy expectations and lawful processing."
   },
   {
     label: "Incident readiness",
@@ -65,7 +82,7 @@ export default function CompliancePage() {
           <SectionHeading
             eyebrow="Compliance Frameworks"
             title="Security controls designed for regulatory alignment."
-            description="Be4Breach maintains continuous readiness across global compliance mandates."
+            description="Be4Breach positions compliance as operational authority, built for legal-safe, government-ready execution."
           />
           <div className="grid gap-6 md:grid-cols-3">
             {frameworks.map((framework) => (
@@ -80,6 +97,20 @@ export default function CompliancePage() {
                 <p className="relative mt-3">{framework.detail}</p>
               </div>
             ))}
+          </div>
+          <div className="glass-panel mt-10 space-y-4 p-6 text-sm text-slate-300">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+              CERT-In Statement
+            </p>
+            <p className="text-white">
+              "Be4Breach is a CERT-In empanelled cybersecurity service provider,
+              supporting vulnerability assessments, incident response, and
+              compliance-aligned security programs under Indian regulatory
+              frameworks."
+            </p>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+              No endorsement is implied or stated.
+            </p>
           </div>
         </div>
       </section>
