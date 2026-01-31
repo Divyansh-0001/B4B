@@ -38,12 +38,20 @@ npm install
 npm run dev
 ```
 
+### Environment
+
+```
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api/v1
+GOOGLE_CLIENT_ID=your-google-client-id
+```
+
 ## Backend
 
 - FastAPI with Pydantic v2
 - JWT auth with Google OAuth
 - RBAC for Operative / Partner / Command
 - SQLAlchemy 2.0 (SQLite by default)
+- Security headers, trusted hosts, and request IDs
 
 ### Run
 
@@ -59,8 +67,15 @@ uvicorn app.main:app --reload
 
 Copy `.env.example` to `.env` and set values as needed.
 
+Key values:
+
+- `JWT_SECRET` must be at least 32 characters (required in production)
+- `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` must be set together
+- `CORS_ORIGINS` and `ALLOWED_HOSTS` accept comma-separated lists
+
 ## Security Notes
 
 - JWT secret and Google OAuth credentials are loaded from environment variables.
 - Role escalation is restricted to Command Authority endpoints only.
+- `/dashboard` routes are protected by server middleware and token expiry.
 
