@@ -1,46 +1,81 @@
 import BackgroundScene from "../../components/BackgroundScene";
 import GlitchText from "../../components/GlitchText";
-import HologramCard from "../../components/HologramCard";
 import Navigation from "../../components/Navigation";
 import SectionHeading from "../../components/SectionHeading";
 import ThreatScan from "../../components/ThreatScan";
 
-const capabilities = [
+const serviceMappings = [
   {
-    tag: "Defense Layer",
-    title: "Adaptive threat containment",
-    description:
-      "Automated playbooks isolate adversaries across endpoints, cloud, and partner ingress lanes."
+    cinematic: "Offensive Reconnaissance",
+    real: "VAPT",
+    explanation:
+      "Vulnerability assessment and penetration testing to identify exploitable weaknesses across applications, networks, and infrastructure.",
+    impact:
+      "Reduces breach likelihood by closing gaps before adversaries can exploit them."
   },
   {
-    tag: "Defense Layer",
-    title: "Continuous signal fusion",
-    description:
-      "High-volume telemetry is normalized, correlated, and prioritized by mission impact."
+    cinematic: "Adversary Simulation",
+    real: "Red Team",
+    explanation:
+      "Realistic attacker emulation to test detection, response, and decision-making under pressure.",
+    impact:
+      "Validates readiness and exposes blind spots in security controls and processes."
   },
   {
-    tag: "Defense Layer",
-    title: "Zero-trust identity mesh",
-    description:
-      "Privilege is enforced through continuous verification, device posture, and behavior scoring."
+    cinematic: "Active Defense",
+    real: "Blue Team",
+    explanation:
+      "Dedicated defensive operations focused on monitoring, detection engineering, and rapid response.",
+    impact:
+      "Improves dwell time reduction and strengthens defensive posture over time."
   },
   {
-    tag: "Defense Layer",
-    title: "Mission-grade observability",
-    description:
-      "Command operators gain full-spectrum visibility with immutable audit trails."
+    cinematic: "24x7 Threat Command",
+    real: "SOC",
+    explanation:
+      "Security operations center providing continuous monitoring, triage, and coordinated response.",
+    impact:
+      "Maintains round-the-clock visibility and ensures faster incident containment."
   },
   {
-    tag: "Defense Layer",
-    title: "Partner coordination bridge",
-    description:
-      "Shared incident rooms and escalation workflows align internal and partner actions."
+    cinematic: "Infrastructure Shield",
+    real: "Cloud Security",
+    explanation:
+      "Assessment and hardening of cloud configurations, identity controls, and workload protections.",
+    impact:
+      "Safeguards scalability and availability while reducing misconfiguration risk."
   },
   {
-    tag: "Defense Layer",
-    title: "Crisis response surge",
-    description:
-      "Elite response units deploy within minutes for Tier-1 threat events."
+    cinematic: "Breach Containment",
+    real: "Incident Response",
+    explanation:
+      "Structured response to confirmed incidents, including scoping, containment, eradication, and recovery.",
+    impact:
+      "Limits operational disruption, financial loss, and regulatory exposure."
+  },
+  {
+    cinematic: "Digital Evidence Recovery",
+    real: "Forensics",
+    explanation:
+      "Evidence collection and analysis to reconstruct timelines and support remediation.",
+    impact:
+      "Enables root-cause clarity, legal defensibility, and stronger prevention."
+  },
+  {
+    cinematic: "Risk Command and Compliance",
+    real: "GRC",
+    explanation:
+      "Governance, risk, and compliance oversight aligning controls with business and regulatory needs.",
+    impact:
+      "Demonstrates accountability while reducing audit friction and compliance gaps."
+  },
+  {
+    cinematic: "Secure Pipeline Engineering",
+    real: "DevSecOps",
+    explanation:
+      "Integrating security into CI/CD workflows with automated testing and policy enforcement.",
+    impact:
+      "Accelerates delivery without sacrificing security or introducing avoidable defects."
   }
 ];
 
@@ -86,12 +121,30 @@ export default function ServicesPage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-6">
           <SectionHeading
             eyebrow="Capability Matrix"
-            title="Defense systems engineered for mission resilience."
-            description="Each module integrates directly into the Be4Breach command mesh for real-time coordination."
+            title="Elite defense capabilities with real-world impact."
+            description="Each cinematic label maps directly to a real cybersecurity service, with clear operational and business outcomes."
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((capability) => (
-              <HologramCard key={capability.title} {...capability} />
+            {serviceMappings.map((service) => (
+              <div
+                key={service.cinematic}
+                className="glass-card group relative overflow-hidden p-6 text-sm text-slate-300"
+              >
+                <div className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
+                  <div className="h-full w-full panel-sheen" />
+                </div>
+                <p className="relative text-xs uppercase tracking-[0.3em] text-neon/70">
+                  {service.real}
+                </p>
+                <h3 className="relative mt-3 text-lg font-semibold text-white">
+                  {service.cinematic}
+                </h3>
+                <p className="relative mt-3">{service.explanation}</p>
+                <p className="relative mt-4 text-xs uppercase tracking-[0.3em] text-slate-400">
+                  Business Impact
+                </p>
+                <p className="relative mt-2 text-slate-200">{service.impact}</p>
+              </div>
             ))}
           </div>
         </div>
