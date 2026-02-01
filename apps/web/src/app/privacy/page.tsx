@@ -10,7 +10,7 @@ export default function PrivacyPage() {
       />
 
       <section className="mx-auto w-full max-w-4xl px-6 py-16">
-        <FadeIn className="rounded-3xl border border-frost bg-white p-8 shadow-soft">
+        <FadeIn className="rounded-3xl border border-frost bg-white p-8">
           <p className="text-base text-steel">
             Be4Breach collects only the information required to deliver cybersecurity services and
             respond to inquiries. We never sell personal data and follow industry-standard security

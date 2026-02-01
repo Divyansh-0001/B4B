@@ -16,8 +16,8 @@ export default function ResourcesPage() {
         <div className="grid gap-6 md:grid-cols-3">
           {blogHighlights.map((post, index) => (
             <FadeIn key={post.title} delay={index * 0.05}>
-              <article className="rounded-3xl border border-frost bg-white p-6 shadow-soft">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+              <article className="rounded-3xl border border-frost bg-white p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-steel">
                   {post.date}
                 </p>
                 <h3 className="mt-3 text-base font-semibold text-ink">{post.title}</h3>

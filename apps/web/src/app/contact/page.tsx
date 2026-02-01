@@ -20,7 +20,7 @@ export default function ContactPage() {
                 Reserve a free 30-minute consultation with a Be4Breach advisor.
               </p>
             </div>
-            <div className="rounded-3xl border border-frost bg-white p-6 shadow-soft">
+            <div className="rounded-3xl border border-frost bg-white p-6">
               <p className="text-sm font-semibold text-ink">Phone</p>
               <p className="mt-1 text-sm text-steel">{siteContact.phone}</p>
               <p className="mt-4 text-sm font-semibold text-ink">Email</p>
@@ -30,7 +30,7 @@ export default function ContactPage() {
             </div>
           </FadeIn>
 
-          <FadeIn className="rounded-3xl border border-frost bg-white p-8 shadow-soft">
+          <FadeIn className="rounded-3xl border border-frost bg-white p-8">
             <ContactForm />
           </FadeIn>
         </div>

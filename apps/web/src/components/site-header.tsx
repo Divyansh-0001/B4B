@@ -4,11 +4,11 @@ import { navLinks } from "@/data/content";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-frost/80 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-frost bg-white">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <span className="text-lg font-semibold tracking-tight">Be4Breach</span>
-          <span className="rounded-full bg-brandSoft px-2 py-1 text-[11px] font-medium text-brand">
+          <span className="rounded-full border border-frost bg-mist px-2 py-1 text-[11px] font-medium text-steel">
             Cybersecurity
           </span>
         </Link>
@@ -24,7 +24,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="rounded-full border border-brand/30 bg-brand px-4 py-2 text-sm font-medium text-white shadow-soft transition hover:bg-blue-500"
+            className="rounded-full border border-brand/40 bg-brand px-4 py-2 text-sm font-medium text-white transition hover:bg-brand/90"
           >
             Get a quote
           </Link>

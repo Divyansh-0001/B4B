@@ -12,7 +12,7 @@ export default function ServicesPage() {
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
         <FadeIn>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-steel">
             Security advisory & technical assurance
           </p>
           <h2 className="mt-3 text-2xl font-semibold text-ink">Core service pillars</h2>
@@ -20,7 +20,7 @@ export default function ServicesPage() {
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {primaryServices.map((service) => (
             <FadeIn key={service.title}>
-              <div className="rounded-3xl border border-frost bg-white p-6 shadow-soft">
+              <div className="rounded-3xl border border-frost bg-white p-6">
                 <h3 className="text-lg font-semibold text-ink">{service.title}</h3>
                 <p className="mt-3 text-sm text-steel">{service.description}</p>
               </div>
@@ -29,7 +29,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-mist py-16">
+      <section className="border-y border-frost bg-mist py-16">
         <div className="mx-auto w-full max-w-6xl px-6">
           <FadeIn>
             <h2 className="text-2xl font-semibold text-ink">Specialized service lines</h2>

@@ -4,7 +4,7 @@ import { footerLinks, siteContact } from "@/data/content";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-frost bg-mist">
+    <footer className="border-t border-frost bg-white">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Be4Breach</h3>
@@ -35,7 +35,7 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
-      <div className="border-t border-frost/80 py-6 text-center text-xs text-steel">
+      <div className="border-t border-frost py-6 text-center text-xs text-steel">
         (c) 2023. Be4Breach. All Rights Reserved.
       </div>
     </footer>

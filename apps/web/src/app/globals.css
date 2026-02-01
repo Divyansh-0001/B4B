@@ -10,9 +10,10 @@ html {
 
 body {
   background: #ffffff;
-  color: #0b1220;
+  color: #0f172a;
   font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
+  line-height: 1.6;
 }
 
 a {

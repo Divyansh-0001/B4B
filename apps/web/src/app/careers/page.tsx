@@ -10,7 +10,7 @@ export default function CareersPage() {
       />
 
       <section className="mx-auto w-full max-w-4xl px-6 py-16">
-        <FadeIn className="rounded-3xl border border-frost bg-white p-8 shadow-soft">
+        <FadeIn className="rounded-3xl border border-frost bg-white p-8">
           <p className="text-base text-steel">
             Be4Breach is growing. We're looking for security analysts, engineers, and consultants
             who value calm, premium delivery. Reach out to learn about current openings.

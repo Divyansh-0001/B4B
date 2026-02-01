@@ -14,7 +14,7 @@ export default function ProductsPage() {
         <div className="grid gap-6 md:grid-cols-3">
           {products.map((item, index) => (
             <FadeIn key={item.title} delay={index * 0.05}>
-              <div className="rounded-3xl border border-frost bg-white p-6 shadow-soft">
+              <div className="rounded-3xl border border-frost bg-white p-6">
                 <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
                 <p className="mt-3 text-sm text-steel">{item.description}</p>
               </div>

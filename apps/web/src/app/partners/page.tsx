@@ -10,7 +10,7 @@ export default function PartnersPage() {
       />
 
       <section className="mx-auto w-full max-w-4xl px-6 py-16">
-        <FadeIn className="rounded-3xl border border-frost bg-white p-8 shadow-soft">
+        <FadeIn className="rounded-3xl border border-frost bg-white p-8">
           <p className="text-base text-steel">
             We collaborate with technology partners, auditors, and cloud service providers to
             deliver end-to-end cybersecurity programs. Contact us to explore partnership

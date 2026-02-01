@@ -26,7 +26,7 @@ export default function AuthCallbackPage() {
         subtitle="Securely completing your Be4Breach session."
       />
       <section className="mx-auto w-full max-w-4xl px-6 py-16">
-        <p className="rounded-3xl border border-frost bg-white p-6 text-base text-steel shadow-soft">
+        <p className="rounded-3xl border border-frost bg-white p-6 text-base text-steel">
           {status}
         </p>
       </section>
