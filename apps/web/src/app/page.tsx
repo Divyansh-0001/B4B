@@ -91,12 +91,10 @@ export default function HomePage() {
           </FadeIn>
           <div className="mt-8 grid-3">
             {complianceTrust.map((item, index) => (
-              <FadeIn key={item} delay={index * 0.04}>
+              <FadeIn key={item.title} delay={index * 0.04}>
                 <div className="card">
-                  <p className="font-semibold text-ink">{item}</p>
-                  <p className="mt-3 text-steel">
-                    Evidence-driven reviews and structured guidance built for enterprise auditors.
-                  </p>
+                  <p className="font-semibold text-ink">{item.title}</p>
+                  <p className="mt-3 text-steel">{item.description}</p>
                 </div>
               </FadeIn>
             ))}

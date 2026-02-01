@@ -74,12 +74,21 @@ export const coreServices = [
 ];
 
 export const complianceTrust = [
-  "ISO 27001 Audit",
-  "PCI DSS",
-  "SOC 2 - Type 2 Audit",
-  "Data Privacy Assessments",
-  "CERT-In Annual Cybersecurity Audits",
-  "Security Architecture Review",
+  {
+    title: "CERT-In empanelment",
+    description:
+      "Engagements aligned with CERT-In requirements, including annual cybersecurity audits for MSMEs in India.",
+  },
+  {
+    title: "Industry standards",
+    description:
+      "Support for ISO 27001, PCI DSS, SOC 2 Type 2, and data privacy assessment requirements.",
+  },
+  {
+    title: "Responsible disclosure",
+    description:
+      "Clear vulnerability reporting, verification, and remediation guidance with controlled timelines.",
+  },
 ];
 
 export const enterpriseReasons = [
