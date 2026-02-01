@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/motion/reveal";
+import { complianceStandards } from "@/lib/content";
 
 export default function ComplianceStrip() {
   return (
@@ -19,9 +20,9 @@ export default function ComplianceStrip() {
                 </p>
               </div>
               <div className="text-right text-sm text-white/60">
-                <p>ISO 27001 aligned</p>
-                <p>PCI-DSS readiness</p>
-                <p>GDPR and data protection</p>
+                {complianceStandards.map((standard) => (
+                  <p key={standard}>{standard}</p>
+                ))}
               </div>
             </div>
           </div>

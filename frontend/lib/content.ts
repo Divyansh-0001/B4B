@@ -51,6 +51,12 @@ export const trustSignals = [
   "Role-based executive dashboards",
 ];
 
+export const complianceStandards = [
+  "ISO 27001 aligned",
+  "PCI-DSS readiness",
+  "GDPR and data protection",
+];
+
 export const servicesPageContent = {
   tension: {
     eyebrow: "Services",
