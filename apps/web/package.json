@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Be4Breach marketing site",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
