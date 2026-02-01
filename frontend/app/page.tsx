@@ -15,10 +15,16 @@ export default function HomePage() {
   return (
     <div className="relative z-10">
       <Hero />
+      <div className="section-shell mt-14">
+        <div className="glow-divider" />
+      </div>
       <Highlights />
       <ServicesPreview />
-      <ComplianceStrip />
       <EnterprisePanel />
+      <div className="section-shell mt-14">
+        <div className="glow-divider" />
+      </div>
+      <ComplianceStrip />
       <CTA />
     </div>
   );

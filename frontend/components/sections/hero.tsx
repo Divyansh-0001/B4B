@@ -24,6 +24,11 @@ export default function Hero() {
           <Reveal preset="fade">
             <Badge>Elite Cyber Defense</Badge>
           </Reveal>
+          <Reveal preset="fade" delay={0.04}>
+            <p className="max-w-xl text-sm text-white/60">
+              be4breach is built for leaders who cannot afford uncertainty.
+            </p>
+          </Reveal>
           <HeroHeadline />
           <Reveal preset="fade" delay={0.1}>
             <p className="max-w-xl text-lg text-white/70">
