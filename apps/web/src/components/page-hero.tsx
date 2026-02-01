@@ -1,5 +1,3 @@
-"use client";
-
 type PageHeroProps = {
   title: string;
   subtitle: string;
