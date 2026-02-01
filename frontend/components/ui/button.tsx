@@ -3,7 +3,7 @@ import clsx from "clsx";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lumina-cyan/70";
+  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lumina-cyan/70 transform hover:-translate-y-0.5 active:translate-y-0 motion-reduce:transform-none motion-reduce:transition-none";
 
 const variants = {
   primary:

@@ -22,7 +22,11 @@ export default function SiteFooter() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Navigate</p>
           <div className="flex flex-col gap-2">
             {footerLinks.map((item) => (
-              <Link key={item.href} href={item.href} className="hover:text-white">
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition-colors duration-200 hover:text-white"
+              >
                 {item.label}
               </Link>
             ))}
