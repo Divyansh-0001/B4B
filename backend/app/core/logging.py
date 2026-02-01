@@ -33,3 +33,28 @@ def setup_logging(level: str) -> None:
 
     logging.getLogger("uvicorn.access").handlers.clear()
     logging.getLogger("uvicorn.access").propagate = True
+
+
+def log_exception(
+    event: str,
+    request_id: str | None = None,
+    *,
+    exc: Exception | None = None,
+    status_code: int | None = None,
+    detail: str | None = None,
+    level: str = "error",
+) -> None:
+    logger = logging.getLogger("app.error")
+    extra: Dict[str, Any] = {}
+    if request_id:
+        extra["request_id"] = request_id
+    if status_code is not None:
+        extra["status_code"] = status_code
+    if detail:
+        extra["detail"] = detail
+    level_name = level.upper()
+    level_value = logging._nameToLevel.get(level_name, logging.ERROR)
+    if exc is not None:
+        logger.log(level_value, event, extra=extra, exc_info=exc)
+    else:
+        logger.log(level_value, event, extra=extra)

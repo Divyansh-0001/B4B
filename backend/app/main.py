@@ -17,7 +17,7 @@ from app.api.router import api_router
 from app.core.config import settings
 from app.core.errors import error_payload
 from app.core.headers import SecurityHeadersMiddleware
-from app.core.logging import setup_logging
+from app.core.logging import log_exception, setup_logging
 from app.core.rate_limit import RateLimiter
 from app.db.base import Base
 from app.db.session import async_engine, check_database
@@ -75,7 +75,10 @@ def resolve_client_ip(request: Request) -> str:
 @app.middleware("http")
 async def request_context_middleware(request: Request, call_next: Callable):
     request_id = request.headers.get("x-request-id", str(uuid.uuid4()))
-    limiter: RateLimiter = request.app.state.rate_limiter
+    limiter: RateLimiter | None = getattr(request.app.state, "rate_limiter", None)
+    if limiter is None:
+        limiter = RateLimiter(settings.rate_limit_per_minute)
+        request.app.state.rate_limiter = limiter
     client_key = f"{resolve_client_ip(request)}:{request.url.path}"
     rate_status = limiter.check(client_key)
     if not rate_status.allowed:
@@ -96,26 +99,34 @@ async def request_context_middleware(request: Request, call_next: Callable):
     try:
         response = await call_next(request)
     except RequestValidationError:
+        log_exception("validation_error", request_id, level="warning")
         return JSONResponse(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             content=error_payload("validation_error", "Invalid request payload", request_id),
             headers={"X-Request-ID": request_id},
         )
     except HTTPException as exc:
+        log_exception(
+            "http_exception",
+            request_id,
+            status_code=exc.status_code,
+            detail=str(exc.detail),
+            level="warning",
+        )
         return JSONResponse(
             status_code=exc.status_code,
             content=error_payload("http_error", exc.detail, request_id),
             headers={"X-Request-ID": request_id},
         )
     except SQLAlchemyError as exc:
-        logger.warning("database_error", extra={"request_id": request_id, "error": str(exc)})
+        log_exception("database_error", request_id, exc=exc, level="warning")
         return JSONResponse(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             content=error_payload("database_unavailable", "Database unavailable", request_id),
             headers={"X-Request-ID": request_id},
         )
     except Exception as exc:
-        logger.exception("unhandled_exception", extra={"request_id": request_id, "error": str(exc)})
+        log_exception("unhandled_exception", request_id, exc=exc)
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             content=error_payload("internal_error", "Unexpected server error", request_id),
@@ -139,6 +150,7 @@ async def request_context_middleware(request: Request, call_next: Callable):
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     request_id = request.headers.get("x-request-id")
+    log_exception("validation_error", request_id, level="warning")
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content=error_payload("validation_error", "Invalid request payload", request_id),
@@ -148,6 +160,13 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException):
     request_id = request.headers.get("x-request-id")
+    log_exception(
+        "http_exception",
+        request_id,
+        status_code=exc.status_code,
+        detail=str(exc.detail),
+        level="warning",
+    )
     return JSONResponse(
         status_code=exc.status_code,
         content=error_payload("http_error", exc.detail, request_id),

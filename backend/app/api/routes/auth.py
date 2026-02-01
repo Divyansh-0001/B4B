@@ -111,7 +111,10 @@ async def google_callback(
     async with httpx.AsyncClient(timeout=10) as client:
         token_response = await client.post(settings.google_token_url, data=token_payload)
         if token_response.status_code >= 400:
-            logger.warning("google_token_exchange_failed", extra={"body": token_response.text})
+            logger.warning(
+                "google_token_exchange_failed",
+                extra={"status_code": token_response.status_code},
+            )
             raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail="SSO token exchange failed")
         token_data = token_response.json()
         access_token = token_data.get("access_token")
@@ -123,7 +126,10 @@ async def google_callback(
             headers={"Authorization": f"Bearer {access_token}"},
         )
         if userinfo_response.status_code >= 400:
-            logger.warning("google_userinfo_failed", extra={"body": userinfo_response.text})
+            logger.warning(
+                "google_userinfo_failed",
+                extra={"status_code": userinfo_response.status_code},
+            )
             raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail="SSO userinfo failed")
         userinfo = userinfo_response.json()
 
