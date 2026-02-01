@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
+import HeroBackdrop from "@/components/sections/hero-backdrop";
+import HeroHeadline from "@/components/sections/hero-headline";
 
 const metrics = [
   { label: "Threat Response", value: "<15 min" },
@@ -11,24 +13,33 @@ const metrics = [
 export default function Hero() {
   return (
     <section className="relative overflow-hidden pt-20">
-      <div className="section-shell grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <Reveal className="space-y-6" preset="slide">
-          <Badge>Elite Cyber Defense</Badge>
-          <h1 className="text-4xl font-semibold leading-tight text-white md:text-5xl lg:text-6xl">
-            Cinematic cybersecurity <span className="text-gradient">built to outpace</span> modern
-            adversaries.
-          </h1>
-          <p className="max-w-xl text-lg text-white/70">
-            be4breach delivers precision VAPT, continuous SOC operations, cloud security, application
-            security, incident response, and enterprise risk governance with calm, authoritative control.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <ButtonLink href="/contact">Engage be4breach</ButtonLink>
-            <ButtonLink href="/services" variant="ghost">
-              Explore services
-            </ButtonLink>
-          </div>
-        </Reveal>
+      <HeroBackdrop />
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute left-6 top-16 h-px w-40 bg-gradient-to-r from-transparent via-lumina-cyan/70 to-transparent shadow-glow" />
+        <div className="absolute right-10 top-28 h-px w-48 bg-gradient-to-r from-transparent via-lumina-violet/60 to-transparent shadow-glow" />
+        <div className="absolute bottom-12 left-1/3 h-px w-56 bg-gradient-to-r from-transparent via-lumina-red/50 to-transparent shadow-glow" />
+      </div>
+      <div className="section-shell relative grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="space-y-6">
+          <Reveal preset="fade">
+            <Badge>Elite Cyber Defense</Badge>
+          </Reveal>
+          <HeroHeadline />
+          <Reveal preset="fade" delay={0.1}>
+            <p className="max-w-xl text-lg text-white/70">
+              be4breach delivers precision VAPT, continuous SOC operations, cloud security, application
+              security, incident response, and enterprise risk governance with calm, authoritative control.
+            </p>
+          </Reveal>
+          <Reveal preset="fade" delay={0.18}>
+            <div className="flex flex-wrap gap-4">
+              <ButtonLink href="/contact">Engage be4breach</ButtonLink>
+              <ButtonLink href="/services" variant="ghost">
+                Explore services
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </div>
         <Reveal className="relative" preset="fade">
           <div className="glass-panel rounded-[32px] p-8">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">Enterprise Signal</p>
