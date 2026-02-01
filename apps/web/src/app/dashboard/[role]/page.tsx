@@ -73,17 +73,7 @@ export default function DashboardPage({ params }: { params: { role: string } }) 
         <div className="space-y-4">
           <h1 className="text-ink">{content.title}</h1>
           <p className="max-w-2xl text-steel">{content.intro}</p>
-          <div className="flex flex-wrap gap-4 text-sm text-steel">
-            <span className="rounded-full border border-frost bg-white px-4 py-2">
-              Fast load
-            </span>
-            <span className="rounded-full border border-frost bg-white px-4 py-2">
-              Text-first
-            </span>
-            <span className="rounded-full border border-frost bg-white px-4 py-2">
-              No animations
-            </span>
-          </div>
+          <p className="text-sm text-steel">Fast load. Text-first. No animations.</p>
         </div>
 
         <div className="grid-2">

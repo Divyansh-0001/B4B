@@ -60,7 +60,7 @@ a {
   }
 
   .section {
-    @apply py-20;
+    @apply py-24;
   }
 
   .section-muted {
@@ -80,11 +80,11 @@ a {
   }
 
   .card {
-    @apply rounded-3xl border border-frost bg-white p-6;
+    @apply rounded-2xl border border-frost bg-white p-7;
   }
 
   .card-lg {
-    @apply rounded-3xl border border-frost bg-white p-8;
+    @apply rounded-2xl border border-frost bg-white p-10;
   }
 
   .text-caption {
@@ -92,10 +92,10 @@ a {
   }
 
   .grid-2 {
-    @apply grid gap-6 md:grid-cols-2;
+    @apply grid gap-8 md:grid-cols-2;
   }
 
   .grid-3 {
-    @apply grid gap-6 md:grid-cols-3;
+    @apply grid gap-8 md:grid-cols-3;
   }
 }
