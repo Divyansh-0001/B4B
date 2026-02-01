@@ -11,7 +11,11 @@
 }
 
 body {
-  @apply bg-abyss-950 text-abyss-50 font-sans antialiased;
+  background-color: #05070b;
+  color: #f4f7ff;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer base {
@@ -21,21 +25,36 @@ body {
   h4,
   h5,
   h6 {
-    @apply font-display tracking-tight;
+    font-family: var(--font-plex), var(--font-inter), sans-serif;
+    letter-spacing: -0.025em;
   }
 }
 
 @layer components {
   .glass-panel {
-    @apply border border-white/10 bg-abyss-900/70 backdrop-blur-xl shadow-glow;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(11, 15, 20, 0.7);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 0 40px rgba(79, 139, 255, 0.16), 0 0 70px rgba(57, 208, 255, 0.12);
   }
 
   .section-shell {
-    @apply mx-auto max-w-6xl px-6 md:px-10;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 72rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .glow-divider {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent;
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
   }
 
   .text-gradient {
@@ -46,7 +65,10 @@ body {
       #9b7bff 70%,
       #ff5263 100%
     );
-    @apply bg-clip-text text-transparent;
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .noise-layer {
@@ -59,13 +81,26 @@ body {
     opacity: 0.12;
     background-size: 140px 140px;
     mix-blend-mode: screen;
-    @apply bg-grid-glow;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   }
 }
 
 @layer utilities {
   .ambient-fade {
-    @apply bg-depth-fade;
+    background-image: linear-gradient(
+      180deg,
+      rgba(5, 7, 11, 0) 0%,
+      rgba(5, 7, 11, 0.85) 70%,
+      rgba(5, 7, 11, 1) 100%
+    );
+  }
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
