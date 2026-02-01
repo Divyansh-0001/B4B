@@ -1,23 +1,27 @@
 import { FadeIn } from "@/components/motion";
 import { PageHero } from "@/components/page-hero";
+import { privacyContent } from "@/data/content";
 
 export default function PrivacyPage() {
   return (
     <div>
       <PageHero
         title="Privacy Policy"
-        subtitle="We respect your privacy and protect your data responsibly."
+        subtitle="Privacy Poilicy"
       />
 
       <section className="section">
-        <div className="container-wide">
-          <FadeIn className="card-lg">
-            <p className="text-steel">
-              Be4Breach collects only the information required to deliver cybersecurity services and
-              respond to inquiries. We never sell personal data and follow industry-standard security
-              practices.
-            </p>
-          </FadeIn>
+        <div className="container-wide space-y-8">
+          {privacyContent.map((section) => (
+            <FadeIn key={section.title} className="card">
+              <h3 className="text-ink">{section.title}</h3>
+              <ul className="mt-4 list-inside list-disc space-y-2 text-steel">
+                {section.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </FadeIn>
+          ))}
         </div>
       </section>
     </div>

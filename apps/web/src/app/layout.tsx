@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export const metadata: Metadata = {
   title: "Be4Breach | Cybersecurity Services & Advisory",
   description:
-    "Enterprise-ready cybersecurity services, assessments, and advisory from Be4Breach. Calm, premium protection for modern organizations.",
+    "Be4Breach offers free consultations with industry experts so you can learn how to maximise the value of your company and technology investments.",
   metadataBase: new URL("https://be4breach.com"),
 };
 

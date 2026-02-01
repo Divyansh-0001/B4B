@@ -8,8 +8,8 @@ export default function ResourcesPage() {
   return (
     <div>
       <PageHero
-        title="Resources & Insights"
-        subtitle="Security guidance, research, and thought leadership from the Be4Breach team."
+        title="Blog"
+        subtitle="Latest Blog Post"
       />
 
       <section className="section">
@@ -20,8 +20,9 @@ export default function ResourcesPage() {
                 <article className="card">
                   <p className="text-caption">{post.date}</p>
                   <h3 className="mt-3 text-ink">{post.title}</h3>
+                  {post.excerpt ? <p className="mt-3 text-steel">{post.excerpt}</p> : null}
                   <Link href="/contact" className="mt-4 inline-flex text-sm text-brand">
-                    Request the full report ->
+                    Read More
                   </Link>
                 </article>
               </FadeIn>

@@ -2,10 +2,13 @@ import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
 import {
+  assessmentNote,
   ctaBanner,
   heroContent,
+  valuePillars,
   whatWeDo,
-  coreServices,
+  pricingNote,
+  serviceHighlights,
   complianceTrust,
   enterpriseReasons,
 } from "@/data/content";
@@ -40,11 +43,8 @@ export default function HomePage() {
       <section className="section">
         <div className="container-wide">
           <FadeIn>
-            <h2 className="text-ink">What Be4Breach does</h2>
-            <p className="mt-3 text-steel">
-              We help enterprises understand their exposure, validate defenses, and operationalize
-              cybersecurity programs that engineering teams can ship.
-            </p>
+            <h2 className="text-ink">Our Services</h2>
+            <p className="mt-3 text-steel">{pricingNote}</p>
           </FadeIn>
 
           <div className="mt-10 grid-3">
@@ -57,22 +57,32 @@ export default function HomePage() {
               </FadeIn>
             ))}
           </div>
+
+          <div className="mt-10 grid-3">
+            {valuePillars.map((pillar, index) => (
+              <FadeIn key={pillar.title} delay={index * 0.05}>
+                <div className="card">
+                  <h3 className="text-ink">{pillar.title}</h3>
+                  <p className="mt-3 text-steel">{pillar.description}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section">
         <div className="container-wide">
           <FadeIn>
-            <h2 className="text-ink">Core cybersecurity services</h2>
-            <p className="mt-3 text-steel">
-              Focused offerings across offensive testing, cloud security, and managed defense.
-            </p>
+            <h2 className="text-ink">Our Services</h2>
+            <p className="mt-3 text-steel">{assessmentNote}</p>
           </FadeIn>
           <div className="mt-8 grid-2">
-            {coreServices.map((service, index) => (
-              <FadeIn key={service} delay={index * 0.03}>
-                <div className="rounded-2xl border border-frost bg-white px-5 py-4 text-sm font-medium text-ink">
-                  {service}
+            {serviceHighlights.map((service, index) => (
+              <FadeIn key={service.title} delay={index * 0.04}>
+                <div className="card">
+                  <h3 className="text-ink">{service.title}</h3>
+                  <p className="mt-3 text-steel">{service.description}</p>
                 </div>
               </FadeIn>
             ))}
@@ -83,10 +93,12 @@ export default function HomePage() {
       <section className="section section-muted section-divider">
         <div className="container-wide">
           <FadeIn>
-            <h2 className="text-ink">Compliance & trust</h2>
+            <h2 className="text-ink">Audit and Compliance</h2>
             <p className="mt-3 text-steel">
-              We support audit readiness and governance programs with clear evidence and rigorous
-              validation.
+              Our auditing and compliance services help in understanding secure architecture
+              required for your organization by following the right guidelines that are created for
+              all business needs. They are required to evaluate your security governance, third-party
+              risks, data privacy and regulatory needs
             </p>
           </FadeIn>
           <div className="mt-8 grid-3">
@@ -105,10 +117,8 @@ export default function HomePage() {
       <section className="section">
         <div className="container-wide">
           <FadeIn>
-            <h2 className="text-ink">Why enterprises choose Be4Breach</h2>
-            <p className="mt-3 text-steel">
-              Clear communication, consistent delivery, and outcomes that leadership can trust.
-            </p>
+            <h2 className="text-ink">Why Be4Breach?</h2>
+            <p className="mt-3 text-steel">Why should you hire Be4Breach?</p>
           </FadeIn>
           <div className="mt-10 grid-3">
             {enterpriseReasons.map((item, index) => (
@@ -132,7 +142,7 @@ export default function HomePage() {
               href="/contact"
               className="mt-8 inline-flex rounded-full border border-brand/40 bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90"
             >
-              Schedule a consult
+              Get a quote
             </Link>
           </FadeIn>
         </div>

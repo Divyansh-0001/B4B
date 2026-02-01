@@ -10,8 +10,8 @@ export function SiteFooter() {
           <h3>Be4Breach</h3>
           <p className="text-sm text-steel">
             The inspiration for Be4Breach came from a desire to protect information all across the
-            world. We are a young, ambitious, and creative cybersecurity company headquartered in
-            Pune, India.
+            world. Our company, which has its headquarters in Pune, India, is a young, ambitious,
+            and creative one.
           </p>
           <div className="space-y-1 text-sm text-steel">
             <p>{siteContact.address}</p>
