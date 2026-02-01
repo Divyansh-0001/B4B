@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import os
+import time
 import uuid
 from contextlib import asynccontextmanager
 from typing import Callable
@@ -32,6 +33,7 @@ async def lifespan(app: FastAPI):
     setup_logging(settings.log_level)
     app.state.rate_limiter = RateLimiter(settings.rate_limit_per_minute)
     app.state.db_available = await check_database()
+    app.state.db_last_checked = time.monotonic()
     if not os.getenv("JWT_SECRET"):
         logger.warning("jwt_secret_missing_defaulted")
 

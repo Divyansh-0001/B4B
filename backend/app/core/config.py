@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     database_url: str = "sqlite+aiosqlite:///./be4breach.db"
     db_echo: bool = False
 
-    cors_origins: List[str] = ["http://localhost:3000"]
+    cors_origins: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
     trusted_host_patterns: List[str] = ["*"]
     rate_limit_per_minute: int = 120
 

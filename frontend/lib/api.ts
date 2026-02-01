@@ -1,7 +1,14 @@
-export const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
+const RAW_API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "";
+export const API_BASE = RAW_API_BASE.replace(/\/$/, "");
+
+function buildApiUrl(path: string) {
+  if (!API_BASE) return path;
+  if (path.startsWith("http")) return path;
+  return `${API_BASE}${path}`;
+}
 
 export async function apiFetch<T>(path: string, init: RequestInit = {}): Promise<T> {
-  const response = await fetch(`${API_BASE}${path}`, {
+  const response = await fetch(buildApiUrl(path), {
     ...init,
     cache: "no-store",
     headers: {

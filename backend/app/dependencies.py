@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import time
 
 from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer
@@ -10,7 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
 from app.core.security import decode_token
-from app.db.session import get_db_session
+from app.db.session import check_database, get_db_session
 from app.models.user import User
 
 
@@ -20,6 +21,12 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.api_v1_prefix}/auth/to
 
 
 async def get_db(request: Request, session: AsyncSession = Depends(get_db_session)) -> AsyncSession:
+    if not getattr(request.app.state, "db_available", False):
+        last_checked = getattr(request.app.state, "db_last_checked", 0.0)
+        now = time.monotonic()
+        if now - last_checked >= 10:
+            request.app.state.db_last_checked = now
+            request.app.state.db_available = await check_database()
     if not getattr(request.app.state, "db_available", False):
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Database unavailable")
     return session
