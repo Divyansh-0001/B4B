@@ -3,8 +3,10 @@ from datetime import datetime, timezone
 
 from sqlalchemy import Boolean, Column, DateTime, String
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 
 from app.core.database import Base
+from app.models.user_roles import user_roles
 
 
 class User(Base):
@@ -23,3 +25,6 @@ class User(Base):
         default=lambda: datetime.now(timezone.utc),
         onupdate=lambda: datetime.now(timezone.utc),
     )
+
+    roles = relationship("Role", secondary=user_roles, back_populates="users")
+    oauth_accounts = relationship("OAuthAccount", back_populates="user", cascade="all, delete-orphan")

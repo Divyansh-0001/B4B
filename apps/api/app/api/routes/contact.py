@@ -5,7 +5,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.models.contact import ContactMessage
+from app.models.contact import ContactRequest
 from app.schemas.contact import ContactCreate, ContactResponse
 
 router = APIRouter(prefix="/contact", tags=["contact"])
@@ -13,8 +13,8 @@ logger = logging.getLogger("be4breach.contact")
 
 
 @router.post("/", response_model=ContactResponse, status_code=status.HTTP_201_CREATED)
-def create_contact(payload: ContactCreate, db: Session = Depends(get_db)) -> ContactMessage:
-    message = ContactMessage(
+def create_contact(payload: ContactCreate, db: Session = Depends(get_db)) -> ContactRequest:
+    message = ContactRequest(
         name=payload.name,
         email=payload.email,
         company=payload.company,
