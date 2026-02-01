@@ -1,29 +1,21 @@
-const activities = [
-  {
-    title: "SOC alert triaged",
-    detail: "Suspicious outbound traffic contained in 11 minutes.",
-  },
-  {
-    title: "Compliance evidence updated",
-    detail: "CERT-In reporting package refreshed and signed.",
-  },
-  {
-    title: "VAPT execution complete",
-    detail: "Critical findings mapped to remediation backlog.",
-  },
-];
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ActivityStream() {
   return (
     <div className="glass-panel rounded-[28px] p-6">
-      <p className="text-xs uppercase tracking-[0.3em] text-white/50">Latest activity</p>
-      <div className="mt-5 space-y-4">
-        {activities.map((activity) => (
-          <div key={activity.title} className="space-y-1">
-            <p className="text-sm font-semibold text-white">{activity.title}</p>
-            <p className="text-xs text-white/60">{activity.detail}</p>
-          </div>
-        ))}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs uppercase tracking-[0.3em] text-white/50">Latest activity</p>
+        <span className="text-[0.65rem] uppercase tracking-[0.25em] text-white/40">
+          Awaiting live feed
+        </span>
+      </div>
+      <p className="mt-4 text-sm text-white/60">
+        Live incident updates and operational signals will appear here once connected.
+      </p>
+      <div className="mt-6 space-y-3">
+        <Skeleton className="h-4 w-2/3" />
+        <Skeleton className="h-4 w-1/2" />
+        <Skeleton className="h-4 w-3/4" />
       </div>
     </div>
   );
