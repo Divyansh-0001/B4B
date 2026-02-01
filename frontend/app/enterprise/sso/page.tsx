@@ -6,6 +6,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { apiFetch } from "@/lib/api";
 import { saveToken } from "@/lib/auth";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/motion/reveal";
+import EnterpriseHeader from "@/components/enterprise/enterprise-header";
+import { ButtonLink } from "@/components/ui/button";
 
 type TokenResponse = {
   access_token: string;
@@ -36,17 +40,42 @@ export default function EnterpriseSsoPage() {
 
   if (error) {
     return (
-      <div className="section-shell py-16">
-        <p className="text-sm text-lumina-red">{error}</p>
+      <div className="space-y-8">
+        <EnterpriseHeader />
+        <Reveal preset="fade">
+          <div className="glass-panel rounded-[28px] p-8">
+            <Badge>Google SSO</Badge>
+            <h2 className="mt-4 text-2xl font-semibold text-white">Authentication failed.</h2>
+            <p className="mt-3 text-sm text-white/60">{error}</p>
+            <div className="mt-6">
+              <ButtonLink href="/enterprise/login" variant="ghost">
+                Return to secure login
+              </ButtonLink>
+            </div>
+          </div>
+        </Reveal>
       </div>
     );
   }
 
   return (
-    <div className="section-shell py-16 space-y-4">
-      <Skeleton className="h-6 w-1/3" />
-      <Skeleton className="h-4 w-1/2" />
-      <Skeleton className="h-4 w-2/3" />
+    <div className="space-y-8">
+      <EnterpriseHeader />
+      <Reveal preset="fade">
+        <div className="glass-panel rounded-[28px] p-8">
+          <Badge>Google SSO</Badge>
+          <h2 className="mt-4 text-2xl font-semibold text-white">Verifying secure identity.</h2>
+          <p className="mt-3 text-sm text-white/60">
+            Secure authentication is in progress. This process keeps access aligned with enterprise
+            governance and compliance requirements.
+          </p>
+          <div className="mt-6 space-y-4">
+            <Skeleton className="h-4 w-1/3" />
+            <Skeleton className="h-4 w-1/2" />
+            <Skeleton className="h-4 w-2/3" />
+          </div>
+        </div>
+      </Reveal>
     </div>
   );
 }

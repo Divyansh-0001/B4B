@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/motion/reveal";
 import EnterpriseHeader from "@/components/enterprise/enterprise-header";
-import LoginForm from "@/components/enterprise/login-form";
+import RegisterForm from "@/components/enterprise/register-form";
 
-export default function EnterpriseLoginPage() {
+export default function EnterpriseRegisterPage() {
   return (
     <div className="space-y-8">
       <EnterpriseHeader />
@@ -15,35 +15,31 @@ export default function EnterpriseLoginPage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
             <div className="space-y-6">
               <div className="space-y-4">
-                <Badge>Secure Login</Badge>
+                <Badge>Enterprise Registration</Badge>
                 <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                  Authenticate to continue.
+                  Secure portal for executive oversight and operational resilience.
                 </h2>
                 <p className="text-sm text-white/60">
-                  Role-based access protects sensitive reports, incident data, and compliance evidence. SSO
-                  is optional and fail-safe by design.
+                  Role-based dashboards, real-time incident visibility, and compliance workflows designed for
+                  regulated enterprises and critical infrastructure operators.
                 </p>
               </div>
               <div className="glow-divider" />
               <div className="space-y-3 text-sm text-white/60">
-                <p>Secure portal for executive oversight and operational resilience.</p>
+                <p>Multi-factor authentication, audit trails, and signed reports included by default.</p>
                 <p>
-                  Role-based dashboards, real-time incident visibility, and compliance workflows designed
-                  for regulated enterprises and critical infrastructure operators.
-                </p>
-                <p className="text-white/50">
-                  Multi-factor authentication, audit trails, and signed reports included by default.
+                  Built for regulated enterprises, critical infrastructure, and high-value digital assets.
                 </p>
               </div>
               <div className="pt-2 text-sm text-white/60">
-                Need access?{" "}
-                <Link href="/enterprise/register" className="text-white hover:text-lumina-cyan">
-                  Register for the enterprise portal
+                Already have access?{" "}
+                <Link href="/enterprise/login" className="text-white hover:text-lumina-cyan">
+                  Return to secure login
                 </Link>
                 .
               </div>
             </div>
-            <LoginForm />
+            <RegisterForm />
           </div>
         </div>
       </Reveal>

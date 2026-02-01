@@ -24,9 +24,9 @@ export default function LoginForm() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <form
-        className="space-y-4"
+        className="space-y-5"
         onSubmit={async (event) => {
           event.preventDefault();
           setStatus("loading");
@@ -57,7 +57,9 @@ export default function LoginForm() {
             required
             type="email"
             name="email"
-            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition focus:border-lumina-cyan/70"
+            autoComplete="email"
+            placeholder="name@company.com"
+            className="w-full rounded-2xl border border-white/10 bg-abyss-950/70 px-4 py-3 text-white outline-none transition duration-300 focus:border-lumina-cyan/60 focus:ring-1 focus:ring-lumina-cyan/30"
           />
         </label>
         <label className="space-y-2 text-sm text-white/70">
@@ -66,14 +68,18 @@ export default function LoginForm() {
             required
             type="password"
             name="password"
-            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition focus:border-lumina-cyan/70"
+            autoComplete="current-password"
+            className="w-full rounded-2xl border border-white/10 bg-abyss-950/70 px-4 py-3 text-white outline-none transition duration-300 focus:border-lumina-cyan/60 focus:ring-1 focus:ring-lumina-cyan/30"
           />
         </label>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Button type="submit" disabled={status === "loading"}>
             {status === "loading" ? "Verifying..." : "Access portal"}
           </Button>
-          {error && <span className="text-sm text-lumina-red">{error}</span>}
+          <span className="text-xs text-white/50">Secure client communication channels.</span>
+        </div>
+        <div className="min-h-[1.5rem] text-sm text-lumina-red" role="status" aria-live="polite">
+          {error}
         </div>
       </form>
 
@@ -96,9 +102,13 @@ export default function LoginForm() {
             setStatus("error");
           }
         }}
+        className="w-full justify-center rounded-2xl border-white/15 px-5 py-3 text-sm text-white/80 transition duration-300 hover:border-white/40 hover:text-white"
       >
         Continue with Google SSO
       </Button>
+      <p className="text-xs text-white/50">
+        SSO is optional and fail-safe by design for regulated enterprise environments.
+      </p>
     </div>
   );
 }
