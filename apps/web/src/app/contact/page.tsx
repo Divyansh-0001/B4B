@@ -11,16 +11,16 @@ export default function ContactPage() {
         subtitle="Tell us about your security goals. We'll respond with a tailored plan."
       />
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16">
-        <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
+      <section className="section">
+        <div className="container-wide grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
           <FadeIn className="space-y-6">
             <div>
-              <h2 className="text-2xl font-semibold text-ink">Contact details</h2>
+              <h2 className="text-ink">Contact details</h2>
               <p className="mt-2 text-steel">
                 Reserve a free 30-minute consultation with a Be4Breach advisor.
               </p>
             </div>
-            <div className="rounded-3xl border border-frost bg-white p-6">
+            <div className="card">
               <p className="text-sm font-semibold text-ink">Phone</p>
               <p className="mt-1 text-sm text-steel">{siteContact.phone}</p>
               <p className="mt-4 text-sm font-semibold text-ink">Email</p>
@@ -30,7 +30,7 @@ export default function ContactPage() {
             </div>
           </FadeIn>
 
-          <FadeIn className="rounded-3xl border border-frost bg-white p-8">
+          <FadeIn className="card-lg">
             <ContactForm />
           </FadeIn>
         </div>

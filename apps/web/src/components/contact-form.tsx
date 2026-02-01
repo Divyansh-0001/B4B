@@ -58,7 +58,7 @@ export function ContactForm() {
             value={formState.name}
             onChange={handleChange}
             required
-            className="w-full rounded-2xl border border-frost bg-white px-4 py-3 text-sm text-ink focus:border-brand focus:outline-none"
+            className="w-full rounded-2xl border border-frost bg-white px-4 py-3 text-base text-ink focus:border-brand focus:outline-none"
           />
         </div>
         <div className="space-y-2">
@@ -72,7 +72,7 @@ export function ContactForm() {
             value={formState.email}
             onChange={handleChange}
             required
-            className="w-full rounded-2xl border border-frost bg-white px-4 py-3 text-sm text-ink focus:border-brand focus:outline-none"
+            className="w-full rounded-2xl border border-frost bg-white px-4 py-3 text-base text-ink focus:border-brand focus:outline-none"
           />
         </div>
       </div>
@@ -85,7 +85,7 @@ export function ContactForm() {
           name="company"
           value={formState.company}
           onChange={handleChange}
-          className="w-full rounded-2xl border border-frost bg-white px-4 py-3 text-sm text-ink focus:border-brand focus:outline-none"
+          className="w-full rounded-2xl border border-frost bg-white px-4 py-3 text-base text-ink focus:border-brand focus:outline-none"
         />
       </div>
       <div className="space-y-2">
@@ -99,7 +99,7 @@ export function ContactForm() {
           onChange={handleChange}
           required
           rows={5}
-          className="w-full rounded-2xl border border-frost bg-white px-4 py-3 text-sm text-ink focus:border-brand focus:outline-none"
+          className="w-full rounded-2xl border border-frost bg-white px-4 py-3 text-base text-ink focus:border-brand focus:outline-none"
         />
       </div>
 

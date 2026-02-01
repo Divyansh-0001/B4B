@@ -10,10 +10,11 @@ export default function AboutPage() {
         subtitle="A modern cybersecurity company focused on protecting organizations across the world."
       />
 
-      <section className="mx-auto w-full max-w-5xl px-6 py-16">
-        <FadeIn className="rounded-3xl border border-frost bg-white p-8">
-          <p className="text-base text-steel">{aboutSummary}</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
+      <section className="section">
+        <div className="container-wide">
+          <FadeIn className="card-lg">
+            <p className="text-steel">{aboutSummary}</p>
+            <div className="mt-6 grid-3">
             {[
               "Client-first advisory",
               "Outcome-focused security programs",
@@ -26,8 +27,9 @@ export default function AboutPage() {
                 {value}
               </div>
             ))}
-          </div>
-        </FadeIn>
+            </div>
+          </FadeIn>
+        </div>
       </section>
     </div>
   );

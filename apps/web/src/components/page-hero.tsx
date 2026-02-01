@@ -7,11 +7,13 @@ type PageHeroProps = {
 
 export function PageHero({ title, subtitle }: PageHeroProps) {
   return (
-    <section className="border-b border-frost bg-mist">
-      <div className="mx-auto w-full max-w-6xl px-6 py-16">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-steel">Be4Breach</p>
-        <h1 className="mt-4 text-3xl font-semibold text-ink md:text-4xl">{title}</h1>
-        <p className="mt-4 text-lg text-steel">{subtitle}</p>
+    <section className="section section-muted section-divider-bottom">
+      <div className="container-wide">
+        <div className="max-w-3xl">
+          <p className="text-caption">Be4Breach</p>
+          <h1 className="mt-4 text-ink">{title}</h1>
+          <p className="mt-4 text-lg text-steel">{subtitle}</p>
+        </div>
       </div>
     </section>
   );

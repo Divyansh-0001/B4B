@@ -5,7 +5,7 @@ import { navLinks } from "@/data/content";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-frost bg-white">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+      <div className="container-wide flex items-center justify-between py-4">
         <Link href="/" className="flex items-center gap-3">
           <span className="text-lg font-semibold tracking-tight">Be4Breach</span>
           <span className="rounded-full border border-frost bg-mist px-2 py-1 text-[11px] font-medium text-steel">

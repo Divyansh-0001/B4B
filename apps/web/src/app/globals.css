@@ -13,7 +13,8 @@ body {
   color: #0f172a;
   font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 1.0625rem;
 }
 
 a {
@@ -22,5 +23,79 @@ a {
 }
 
 ::selection {
-  background: #dbeafe;
+  background: #ccfbf1;
+}
+
+@layer base {
+  h1 {
+    font-size: clamp(2.5rem, 2vw + 2rem, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: clamp(1.9rem, 1.5vw + 1.2rem, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1.15rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-6;
+  }
+
+  .section {
+    @apply py-20;
+  }
+
+  .section-muted {
+    @apply bg-mist;
+  }
+
+  .section-divider {
+    @apply border-y border-frost;
+  }
+
+  .section-divider-top {
+    @apply border-t border-frost;
+  }
+
+  .section-divider-bottom {
+    @apply border-b border-frost;
+  }
+
+  .card {
+    @apply rounded-3xl border border-frost bg-white p-6;
+  }
+
+  .card-lg {
+    @apply rounded-3xl border border-frost bg-white p-8;
+  }
+
+  .text-caption {
+    @apply text-[0.78rem] font-semibold uppercase tracking-[0.24em] text-steel;
+  }
+
+  .grid-2 {
+    @apply grid gap-6 md:grid-cols-2;
+  }
+
+  .grid-3 {
+    @apply grid gap-6 md:grid-cols-3;
+  }
 }

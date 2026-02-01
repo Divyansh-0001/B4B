@@ -5,9 +5,9 @@ import { footerLinks, siteContact } from "@/data/content";
 export function SiteFooter() {
   return (
     <footer className="border-t border-frost bg-white">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="container-wide grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Be4Breach</h3>
+          <h3>Be4Breach</h3>
           <p className="text-sm text-steel">
             The inspiration for Be4Breach came from a desire to protect information all across the
             world. We are a young, ambitious, and creative cybersecurity company headquartered in
@@ -22,7 +22,7 @@ export function SiteFooter() {
 
         {footerLinks.map((group) => (
           <div key={group.title} className="space-y-3">
-            <h4 className="text-sm font-semibold uppercase tracking-wide text-ink">{group.title}</h4>
+            <h4 className="text-caption text-ink">{group.title}</h4>
             <ul className="space-y-2 text-sm text-steel">
               {group.links.map((link) => (
                 <li key={link.href}>
