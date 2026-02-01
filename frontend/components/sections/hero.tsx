@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden pt-20">
       <div className="section-shell grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <Reveal className="space-y-6">
+        <Reveal className="space-y-6" preset="slide">
           <Badge>Elite Cyber Defense</Badge>
           <h1 className="text-4xl font-semibold leading-tight text-white md:text-5xl lg:text-6xl">
             Cinematic cybersecurity <span className="text-gradient">built to outpace</span> modern
@@ -29,7 +29,7 @@ export default function Hero() {
             </ButtonLink>
           </div>
         </Reveal>
-        <Reveal className="relative">
+        <Reveal className="relative" preset="fade">
           <div className="glass-panel rounded-[32px] p-8">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">Enterprise Signal</p>
             <div className="mt-6 space-y-4">

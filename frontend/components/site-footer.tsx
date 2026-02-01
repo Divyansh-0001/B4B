@@ -9,7 +9,7 @@ const footerLinks = [
 
 export default function SiteFooter() {
   return (
-    <footer className="relative z-10 border-t border-white/5 py-12">
+    <footer className="relative z-10 border-t border-white/10 py-12">
       <div className="section-shell grid gap-8 md:grid-cols-[1.2fr_1fr_1fr]">
         <div className="space-y-4">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/70">be4breach</p>

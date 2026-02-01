@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Inter, Orbitron } from "next/font/google";
+import { IBM_Plex_Sans, Inter } from "next/font/google";
 import "./globals.css";
 
 import BackgroundLayers from "@/components/background-layers";
@@ -9,7 +9,12 @@ import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron", display: "swap" });
+const plex = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-plex",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -28,8 +33,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable}`}>
-      <body className="min-h-screen bg-abyss-900">
+    <html lang="en" className={`${inter.variable} ${plex.variable}`}>
+      <body className="min-h-screen bg-abyss-950">
         <MotionProvider>
           <div className="relative min-h-screen overflow-hidden">
             <BackgroundLayers />

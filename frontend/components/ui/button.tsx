@@ -7,7 +7,7 @@ const base =
 
 const variants = {
   primary:
-    "bg-gradient-to-r from-lumina-cyan via-lumina-violet to-lumina-red text-abyss-900 shadow-glow hover:opacity-90",
+    "bg-[linear-gradient(120deg,#39d0ff_0%,#4f8bff_35%,#9b7bff_65%,#ff5263_100%)] text-abyss-950 shadow-glow hover:opacity-90",
   ghost: "border border-white/15 text-white/80 hover:border-white/40 hover:text-white",
 };
 
