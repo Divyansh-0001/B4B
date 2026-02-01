@@ -14,12 +14,12 @@ export const siteContact = {
 };
 
 export const heroContent = {
-  eyebrow: "Enterprise-grade cybersecurity services",
-  title: "Prevent breaches with calm, confident security leadership.",
+  eyebrow: "Enterprise cybersecurity, without noise",
+  title: "Clarity-first security for modern enterprises.",
   subtitle:
-    "Be4Breach delivers advisory, offensive testing, and managed defense services so your teams can stay resilient, compliant, and prepared.",
-  ctaPrimary: { label: "Reserve a free consultation", href: "/contact" },
-  ctaSecondary: { label: "Explore services", href: "/services" },
+    "Be4Breach helps security and engineering leaders reduce risk through focused assessments, testing, and managed defense.",
+  ctaPrimary: { label: "Talk to an expert", href: "/contact" },
+  ctaSecondary: { label: "View services", href: "/services" },
 };
 
 export const valuePillars = [
@@ -37,6 +37,66 @@ export const valuePillars = [
     title: "ROI improvements",
     description:
       "Maximize return on investment by using existing security tools and technology more effectively.",
+  },
+];
+
+export const whatWeDo = [
+  {
+    title: "Security programs built for execution",
+    description:
+      "We design and run cybersecurity programs that are measurable, defensible, and aligned with business goals.",
+  },
+  {
+    title: "Offensive testing that improves resilience",
+    description:
+      "From adversary simulation to application testing, we validate real-world risk and close the gaps.",
+  },
+  {
+    title: "Managed defense that scales",
+    description:
+      "Continuous monitoring, threat hunting, and incident response that meet enterprise expectations.",
+  },
+];
+
+export const coreServices = [
+  "Breach Impact Analysis",
+  "Enterprise APT Assessment",
+  "Adversary Attack Simulation",
+  "Purple Teaming",
+  "Cloud Security Engineering",
+  "DevSecOps Consulting",
+  "Web Application Penetration Testing",
+  "API Penetration Testing",
+  "Mobile Application Penetration Testing",
+  "Network Vulnerability Assessment & Penetration Testing",
+  "Secure Code Review",
+  "Digital Forensics",
+];
+
+export const complianceTrust = [
+  "ISO 27001 Audit",
+  "PCI DSS",
+  "SOC 2 - Type 2 Audit",
+  "Data Privacy Assessments",
+  "CERT-In Annual Cybersecurity Audits",
+  "Security Architecture Review",
+];
+
+export const enterpriseReasons = [
+  {
+    title: "Senior-led delivery",
+    description:
+      "Direct access to security specialists who understand enterprise risk, compliance, and engineering trade-offs.",
+  },
+  {
+    title: "Actionable reporting",
+    description:
+      "Clear, prioritized remediation guidance that engineering teams can execute quickly.",
+  },
+  {
+    title: "Measured outcomes",
+    description:
+      "We quantify risk reduction and operational impact so leadership can track progress with confidence.",
   },
 ];
 
