@@ -23,13 +23,13 @@ export const metadata: Metadata = {
     template: "%s | Be4Breach",
   },
   description:
-    "Be4Breach is a cybersecurity resilience platform delivering identity defense, threat detection, and rapid incident response.",
+    "Be4Breach is a cybersecurity consulting and services firm delivering VAPT, red teaming, incident response, and compliance advisory.",
   applicationName: "Be4Breach",
   metadataBase: new URL("https://be4breach.com"),
   openGraph: {
     title: "Be4Breach",
     description:
-      "Cybersecurity resilience platform delivering identity defense, threat detection, and rapid incident response.",
+      "Cybersecurity consulting and services firm delivering VAPT, red teaming, incident response, and compliance advisory.",
     url: "https://be4breach.com",
     siteName: "Be4Breach",
     type: "website",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Be4Breach",
     description:
-      "Cybersecurity resilience platform delivering identity defense, threat detection, and rapid incident response.",
+      "Cybersecurity consulting and services firm delivering VAPT, red teaming, incident response, and compliance advisory.",
   },
 };
 

@@ -20,68 +20,68 @@ import { Separator } from "@/components/ui/separator";
 
 const capabilities = [
   {
-    title: "Identity defense",
+    title: "Vulnerability assessment & penetration testing",
     description:
-      "Detect anomalous login paths, privilege escalations, and MFA fatigue in real time.",
+      "Validate security controls across networks, applications, and cloud estates with actionable remediation guidance.",
     icon: ShieldCheck,
   },
   {
-    title: "Cloud exposure management",
+    title: "Red teaming & adversary simulation",
     description:
-      "Continuously score misconfigurations, risky IAM grants, and asset drift.",
+      "Model real-world attacker paths to pressure-test detection, escalation, and response workflows.",
     icon: Cloud,
   },
   {
-    title: "Incident orchestration",
+    title: "Incident response & digital forensics",
     description:
-      "Automate triage, isolate impacted assets, and track containment SLAs.",
+      "Rapid containment, evidence collection, and root-cause analysis for regulated environments.",
     icon: AlarmClock,
   },
 ];
 
 const workflows = [
   {
-    title: "Unified telemetry",
+    title: "Blue teaming & SOC support",
     description:
-      "Stream endpoint, identity, and SaaS activity into a single signal fabric.",
+      "Improve alert triage, response playbooks, and continuous monitoring maturity.",
     icon: Globe,
   },
   {
-    title: "Playbook automation",
+    title: "Governance, risk & compliance",
     description:
-      "Trigger response automation based on risk, impact, and owner context.",
+      "Translate security findings into governance-aligned control improvements and audit-ready reporting.",
     icon: Sparkles,
   },
   {
-    title: "Analyst-ready context",
+    title: "Cloud & application security",
     description:
-      "Deliver timelines, evidence packs, and audit trails with every alert.",
+      "Secure modern cloud stacks and critical applications with threat modeling and secure configuration reviews.",
     icon: Users,
   },
 ];
 
 const outcomes = [
   {
-    title: "Readiness score",
-    value: "92%",
-    detail: "Response coverage across critical controls.",
+    title: "Assessment impact",
+    value: "Actionable",
+    detail: "Prioritized findings with clear remediation ownership.",
   },
   {
-    title: "Median triage time",
-    value: "8 min",
-    detail: "Automated routing to the right owner.",
+    title: "Executive reporting",
+    value: "Board-ready",
+    detail: "Risk narratives aligned to business impact and compliance.",
   },
   {
-    title: "Audit evidence",
-    value: "7 days",
-    detail: "Generated reports for regulated programs.",
+    title: "Response readiness",
+    value: "24/7",
+    detail: "Incident response coverage aligned to enterprise SLAs.",
   },
 ];
 
 const assurances = [
-  "Zero trust segmentation across critical workflows",
-  "Audit evidence generation for SOC 2, ISO 27001, and HIPAA",
-  "Customer-managed keys and deterministic log retention",
+  "CERT-In empanelled for enterprise security engagements",
+  "Compliance advisory aligned to regulated industries",
+  "Audit-ready documentation and defensible evidence trails",
 ];
 
 export default function Home() {
@@ -92,13 +92,13 @@ export default function Home() {
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 py-14">
         <div className="flex flex-col gap-4">
           <Badge className="w-fit bg-primary/10 text-primary">
-            Platform coverage
+            Core services
           </Badge>
-          <h2>See what matters. Act on what is urgent.</h2>
+          <h2>Independent security assurance for regulated enterprises.</h2>
           <p className="max-w-2xl">
-            Be4Breach consolidates critical security signals into focused
-            decision paths so your team can prioritize high-impact response and
-            meet executive expectations.
+            Be4Breach delivers rigorous testing and response capabilities to
+            help security leaders validate defenses, reduce exposure, and meet
+            regulatory expectations without disruption.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
@@ -126,13 +126,13 @@ export default function Home() {
       <AnimatedSection className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-6">
           <Badge className="w-fit bg-primary/10 text-primary">
-            Operational workflow
+            Assurance & resilience
           </Badge>
-          <h2>Orchestrate response with confidence.</h2>
+          <h2>Strengthen detection, response, and governance.</h2>
           <p>
-            Teams use Be4Breach to standardize response across identity,
-            endpoints, and cloud environments, reducing breach impact while
-            delivering consistent evidence to auditors.
+            Be4Breach partners with security teams to improve operational
+            maturity, reduce incident impact, and build a defensible compliance
+            posture across critical environments.
           </p>
           <div className="grid gap-5 sm:grid-cols-2">
             {workflows.map((workflow) => (
@@ -154,7 +154,7 @@ export default function Home() {
         <div className="space-y-4 rounded-2xl border border-border/60 bg-card/80 p-6">
           <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <Lock className="h-4 w-4 text-primary" />
-            Assurance highlights
+            Trust & compliance
           </div>
           <ul className="space-y-4 text-sm text-muted-foreground">
             {assurances.map((item) => (
@@ -173,31 +173,32 @@ export default function Home() {
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 py-14">
         <div className="flex flex-col gap-4">
           <Badge className="w-fit bg-primary/10 text-primary">
-            Telemetry ecosystem
+            Industries served
           </Badge>
-          <h2>Connect every source without losing context.</h2>
+          <h2>Expertise across regulated and critical sectors.</h2>
           <p className="max-w-2xl">
-            Be4Breach harmonizes signals across identity providers, EDR, cloud
-            infrastructure, and SaaS applications to keep analysts focused on
-            what matters most.
+            We operate where security outcomes must be defensible: enterprise
+            environments with strict regulatory, operational, and customer
+            trust expectations.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
           <Card className="border-border/60 bg-card/80 p-6 hover-lift">
             <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
               <DatabaseZap className="h-4 w-4 text-primary" />
-              Unified detection fabric
+              Regulated industry coverage
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              Normalize telemetry in real time with adaptive parsers, enrichment
-              services, and risk scoring models tuned to your environment.
+              Engagements tailored for enterprise risk, regulatory alignment,
+              and mission-critical services.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {[
-                "Okta & Entra ID",
-                "CrowdStrike & SentinelOne",
-                "AWS, Azure, GCP",
-                "ServiceNow & Jira",
+                "Enterprise & Fortune teams",
+                "BFSI & regulated finance",
+                "Government & public sector",
+                "SaaS & technology providers",
+                "Critical infrastructure operators",
               ].map((item) => (
                 <div
                   key={item}
@@ -212,14 +213,14 @@ export default function Home() {
           <Card className="border-border/60 bg-card/80 p-6 hover-lift">
             <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
               <ShieldCheck className="h-4 w-4 text-primary" />
-              Response governance
+              Critical infrastructure focus
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              Built-in approvals, evidence capture, and customer trust artifacts
-              ensure each response is audit ready.
+              Security programs built for high-availability services, sensitive
+              data, and operational resilience.
             </p>
             <Button asChild variant="outline" className="mt-6 w-full">
-              <Link href="/platform">View integration map</Link>
+              <Link href="/platform">Explore service coverage</Link>
             </Button>
           </Card>
         </div>
@@ -230,10 +231,10 @@ export default function Home() {
           <Badge className="w-fit bg-primary/10 text-primary">
             Executive outcomes
           </Badge>
-          <h2>Deliver measurable security outcomes.</h2>
+          <h2>Security posture that stands up to scrutiny.</h2>
           <p className="max-w-2xl">
-            Track readiness, response, and compliance in one executive view with
-            metrics that map directly to business risk.
+            Our engagements deliver clear, defensible outputs that help security
+            leaders communicate risk, compliance, and investment priorities.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
@@ -264,23 +265,23 @@ export default function Home() {
         <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-primary/10 via-background to-background p-8 md:p-12">
           <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-center">
             <div className="space-y-4">
-              <Badge className="w-fit bg-primary/10 text-primary">
-                Ready for pilot
-              </Badge>
+          <Badge className="w-fit bg-primary/10 text-primary">
+            Engage Be4Breach
+          </Badge>
               <h3 className="text-3xl font-semibold text-foreground">
-                Launch a rapid readiness assessment in under two weeks.
+            Launch a focused security assessment within weeks.
               </h3>
               <p className="text-muted-foreground">
-                Engage Be4Breach to map your critical assets, align detection
-                coverage, and deliver a prioritized response roadmap.
+            Engage Be4Breach to map critical assets, validate defenses, and
+            deliver a prioritized remediation roadmap.
               </p>
             </div>
             <div className="flex flex-col gap-3">
               <Button asChild size="lg">
-                <Link href="/register">Book a readiness call</Link>
+            <Link href="/register">Request a security briefing</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/platform">View platform capabilities</Link>
+                <Link href="/platform">View service capabilities</Link>
               </Button>
             </div>
           </div>

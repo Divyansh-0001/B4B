@@ -7,29 +7,29 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const metrics = [
-  { label: "Mean time to detect", value: "< 3 min" },
-  { label: "Response playbooks", value: "42 live" },
-  { label: "Telemetry sources", value: "120+ integrated" },
+  { label: "Assessment turnaround", value: "10-15 days" },
+  { label: "Incident response SLAs", value: "24/7 coverage" },
+  { label: "Security domains", value: "Cloud to endpoint" },
 ];
 
 const signalFeed = [
   {
-    title: "Identity risk spike",
-    detail: "MFA fatigue blocked for EU workforce.",
+    title: "VAPT engagement",
+    detail: "Critical control gaps validated in payment workflows.",
     status: "High",
-    time: "2m ago",
+    time: "Today",
   },
   {
-    title: "Cloud exposure drift",
-    detail: "Privileged IAM grants removed in AWS.",
+    title: "Red team simulation",
+    detail: "Adversary path mapped across cloud identity.",
     status: "Medium",
-    time: "12m ago",
+    time: "This week",
   },
   {
-    title: "Endpoint isolation",
-    detail: "Device quarantined after lateral movement.",
-    status: "High",
-    time: "31m ago",
+    title: "IR standby",
+    detail: "Digital forensics kit deployed for rapid triage.",
+    status: "Active",
+    time: "Ongoing",
   },
 ];
 
@@ -60,21 +60,21 @@ export function Hero() {
           className="space-y-6"
         >
           <Badge className="w-fit bg-primary/10 text-primary">
-            Security resilience platform
+            Cybersecurity consulting & services
           </Badge>
           <div className="space-y-3">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Threat detection + response
+              Trusted by regulated industries
             </p>
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              Be4Breach aligns identity, cloud, and endpoint signals before
-              threats become headlines.
+              Be4Breach delivers enterprise-grade security assurance before risk
+              becomes impact.
             </h1>
           </div>
           <p className="max-w-xl text-lg text-muted-foreground">
-            Consolidate telemetry, automate incident workflows, and maintain
-            compliance in real time. Built for security teams that demand
-            high-signal visibility with decisive response control.
+            We help CISOs and security leaders validate defenses, simulate real
+            adversaries, and respond decisively with VAPT, red teaming, incident
+            response, and compliance advisory tailored to regulated enterprises.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
@@ -83,17 +83,17 @@ export function Hero() {
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/platform">Explore the platform</Link>
+              <Link href="/platform">Explore services</Link>
             </Button>
           </div>
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-primary" />
-              SOC 2 Type II aligned controls
+              CERT-In empanelled security partner
             </span>
             <span className="flex items-center gap-2">
               <Radar className="h-4 w-4 text-primary" />
-              24/7 detection telemetry pipeline
+              Enterprise-grade assessments and response
             </span>
           </div>
         </motion.div>

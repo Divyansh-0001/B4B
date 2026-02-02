@@ -6,48 +6,50 @@ import { Separator } from "@/components/ui/separator";
 
 const commitments = [
   {
-    title: "Security program",
+    title: "CERT-In empanelled",
     description:
-      "Dedicated security operations team with 24/7 monitoring and incident response.",
+      "Recognized for delivering security assessments aligned with Indian regulatory requirements.",
     icon: ShieldCheck,
   },
   {
-    title: "Data protection",
+    title: "Compliance advisory",
     description:
-      "Encryption in transit and at rest with customer-managed key support.",
-    icon: Lock,
-  },
-  {
-    title: "Compliance readiness",
-    description:
-      "Aligned to SOC 2, ISO 27001, and HIPAA with audit evidence retention.",
+      "Audit readiness support for regulated industries with defensible reporting and evidence.",
     icon: FileCheck2,
   },
   {
-    title: "Infrastructure resilience",
+    title: "Risk governance alignment",
     description:
-      "Multi-region failover, immutable logging, and continuous integrity checks.",
+      "Security recommendations mapped to governance objectives and executive accountability.",
+    icon: Lock,
+  },
+  {
+    title: "Operational resilience",
+    description:
+      "Incident response readiness planning and post-incident review support.",
     icon: Server,
   },
 ];
 
 const disclosures = [
-  "Annual third-party penetration testing with remediation tracking.",
-  "Continuous vulnerability scanning and SLA-based patch windows.",
-  "Data residency controls for regulated industries.",
-  "Dedicated customer trust portal with compliance artifacts.",
+  "CERT-In readiness assessments and advisory for regulated entities.",
+  "Compliance gap analysis with prioritized remediation plans.",
+  "Audit documentation support aligned to sector-specific requirements.",
+  "Executive reporting that links technical findings to risk exposure.",
 ];
 
 export default function TrustCenterPage() {
   return (
     <div className="bg-background">
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-6 px-6 py-16">
-        <Badge className="w-fit bg-primary/10 text-primary">Trust center</Badge>
-        <h1>Security, privacy, and compliance are embedded in every layer.</h1>
+        <Badge className="w-fit bg-primary/10 text-primary">
+          Compliance & CERT-In
+        </Badge>
+        <h1>Compliance-led cybersecurity advisory for regulated enterprises.</h1>
         <p className="max-w-3xl text-lg text-muted-foreground">
-          Be4Breach maintains rigorous security controls so your team can deploy
-          quickly without sacrificing governance. Review our trust commitments
-          and evidence library for full transparency.
+          Be4Breach is CERT-In empanelled and trusted by regulated industries to
+          deliver security assessments, audits, and advisory services that
+          stand up to regulatory scrutiny.
         </p>
       </AnimatedSection>
 
@@ -56,9 +58,9 @@ export default function TrustCenterPage() {
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-10 px-6 py-16">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
-            Commitments
+            Compliance commitments
           </Badge>
-          <h2>Controls aligned to enterprise expectations.</h2>
+          <h2>Advisory grounded in regulatory alignment.</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {commitments.map((commitment) => (
@@ -83,14 +85,14 @@ export default function TrustCenterPage() {
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-6 px-6 pb-20">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
-            Transparency
+            Audit readiness
           </Badge>
-          <h2>Evidence you can take to auditors.</h2>
+          <h2>Evidence packages built for audit teams.</h2>
         </div>
         <Card className="border-border/60 bg-card/80 hover-lift">
           <CardHeader>
             <CardTitle className="text-lg">
-              Trust center disclosures
+              Compliance support coverage
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">

@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 
 const footerLinks = {
   Product: [
-    { href: "/platform", label: "Platform overview" },
-    { href: "/trust-center", label: "Trust center" },
+    { href: "/platform", label: "Service overview" },
+    { href: "/trust-center", label: "Compliance & CERT-In" },
     { href: "/dashboard", label: "Security console" },
   ],
   Resources: [
@@ -38,7 +38,7 @@ export function SiteFooter() {
                 <Link href="/register">Book a readiness call</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/platform">Explore the platform</Link>
+                <Link href="/platform">Explore services</Link>
               </Button>
             </div>
           </div>

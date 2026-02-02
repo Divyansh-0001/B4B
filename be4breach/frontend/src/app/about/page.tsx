@@ -6,40 +6,40 @@ import { Separator } from "@/components/ui/separator";
 
 const principles = [
   {
-    title: "Operational clarity",
+    title: "Security-first execution",
     description:
-      "We design for security teams who need immediate visibility and prescriptive response guidance.",
+      "We approach every engagement with a security-first mindset grounded in evidence, precision, and measurable outcomes.",
     icon: Target,
   },
   {
-    title: "Resilience by design",
+    title: "Compliance-driven delivery",
     description:
-      "Our platform is built on deterministic response flows to reduce variability during incidents.",
+      "Our methodology aligns with regulatory frameworks and audit requirements common to regulated industries.",
     icon: ShieldCheck,
   },
   {
-    title: "Customer-aligned security",
+    title: "Enterprise partnership",
     description:
-      "Every feature ties back to measurable outcomes and compliance-ready evidence.",
+      "We operate as an extension of enterprise security teams with clear communication and defensible recommendations.",
     icon: Users,
   },
 ];
 
 const leaders = [
   {
-    name: "Amina Ortiz",
-    role: "Chief Executive Officer",
-    focus: "Previously led security operations at global fintechs.",
+    name: "Security Advisory Board",
+    role: "Enterprise & Government Expertise",
+    focus: "Guidance from leaders across BFSI, SaaS, and public sector programs.",
   },
   {
-    name: "Victor Han",
-    role: "Chief Technology Officer",
-    focus: "Built large-scale threat detection pipelines at cloud providers.",
+    name: "Incident Response Practice",
+    role: "Digital Forensics Leadership",
+    focus: "Experienced responders with deep experience in regulated environments.",
   },
   {
-    name: "Priya Desai",
-    role: "VP, Trust & Compliance",
-    focus: "Former auditor and privacy officer focused on regulated sectors.",
+    name: "Compliance & Audit Office",
+    role: "GRC & CERT-In Alignment",
+    focus: "Advisory practice focused on audit readiness and regulatory alignment.",
   },
 ];
 
@@ -48,12 +48,12 @@ export default function AboutPage() {
     <div className="bg-background">
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-6 px-6 py-16">
         <Badge className="w-fit bg-primary/10 text-primary">About us</Badge>
-        <h1>We help security leaders move from reactive to resilient.</h1>
+        <h1>Enterprise-grade cybersecurity services, built on trust.</h1>
         <p className="max-w-3xl text-lg text-muted-foreground">
-          Be4Breach was formed by security operators who understand the pressure
-          of defending modern enterprises. Our mission is to give teams the
-          telemetry, context, and automation they need to prevent disruption and
-          protect customer trust.
+          Be4Breach is a cybersecurity consulting and services firm delivering
+          VAPT, red teaming, incident response, and compliance advisory for
+          regulated enterprises and government entities. We operate with a
+          precise, security-first approach built for executive accountability.
         </p>
       </AnimatedSection>
 
@@ -64,10 +64,10 @@ export default function AboutPage() {
           <Badge className="w-fit bg-primary/10 text-primary">
             Operating principles
           </Badge>
-          <h2>Built on security-first values.</h2>
+          <h2>Security philosophy grounded in precision.</h2>
           <p>
-            Our teams partner closely with customers to embed resilience in
-            daily operations.
+            Our engagements are designed to be rigorous, defensible, and aligned
+            with the expectations of CISOs, CTOs, and regulators.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
@@ -93,9 +93,9 @@ export default function AboutPage() {
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 pb-20">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
-            Leadership
+            Enterprise credibility
           </Badge>
-          <h2>Leadership grounded in security operations.</h2>
+          <h2>Experience across regulated environments.</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {leaders.map((leader) => (

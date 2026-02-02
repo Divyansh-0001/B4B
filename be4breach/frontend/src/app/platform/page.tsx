@@ -13,58 +13,70 @@ import { Separator } from "@/components/ui/separator";
 
 const modules = [
   {
-    title: "Identity risk engine",
+    title: "Vulnerability assessment & penetration testing (VAPT)",
     description:
-      "Continuously score login anomalies, privileged actions, and unusual device posture.",
+      "Identify exploitable weaknesses across infrastructure, applications, and cloud environments with clear remediation paths.",
     icon: Fingerprint,
   },
   {
-    title: "Threat detection fabric",
+    title: "Red teaming & adversary simulation",
     description:
-      "Normalize and enrich telemetry to prioritize high-risk events across sources.",
+      "Simulate real-world attacker behavior to validate detection controls and executive response readiness.",
     icon: Radar,
   },
   {
-    title: "Response orchestration",
+    title: "Blue teaming & SOC support",
     description:
-      "Automate containment, ticketing, and evidence gathering with guided playbooks.",
+      "Strengthen monitoring, alert triage, and incident workflows with guided operational improvements.",
     icon: Workflow,
   },
   {
-    title: "Cloud posture guardrails",
+    title: "Incident response & digital forensics",
     description:
-      "Track asset drift and policy violations across multi-cloud accounts.",
-    icon: CloudCog,
-  },
-  {
-    title: "Executive risk reporting",
-    description:
-      "Deliver metrics aligned to business impact, regulatory exposure, and SLAs.",
+      "Rapid containment, evidence preservation, and root-cause analysis for high-impact events.",
     icon: Activity,
   },
   {
-    title: "Continuous assurance",
+    title: "Governance, risk & compliance (GRC)",
     description:
-      "Maintain compliance evidence and surface gaps before audit windows close.",
+      "Translate technical findings into governance-aligned risk management and audit-ready reporting.",
     icon: ShieldAlert,
+  },
+  {
+    title: "CERT-In compliance, audits & advisory",
+    description:
+      "CERT-In empanelled assessments, readiness reviews, and regulatory alignment support.",
+    icon: ShieldAlert,
+  },
+  {
+    title: "Cloud & application security",
+    description:
+      "Threat modeling, secure configuration reviews, and SDLC security assurance for modern stacks.",
+    icon: CloudCog,
+  },
+  {
+    title: "Enterprise & government security programs",
+    description:
+      "Security programs tailored to large enterprises and government agencies with strict compliance needs.",
+    icon: Activity,
   },
 ];
 
 const architecture = [
   {
-    title: "Ingestion layer",
+    title: "Assess",
     detail:
-      "Streaming pipeline built for identity, endpoint, and SaaS telemetry.",
+      "Comprehensive testing to identify exploitable vulnerabilities and control gaps.",
   },
   {
-    title: "Correlation layer",
+    title: "Simulate",
     detail:
-      "Event stitching, entity resolution, and automated risk prioritization.",
+      "Adversary-driven exercises that validate real-world detection and response.",
   },
   {
-    title: "Response layer",
+    title: "Strengthen",
     detail:
-      "Playbooks, ticketing integrations, and approvals with SLA tracking.",
+      "Compliance-led remediation guidance, governance alignment, and operational hardening.",
   },
 ];
 
@@ -72,14 +84,15 @@ export default function PlatformPage() {
   return (
     <div className="bg-background">
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-6 px-6 py-16">
-        <Badge className="w-fit bg-primary/10 text-primary">Platform</Badge>
+        <Badge className="w-fit bg-primary/10 text-primary">Services</Badge>
         <h1>
-          A unified security operations platform built for real-world response.
+          Enterprise cybersecurity services built for regulated environments.
         </h1>
         <p className="max-w-3xl text-lg text-muted-foreground">
-          Be4Breach consolidates detection, response, and compliance into one
-          system of action. Teams adopt it to eliminate tool sprawl and deliver
-          repeatable outcomes across their security programs.
+          Be4Breach delivers security assessments, advisory, and response
+          services tailored to enterprise and government requirements. Each
+          engagement is designed to reduce risk and improve defensible security
+          posture.
         </p>
       </AnimatedSection>
 
@@ -88,9 +101,9 @@ export default function PlatformPage() {
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-10 px-6 py-16">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
-            Platform modules
+            Service portfolio
           </Badge>
-          <h2>Capabilities aligned to your security lifecycle.</h2>
+          <h2>Clear scope, measurable impact, defensible outcomes.</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {modules.map((module) => (
@@ -113,12 +126,12 @@ export default function PlatformPage() {
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 pb-20">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
-            Architecture
+            Engagement model
           </Badge>
-          <h2>Designed for high-volume security data.</h2>
+          <h2>Structured delivery for enterprise stakeholders.</h2>
           <p>
-            Modular architecture supports rapid deployment while delivering
-            consistent performance across environments.
+            We align assessment execution with executive reporting and
+            compliance milestones to ensure security outcomes are actionable.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">

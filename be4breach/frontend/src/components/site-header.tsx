@@ -4,9 +4,9 @@ import { AuthActions } from "@/components/auth/auth-actions";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
-  { href: "/platform", label: "Platform" },
-  { href: "/trust-center", label: "Trust Center" },
-  { href: "/about", label: "Company" },
+  { href: "/platform", label: "Services" },
+  { href: "/trust-center", label: "Compliance" },
+  { href: "/about", label: "About" },
   { href: "/dashboard", label: "Console" },
 ];
 
