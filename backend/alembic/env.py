@@ -17,7 +17,7 @@ target_metadata = Base.metadata
 def get_url() -> str:
     if not settings.database_url:
         raise RuntimeError("BE4BREACH_DATABASE_URL is not set.")
-    return settings.database_url
+    return str(settings.database_url)
 
 
 def run_migrations_offline() -> None:
