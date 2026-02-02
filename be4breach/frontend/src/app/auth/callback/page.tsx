@@ -15,7 +15,7 @@ type TokenResponse = {
   expires_in: number;
 };
 
-export default function AuthCallbackPage() {
+function AuthCallbackContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { clearError, applyTokens } = useAuth();
@@ -72,5 +72,29 @@ export default function AuthCallbackPage() {
         </Card>
       </motion.div>
     </div>
+  );
+}
+
+export default function AuthCallbackPage() {
+  return (
+    <React.Suspense
+      fallback={
+        <div className="mx-auto flex min-h-[60vh] w-full max-w-4xl items-center justify-center px-6 py-16">
+          <Card className="w-full max-w-md border-border/60 bg-card/80 shadow-xl">
+            <CardHeader className="space-y-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <CardTitle className="text-2xl">SSO authentication</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              Preparing secure session...
+            </CardContent>
+          </Card>
+        </div>
+      }
+    >
+      <AuthCallbackContent />
+    </React.Suspense>
   );
 }
