@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import type { FormEvent } from "react";
 import { useMemo, useState } from "react";
 
 type Role = "admin" | "client" | "user";
@@ -24,7 +25,7 @@ export default function LoginPage() {
     return next;
   }, [searchParams]);
 
-  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
     setLoading(true);

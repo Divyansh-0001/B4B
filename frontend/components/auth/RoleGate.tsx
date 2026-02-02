@@ -2,13 +2,14 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 
 type Role = "admin" | "client" | "user";
 
 type RoleGateProps = {
   requiredRole: Role;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function RoleGate({ requiredRole, children }: RoleGateProps) {
