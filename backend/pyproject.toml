@@ -1,0 +1,21 @@
+[project]
+name = "be4breach-backend"
+version = "0.1.0"
+description = "Be4Breach FastAPI backend"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "alembic",
+  "authlib",
+  "fastapi",
+  "httpx",
+  "psycopg[binary]",
+  "pydantic-settings",
+  "python-jose[cryptography]",
+  "python-multipart",
+  "sqlalchemy",
+  "uvicorn[standard]"
+]
+
+[tool.setuptools]
+package-dir = {"" = "."}
