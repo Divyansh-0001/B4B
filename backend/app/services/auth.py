@@ -24,7 +24,7 @@ async def create_user(
     db: AsyncSession,
     email: str,
     password: str,
-    role: UserRole = UserRole.user
+    role: UserRole = UserRole.USER
 ) -> User:
     user = User(
         email=email,

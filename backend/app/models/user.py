@@ -8,9 +8,9 @@ from app.db.base import Base
 
 
 class UserRole(str, Enum):
-    admin = "admin"
-    client = "client"
-    user = "user"
+    ADMIN = "admin"
+    CLIENT = "client"
+    USER = "user"
 
 
 class User(Base):

@@ -12,7 +12,7 @@ async def test_login_and_refresh(client, async_session_factory):
         user = User(
             email="user@example.com",
             hashed_password=hash_password("password123"),
-            role=UserRole.user,
+            role=UserRole.USER,
             is_active=True
         )
         session.add(user)
@@ -44,7 +44,7 @@ async def test_login_invalid_password(client, async_session_factory):
         user = User(
             email="user2@example.com",
             hashed_password=hash_password("password123"),
-            role=UserRole.user,
+            role=UserRole.USER,
             is_active=True
         )
         session.add(user)
