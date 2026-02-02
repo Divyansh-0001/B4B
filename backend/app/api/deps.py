@@ -1,4 +1,4 @@
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -14,16 +14,18 @@ oauth2_scheme = OAuth2PasswordBearer(
 
 
 async def get_current_user(
+    request: Request,
     token: str | None = Depends(oauth2_scheme),
     db: AsyncSession = Depends(get_db)
 ) -> User:
-    if not token:
+    token_value = token or request.cookies.get("be4breach_access_token")
+    if not token_value:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="not_authenticated",
             headers={"WWW-Authenticate": "Bearer"}
         )
-    payload = decode_access_token(token)
+    payload = decode_access_token(token_value)
     subject = payload.get("sub")
     if not subject:
         raise HTTPException(

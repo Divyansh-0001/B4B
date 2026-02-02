@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     google_client_id: Optional[str] = None
     google_client_secret: Optional[str] = None
     google_redirect_uri: Optional[AnyHttpUrl] = None
+    frontend_url: Optional[AnyHttpUrl] = None
 
     @field_validator("cors_allowed_origins", mode="before")
     @classmethod
