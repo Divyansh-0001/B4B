@@ -84,6 +84,13 @@ const assurances = [
   "Audit-ready documentation and defensible evidence trails",
 ];
 
+const trustSignals = [
+  "Enterprise-Grade Security",
+  "Trusted by 1000+ Clients",
+  "24/7 Protection",
+  "CERT-In Empanelled",
+];
+
 export default function Home() {
   return (
     <div className="dark bg-background text-foreground">
@@ -105,15 +112,15 @@ export default function Home() {
           {capabilities.map((capability) => (
             <Card
               key={capability.title}
-              className="border-border/60 bg-card/80 hover-lift"
+              className="border-white/10 bg-white/5 text-white shadow-lg backdrop-blur hover-lift neon-border"
             >
               <CardHeader>
-                <capability.icon className="h-6 w-6 text-primary" />
+                <capability.icon className="h-6 w-6 text-cyan-300" />
                 <CardTitle className="pt-4 text-lg">
                   {capability.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
+              <CardContent className="text-sm text-white/70">
                 {capability.description}
               </CardContent>
             </Card>
@@ -138,35 +145,52 @@ export default function Home() {
             {workflows.map((workflow) => (
               <div
                 key={workflow.title}
-                className="rounded-2xl border border-border/60 bg-card/80 p-5 hover-lift"
+                className="rounded-2xl border border-white/10 bg-white/5 p-5 text-white backdrop-blur hover-lift neon-border"
               >
-                <workflow.icon className="h-5 w-5 text-primary" />
+                <workflow.icon className="h-5 w-5 text-cyan-300" />
                 <h3 className="mt-4 text-base font-semibold text-foreground">
                   {workflow.title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
+                <p className="mt-2 text-sm text-white/70">
                   {workflow.description}
                 </p>
               </div>
             ))}
           </div>
         </div>
-        <div className="space-y-4 rounded-2xl border border-border/60 bg-card/80 p-6">
+        <div className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6 text-white backdrop-blur neon-border">
           <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-            <Lock className="h-4 w-4 text-primary" />
+            <Lock className="h-4 w-4 text-cyan-300" />
             Trust & compliance
           </div>
-          <ul className="space-y-4 text-sm text-muted-foreground">
+          <ul className="space-y-4 text-sm text-white/70">
             {assurances.map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
+                <CheckCircle2 className="mt-0.5 h-4 w-4 text-cyan-300" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-          <Button asChild variant="outline" className="w-full">
+          <Button
+            asChild
+            variant="outline"
+            className="w-full border-white/20 text-white hover:bg-white/10"
+          >
             <Link href="/trust-center">Review trust center</Link>
           </Button>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection className="mx-auto w-full max-w-6xl px-6 pb-10">
+        <div className="grid gap-4 md:grid-cols-4">
+          {trustSignals.map((signal) => (
+            <div
+              key={signal}
+              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 text-center text-sm font-semibold text-white/80 backdrop-blur neon-border hover-lift"
+            >
+              {signal}
+            </div>
+          ))}
         </div>
       </AnimatedSection>
 
@@ -183,12 +207,12 @@ export default function Home() {
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
-          <Card className="border-border/60 bg-card/80 p-6 hover-lift">
+          <Card className="border-white/10 bg-white/5 p-6 text-white backdrop-blur hover-lift neon-border">
             <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-              <DatabaseZap className="h-4 w-4 text-primary" />
+              <DatabaseZap className="h-4 w-4 text-cyan-300" />
               Regulated industry coverage
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-white/70">
               Engagements tailored for enterprise risk, regulatory alignment,
               and mission-critical services.
             </p>
@@ -202,24 +226,28 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-2 rounded-xl border border-border/60 bg-background/70 px-3 py-2 text-xs text-muted-foreground"
+                  className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/70"
                 >
-                  <Radar className="h-3 w-3 text-primary" />
+                  <Radar className="h-3 w-3 text-cyan-300" />
                   {item}
                 </div>
               ))}
             </div>
           </Card>
-          <Card className="border-border/60 bg-card/80 p-6 hover-lift">
+          <Card className="border-white/10 bg-white/5 p-6 text-white backdrop-blur hover-lift neon-border">
             <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-              <ShieldCheck className="h-4 w-4 text-primary" />
+              <ShieldCheck className="h-4 w-4 text-cyan-300" />
               Critical infrastructure focus
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-white/70">
               Security programs built for high-availability services, sensitive
               data, and operational resilience.
             </p>
-            <Button asChild variant="outline" className="mt-6 w-full">
+            <Button
+              asChild
+              variant="outline"
+              className="mt-6 w-full border-white/20 text-white hover:bg-white/10"
+            >
               <Link href="/platform">Explore service coverage</Link>
             </Button>
           </Card>
@@ -241,18 +269,18 @@ export default function Home() {
           {outcomes.map((outcome) => (
             <Card
               key={outcome.title}
-              className="border-border/60 bg-card/80 p-6 hover-lift"
+              className="border-white/10 bg-white/5 p-6 text-white backdrop-blur hover-lift neon-border"
             >
               <CardHeader className="p-0">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
+                <CardTitle className="text-sm font-medium text-white/60">
                   {outcome.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0 pt-4">
-                <p className="text-3xl font-semibold text-foreground">
+                <p className="text-3xl font-semibold text-white">
                   {outcome.value}
                 </p>
-                <p className="mt-2 text-sm text-muted-foreground">
+                <p className="mt-2 text-sm text-white/70">
                   {outcome.detail}
                 </p>
               </CardContent>
