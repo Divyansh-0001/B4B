@@ -1,3 +1,4 @@
+import asyncio
 import logging
 
 from fastapi import FastAPI
@@ -43,6 +44,9 @@ def create_app() -> FastAPI:
             logger.error("startup_validation_failed error=%s", exc)
             raise
 
+        loop = asyncio.get_running_loop()
+        loop.set_exception_handler(_handle_async_exception)
+
         if not settings.database_url:
             logger.warning(
                 "database_unconfigured detail=BE4BREACH_DATABASE_URL not set"
@@ -59,3 +63,9 @@ def create_app() -> FastAPI:
 
     app.include_router(api_router)
     return app
+
+
+def _handle_async_exception(loop: asyncio.AbstractEventLoop, context: dict) -> None:
+    msg = context.get("message", "asyncio_exception")
+    exc = context.get("exception")
+    logger.error("asyncio_exception message=%s", msg, exc_info=exc)

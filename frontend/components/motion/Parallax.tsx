@@ -1,6 +1,14 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  LazyMotion,
+  domAnimation,
+  m,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform
+} from "framer-motion";
 import type { ReactNode } from "react";
 import { useRef } from "react";
 
@@ -33,8 +41,14 @@ export default function Parallax({
   }
 
   return (
-    <motion.div ref={ref} style={{ y: smoothY }} className={`${className} parallax-layer`}>
-      {children}
-    </motion.div>
+    <LazyMotion features={domAnimation}>
+      <m.div
+        ref={ref}
+        style={{ y: smoothY }}
+        className={`${className} parallax-layer`}
+      >
+        {children}
+      </m.div>
+    </LazyMotion>
   );
 }

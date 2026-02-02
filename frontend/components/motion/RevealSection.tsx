@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 type RevealSectionProps = {
@@ -24,37 +24,39 @@ export default function RevealSection({
   const Tag = as;
   const MotionTag =
     as === "article"
-      ? motion.article
+      ? m.article
       : as === "div"
-        ? motion.div
+        ? m.div
         : as === "span"
-          ? motion.span
-          : motion.section;
+          ? m.span
+          : m.section;
 
   if (reduceMotion) {
     return <Tag className={className}>{children}</Tag>;
   }
 
   return (
-    <MotionTag
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount: 0.25 }}
-      variants={{
-        hidden: { opacity: 0, y },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.6,
-            ease: [0.22, 1, 0.36, 1],
-            delay
+    <LazyMotion features={domAnimation}>
+      <MotionTag
+        className={className}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once, amount: 0.25 }}
+        variants={{
+          hidden: { opacity: 0, y },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.6,
+              ease: [0.22, 1, 0.36, 1],
+              delay
+            }
           }
-        }
-      }}
-    >
-      {children}
-    </MotionTag>
+        }}
+      >
+        {children}
+      </MotionTag>
+    </LazyMotion>
   );
 }
