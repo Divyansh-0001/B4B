@@ -55,6 +55,35 @@
   }
 }
 
+@layer components {
+  .ds-section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .ds-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-muted-foreground;
+  }
+
+  .ds-card {
+    @apply relative rounded-lg border border-border bg-surface p-6 shadow-soft;
+    @apply transition duration-300 ease-out hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .ds-chip {
+    @apply inline-flex items-center rounded-full border border-border bg-elevated px-3 py-1 text-xs font-medium text-muted-foreground;
+  }
+
+  .ds-button {
+    @apply inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm;
+    @apply transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-soft;
+  }
+
+  .ds-link {
+    @apply inline-flex items-center text-sm font-medium text-primary transition-colors duration-200 ease-out;
+    @apply hover:text-foreground;
+  }
+}
+
 @layer utilities {
   .layout-container {
     width: 100%;
@@ -81,5 +110,44 @@
     .layout-grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
+  }
+
+  .glow-orb {
+    width: clamp(220px, 30vw, 420px);
+    height: clamp(220px, 30vw, 420px);
+    border-radius: 999px;
+    background: radial-gradient(
+      circle at 30% 30%,
+      hsl(var(--accent) / 0.75),
+      transparent 60%
+    );
+    filter: blur(6px);
+    opacity: 0.8;
+  }
+
+  .glow-orb--soft {
+    background: radial-gradient(
+      circle at 60% 40%,
+      hsl(var(--secondary) / 0.7),
+      transparent 65%
+    );
+    opacity: 0.6;
+  }
+
+  .parallax-layer {
+    will-change: transform;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ds-card,
+  .ds-button,
+  .ds-link {
+    transition: none !important;
+    transform: none !important;
   }
 }
