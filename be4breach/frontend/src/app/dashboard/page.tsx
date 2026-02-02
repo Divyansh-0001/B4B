@@ -1,11 +1,13 @@
 "use client";
 
 import { AlertTriangle, DatabaseZap, Radar } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { AnimatedSection } from "@/components/animated-section";
 import { ProtectedRoute } from "@/components/protected-route";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { useAuth } from "@/context/auth-context";
 
 const statusCards = [
   {
@@ -47,6 +49,28 @@ const incidentQueue = [
 ];
 
 export default function DashboardPage() {
+  const searchParams = useSearchParams();
+  const { user } = useAuth();
+
+  const roleView = searchParams.get("view");
+  const derivedRole =
+    user?.roles.includes("admin")
+      ? "admin"
+      : user?.roles.includes("client")
+      ? "client"
+      : "user";
+  const roleLabel =
+    roleView === "admin" || roleView === "client" || roleView === "user"
+      ? roleView
+      : derivedRole;
+
+  const roleDescription =
+    {
+      admin: "Admin command overview",
+      client: "Client security overview",
+      user: "User operations overview",
+    }[roleLabel] ?? "Role-specific dashboard overview";
+
   return (
     <ProtectedRoute
       title="Security console access required"
@@ -63,6 +87,12 @@ export default function DashboardPage() {
             Connect identity, endpoint, and cloud systems to unlock full
             response automation.
           </p>
+          <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="rounded-full border border-border/60 bg-muted/40 px-3 py-1 text-foreground">
+              {roleLabel}
+            </span>
+            <span>{roleDescription}</span>
+          </div>
         </AnimatedSection>
 
         <Separator className="mx-auto w-full max-w-6xl" />
