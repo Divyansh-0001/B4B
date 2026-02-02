@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, ShieldCheck } from "lucide-react";
+import { AnimatedSection } from "@/components/animated-section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,8 +10,8 @@ import { Label } from "@/components/ui/label";
 export default function LoginPage() {
   return (
     <div className="bg-background">
-      <section className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-16">
-        <Card className="w-full max-w-md border-border/60">
+      <AnimatedSection className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-16">
+        <Card className="w-full max-w-md border-border/60 bg-card/80 shadow-xl">
           <CardHeader className="space-y-3">
             <Badge className="w-fit bg-primary/10 text-primary">Sign in</Badge>
             <CardTitle className="text-2xl">
@@ -57,7 +58,7 @@ export default function LoginPage() {
             </p>
           </CardContent>
         </Card>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }

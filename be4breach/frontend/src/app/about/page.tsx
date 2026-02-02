@@ -1,4 +1,5 @@
 import { ShieldCheck, Target, Users } from "lucide-react";
+import { AnimatedSection } from "@/components/animated-section";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -45,37 +46,36 @@ const leaders = [
 export default function AboutPage() {
   return (
     <div className="bg-background">
-      <section className="mx-auto w-full max-w-6xl space-y-6 px-6 py-16">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-6 px-6 py-16">
         <Badge className="w-fit bg-primary/10 text-primary">About us</Badge>
-        <h1 className="text-4xl font-semibold text-foreground">
-          We help security leaders move from reactive to resilient.
-        </h1>
+        <h1>We help security leaders move from reactive to resilient.</h1>
         <p className="max-w-3xl text-lg text-muted-foreground">
           Be4Breach was formed by security operators who understand the pressure
           of defending modern enterprises. Our mission is to give teams the
           telemetry, context, and automation they need to prevent disruption and
           protect customer trust.
         </p>
-      </section>
+      </AnimatedSection>
 
       <Separator className="mx-auto w-full max-w-6xl" />
 
-      <section className="mx-auto w-full max-w-6xl space-y-10 px-6 py-16">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-10 px-6 py-16">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
             Operating principles
           </Badge>
-          <h2 className="text-3xl font-semibold text-foreground">
-            Built on security-first values.
-          </h2>
-          <p className="text-muted-foreground">
+          <h2>Built on security-first values.</h2>
+          <p>
             Our teams partner closely with customers to embed resilience in
             daily operations.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {principles.map((principle) => (
-            <Card key={principle.title} className="border-border/60">
+            <Card
+              key={principle.title}
+              className="border-border/60 bg-card/80 hover-lift"
+            >
               <CardHeader>
                 <principle.icon className="h-6 w-6 text-primary" />
                 <CardTitle className="pt-4 text-lg">
@@ -88,20 +88,21 @@ export default function AboutPage() {
             </Card>
           ))}
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="mx-auto w-full max-w-6xl space-y-8 px-6 pb-20">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 pb-20">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
             Leadership
           </Badge>
-          <h2 className="text-3xl font-semibold text-foreground">
-            Leadership grounded in security operations.
-          </h2>
+          <h2>Leadership grounded in security operations.</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {leaders.map((leader) => (
-            <Card key={leader.name} className="border-border/60">
+            <Card
+              key={leader.name}
+              className="border-border/60 bg-card/80 hover-lift"
+            >
               <CardHeader>
                 <CardTitle className="text-lg">{leader.name}</CardTitle>
               </CardHeader>
@@ -112,7 +113,7 @@ export default function AboutPage() {
             </Card>
           ))}
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }

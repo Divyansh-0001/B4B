@@ -6,6 +6,7 @@ import {
   ShieldAlert,
   Workflow,
 } from "lucide-react";
+import { AnimatedSection } from "@/components/animated-section";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -70,9 +71,9 @@ const architecture = [
 export default function PlatformPage() {
   return (
     <div className="bg-background">
-      <section className="mx-auto w-full max-w-6xl space-y-6 px-6 py-16">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-6 px-6 py-16">
         <Badge className="w-fit bg-primary/10 text-primary">Platform</Badge>
-        <h1 className="text-4xl font-semibold text-foreground">
+        <h1>
           A unified security operations platform built for real-world response.
         </h1>
         <p className="max-w-3xl text-lg text-muted-foreground">
@@ -80,22 +81,23 @@ export default function PlatformPage() {
           system of action. Teams adopt it to eliminate tool sprawl and deliver
           repeatable outcomes across their security programs.
         </p>
-      </section>
+      </AnimatedSection>
 
       <Separator className="mx-auto w-full max-w-6xl" />
 
-      <section className="mx-auto w-full max-w-6xl space-y-10 px-6 py-16">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-10 px-6 py-16">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
             Platform modules
           </Badge>
-          <h2 className="text-3xl font-semibold text-foreground">
-            Capabilities aligned to your security lifecycle.
-          </h2>
+          <h2>Capabilities aligned to your security lifecycle.</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {modules.map((module) => (
-            <Card key={module.title} className="border-border/60">
+            <Card
+              key={module.title}
+              className="border-border/60 bg-card/80 hover-lift"
+            >
               <CardHeader>
                 <module.icon className="h-6 w-6 text-primary" />
                 <CardTitle className="pt-4 text-lg">{module.title}</CardTitle>
@@ -106,24 +108,25 @@ export default function PlatformPage() {
             </Card>
           ))}
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="mx-auto w-full max-w-6xl space-y-8 px-6 pb-20">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 pb-20">
         <div className="space-y-3">
           <Badge className="w-fit bg-primary/10 text-primary">
             Architecture
           </Badge>
-          <h2 className="text-3xl font-semibold text-foreground">
-            Designed for high-volume security data.
-          </h2>
-          <p className="text-muted-foreground">
+          <h2>Designed for high-volume security data.</h2>
+          <p>
             Modular architecture supports rapid deployment while delivering
             consistent performance across environments.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {architecture.map((layer) => (
-            <Card key={layer.title} className="border-border/60">
+            <Card
+              key={layer.title}
+              className="border-border/60 bg-card/80 hover-lift"
+            >
               <CardHeader>
                 <CardTitle className="text-lg">{layer.title}</CardTitle>
               </CardHeader>
@@ -133,7 +136,7 @@ export default function PlatformPage() {
             </Card>
           ))}
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }
