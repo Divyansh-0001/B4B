@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Radar, ShieldCheck } from "lucide-react";
@@ -49,6 +50,13 @@ const item = {
 };
 
 export function Hero() {
+  const [visualReady, setVisualReady] = React.useState(false);
+
+  React.useEffect(() => {
+    const id = requestAnimationFrame(() => setVisualReady(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-hero-gradient text-white">
       <div className="absolute inset-0 -z-10">
@@ -119,15 +127,21 @@ export function Hero() {
           className="relative flex items-center justify-center"
         >
           <div className="relative flex h-[420px] w-[420px] items-center justify-center">
-            <div className="absolute inset-0 rounded-full border border-cyan-300/30 opacity-60 blur-[1px]" />
-            <div className="absolute inset-6 rounded-full border border-blue-500/20" />
-            <div className="absolute inset-10 rounded-full border border-white/10" />
-            <div className="absolute inset-0 rounded-full bg-cyan-400/10 blur-[120px]" />
-            <div className="absolute inset-16 rounded-full bg-gradient-to-b from-slate-900/80 to-slate-950 shadow-[0_0_120px_-40px_rgba(34,211,238,0.6)]" />
-            <div className="absolute inset-20 rounded-full border border-cyan-300/30 neon-border" />
-            <div className="absolute inset-28 rounded-full bg-gradient-to-br from-cyan-300/20 via-slate-900 to-slate-950" />
-            <div className="absolute inset-0 rounded-full border border-cyan-300/40 opacity-70 animate-[float-slow_8s_ease-in-out_infinite]" />
-            <div className="absolute inset-0 rounded-full border border-blue-500/30 opacity-60 animate-[float-slow_10s_ease-in-out_infinite]" />
+            {!visualReady ? (
+              <div className="h-[420px] w-[420px] rounded-full border border-white/10 bg-white/5" />
+            ) : (
+              <>
+                <div className="absolute inset-0 rounded-full border border-cyan-300/30 opacity-60 blur-[1px]" />
+                <div className="absolute inset-6 rounded-full border border-blue-500/20" />
+                <div className="absolute inset-10 rounded-full border border-white/10" />
+                <div className="absolute inset-0 rounded-full bg-cyan-400/10 blur-[120px]" />
+                <div className="absolute inset-16 rounded-full bg-gradient-to-b from-slate-900/80 to-slate-950 shadow-[0_0_120px_-40px_rgba(34,211,238,0.6)]" />
+                <div className="absolute inset-20 rounded-full border border-cyan-300/30 neon-border" />
+                <div className="absolute inset-28 rounded-full bg-gradient-to-br from-cyan-300/20 via-slate-900 to-slate-950" />
+                <div className="absolute inset-0 rounded-full border border-cyan-300/40 opacity-70 animate-[float-slow_8s_ease-in-out_infinite]" />
+                <div className="absolute inset-0 rounded-full border border-blue-500/30 opacity-60 animate-[float-slow_10s_ease-in-out_infinite]" />
+              </>
+            )}
           </div>
           <div className="absolute -left-8 top-8 w-52 rounded-2xl glass-card neon-border p-4">
             <p className="text-xs uppercase tracking-[0.2em] text-cyan-200/70">

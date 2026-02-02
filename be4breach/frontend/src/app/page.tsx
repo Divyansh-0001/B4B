@@ -89,7 +89,7 @@ export default function Home() {
     <div className="dark bg-background text-foreground">
       <Hero />
 
-      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 py-14">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-10 px-6 py-20">
         <div className="flex flex-col gap-4">
           <Badge className="w-fit bg-primary/10 text-primary">
             Core services
@@ -123,7 +123,7 @@ export default function Home() {
 
       <Separator className="mx-auto w-full max-w-6xl" />
 
-      <AnimatedSection className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 lg:grid-cols-[1.2fr_0.8fr]">
+      <AnimatedSection className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-6">
           <Badge className="w-fit bg-primary/10 text-primary">
             Assurance & resilience
@@ -170,7 +170,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 py-14">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-10 px-6 py-20">
         <div className="flex flex-col gap-4">
           <Badge className="w-fit bg-primary/10 text-primary">
             Industries served
@@ -226,7 +226,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 py-14">
+      <AnimatedSection className="mx-auto w-full max-w-6xl space-y-10 px-6 py-20">
         <div className="flex flex-col gap-4">
           <Badge className="w-fit bg-primary/10 text-primary">
             Executive outcomes
@@ -261,7 +261,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="mx-auto w-full max-w-6xl px-6 pb-20">
+      <AnimatedSection className="mx-auto w-full max-w-6xl px-6 pb-24">
         <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-primary/10 via-background to-background p-8 md:p-12">
           <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-center">
             <div className="space-y-4">

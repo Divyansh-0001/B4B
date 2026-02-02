@@ -19,15 +19,15 @@ export function SiteHeader() {
   const isHome = pathname === "/";
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full border-b backdrop-blur",
-        isHome
-          ? "dark border-white/10 bg-background/40"
-          : "border-border/60 bg-background/70"
-      )}
-    >
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-6 px-6">
+    <header className="sticky top-4 z-50 w-full">
+      <div
+        className={cn(
+          "mx-auto flex h-16 w-full max-w-6xl items-center gap-6 rounded-full border px-6 shadow-lg backdrop-blur",
+          isHome
+            ? "dark border-white/10 bg-background/40 shadow-[0_12px_40px_-24px_rgba(15,23,42,0.9)]"
+            : "border-border/60 bg-background/70"
+        )}
+      >
         <Link
           className="flex items-center gap-2 font-semibold text-foreground"
           href="/"
@@ -38,16 +38,28 @@ export function SiteHeader() {
           <span className="text-base tracking-tight">Be4Breach</span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              className="group relative text-muted-foreground transition-colors hover:text-foreground"
-              href={item.href}
-            >
-              {item.label}
-              <span className="absolute -bottom-2 left-0 h-px w-0 bg-primary/70 transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                className={cn(
+                  "group relative text-muted-foreground transition-colors duration-300 hover:text-foreground",
+                  isActive && "text-foreground"
+                )}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+                <span
+                  className={cn(
+                    "absolute -bottom-2 left-0 h-px w-0 bg-primary/70 transition-all duration-300 group-hover:w-full",
+                    isActive && "w-full"
+                  )}
+                />
+              </Link>
+            );
+          })}
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
