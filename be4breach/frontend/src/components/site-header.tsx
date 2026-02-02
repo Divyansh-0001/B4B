@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ShieldCheck } from "lucide-react";
 import { AuthActions } from "@/components/auth/auth-actions";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/platform", label: "Services" },
@@ -11,8 +15,18 @@ const navItems = [
 ];
 
 export function SiteHeader() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/70 backdrop-blur">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b backdrop-blur",
+        isHome
+          ? "dark border-white/10 bg-background/40"
+          : "border-border/60 bg-background/70"
+      )}
+    >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-6 px-6">
         <Link
           className="flex items-center gap-2 font-semibold text-foreground"

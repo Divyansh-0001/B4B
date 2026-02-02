@@ -86,7 +86,7 @@ const assurances = [
 
 export default function Home() {
   return (
-    <div className="bg-background">
+    <div className="dark bg-background text-foreground">
       <Hero />
 
       <AnimatedSection className="mx-auto w-full max-w-6xl space-y-8 px-6 py-14">

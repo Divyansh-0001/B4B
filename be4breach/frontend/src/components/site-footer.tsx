@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const footerLinks = {
   Product: [
@@ -20,8 +24,16 @@ const footerLinks = {
 };
 
 export function SiteFooter() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
-    <footer className="border-t border-border/60 bg-background">
+    <footer
+      className={cn(
+        "border-t",
+        isHome ? "dark border-white/10 bg-background" : "border-border/60 bg-background"
+      )}
+    >
       <div className="mx-auto w-full max-w-6xl px-6 py-12">
         <div className="rounded-2xl border border-border/60 bg-gradient-to-r from-primary/10 via-background to-background p-8 md:p-10">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
