@@ -8,10 +8,11 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine
 )
 
-from app.core.config import settings
+from app.core.config import get_settings
 
 
 def get_async_database_url() -> Optional[URL]:
+    settings = get_settings()
     if not settings.database_url:
         return None
     url = make_url(str(settings.database_url))

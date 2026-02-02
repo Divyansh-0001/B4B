@@ -9,6 +9,7 @@ dependencies = [
   "authlib",
   "fastapi",
   "httpx",
+  "passlib[bcrypt]",
   "psycopg[binary]",
   "pydantic-settings",
   "python-jose[cryptography]",
@@ -16,6 +17,16 @@ dependencies = [
   "sqlalchemy",
   "uvicorn[standard]"
 ]
+
+[project.optional-dependencies]
+dev = [
+  "aiosqlite",
+  "pytest",
+  "pytest-asyncio"
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
 
 [tool.setuptools]
 package-dir = {"" = "."}

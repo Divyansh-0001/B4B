@@ -2,10 +2,11 @@ from typing import Optional
 
 from authlib.integrations.starlette_client import OAuth
 
-from app.core.config import settings
+from app.core.config import get_settings
 
 
 def get_google_oauth() -> Optional[OAuth]:
+    settings = get_settings()
     if not settings.google_client_id or not settings.google_client_secret:
         return None
 
@@ -18,6 +19,8 @@ def get_google_oauth() -> Optional[OAuth]:
             "https://accounts.google.com/.well-known/openid-configuration"
         ),
         client_kwargs={"scope": "openid email profile"},
-        redirect_uri=settings.google_redirect_uri
+        redirect_uri=str(settings.google_redirect_uri)
+        if settings.google_redirect_uri
+        else None
     )
     return oauth

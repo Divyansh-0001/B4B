@@ -1,4 +1,3 @@
-import secrets
 from functools import lru_cache
 from typing import Literal, Optional
 
@@ -17,12 +16,14 @@ class Settings(BaseSettings):
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
     database_url: Optional[PostgresDsn] = None
     cors_allowed_origins: list[AnyHttpUrl] = []
-    jwt_secret_key: str = secrets.token_urlsafe(32)
-    jwt_algorithm: str = "HS256"
+    jwt_secret_key: Optional[str] = None
+    jwt_refresh_secret_key: Optional[str] = None
+    jwt_algorithm: Literal["HS256"] = "HS256"
     access_token_expire_minutes: int = 30
+    refresh_token_expire_days: int = 7
     google_client_id: Optional[str] = None
     google_client_secret: Optional[str] = None
-    google_redirect_uri: Optional[str] = None
+    google_redirect_uri: Optional[AnyHttpUrl] = None
 
     @field_validator("cors_allowed_origins", mode="before")
     @classmethod
@@ -49,6 +50,22 @@ def get_settings() -> Settings:
 def validate_settings(settings: Settings) -> None:
     if settings.environment == "production" and not settings.cors_allowed_origins:
         raise ValueError("CORS allowed origins must be set in production.")
+    if not settings.jwt_secret_key:
+        raise ValueError("BE4BREACH_JWT_SECRET_KEY is required.")
+    if not settings.jwt_refresh_secret_key:
+        raise ValueError("BE4BREACH_JWT_REFRESH_SECRET_KEY is required.")
+    if settings.access_token_expire_minutes <= 0:
+        raise ValueError("Access token expiration must be positive.")
+    if settings.refresh_token_expire_days <= 0:
+        raise ValueError("Refresh token expiration must be positive.")
+    google_fields = [
+        settings.google_client_id,
+        settings.google_client_secret,
+        settings.google_redirect_uri
+    ]
+    if any(google_fields) and not all(google_fields):
+        raise ValueError(
+            "Google OAuth requires client id, client secret, and redirect uri."
+        )
 
 
-settings = get_settings()
