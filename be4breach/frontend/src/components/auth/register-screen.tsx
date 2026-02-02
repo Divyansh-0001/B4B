@@ -12,7 +12,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const roles = [
+const roles: Array<{
+  label: string;
+  value: "member" | "client";
+  description: string;
+}> = [
   {
     label: "User",
     value: "member",
