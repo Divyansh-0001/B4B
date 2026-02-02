@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 type AnimatedSectionProps = React.ComponentProps<typeof motion.section>;
 
@@ -10,12 +10,14 @@ export function AnimatedSection({
   className,
   ...props
 }: AnimatedSectionProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.section
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.6, ease: "easeOut" }}
       className={className}
       {...props}
     >

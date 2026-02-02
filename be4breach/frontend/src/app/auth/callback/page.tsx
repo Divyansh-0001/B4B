@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import { apiRequest } from "@/lib/api";
 import { useAuth } from "@/context/auth-context";
@@ -21,6 +21,7 @@ export default function AuthCallbackPage() {
   const { clearError, applyTokens } = useAuth();
   const [status, setStatus] = React.useState<"loading" | "error">("loading");
   const [message, setMessage] = React.useState("Completing sign-in...");
+  const shouldReduceMotion = useReducedMotion();
 
   React.useEffect(() => {
     const code = searchParams.get("code");
@@ -50,9 +51,9 @@ export default function AuthCallbackPage() {
   return (
     <div className="mx-auto flex min-h-[60vh] w-full max-w-4xl items-center justify-center px-6 py-16">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
+        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.4 }}
       >
         <Card className="w-full max-w-md border-border/60 bg-card/80 shadow-xl">
           <CardHeader className="space-y-2">

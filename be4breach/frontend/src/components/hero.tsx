@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Radar, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -50,12 +50,20 @@ const item = {
 };
 
 export function Hero() {
+  const shouldReduceMotion = useReducedMotion();
   const [visualReady, setVisualReady] = React.useState(false);
 
   React.useEffect(() => {
     const id = requestAnimationFrame(() => setVisualReady(true));
     return () => cancelAnimationFrame(id);
   }, []);
+
+  const containerVariants = shouldReduceMotion
+    ? { hidden: { opacity: 1 }, show: { opacity: 1 } }
+    : container;
+  const itemVariants = shouldReduceMotion
+    ? { hidden: { opacity: 1, y: 0 }, show: { opacity: 1, y: 0 } }
+    : item;
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-hero-gradient text-white">
@@ -71,9 +79,11 @@ export function Hero() {
       </div>
       <div className="mx-auto grid min-h-screen w-full max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[1fr_1.1fr] lg:items-center">
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.8, ease: "easeOut" }
+          }
           className="space-y-6"
         >
           <Badge className="w-fit bg-white/10 text-white/80">
@@ -121,9 +131,11 @@ export function Hero() {
           </div>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.9, ease: "easeOut" }
+          }
           className="relative flex items-center justify-center"
         >
           <div className="relative flex h-[420px] w-[420px] items-center justify-center">
@@ -167,7 +179,7 @@ export function Hero() {
         </motion.div>
       </div>
       <motion.div
-        variants={container}
+        variants={containerVariants}
         initial="hidden"
         animate="show"
         className="mx-auto grid w-full max-w-6xl gap-4 px-6 pb-16 md:grid-cols-3"
@@ -175,7 +187,7 @@ export function Hero() {
         {metrics.map((metric) => (
           <motion.div
             key={metric.label}
-            variants={item}
+            variants={itemVariants}
             className="rounded-2xl glass-card neon-border p-4"
           >
             <p className="text-xs uppercase tracking-[0.2em] text-cyan-200/70">
@@ -188,7 +200,7 @@ export function Hero() {
         ))}
       </motion.div>
       <motion.div
-        variants={container}
+        variants={containerVariants}
         initial="hidden"
         animate="show"
         className="mx-auto grid w-full max-w-6xl gap-4 px-6 pb-16 md:grid-cols-3"
@@ -196,7 +208,7 @@ export function Hero() {
         {signalFeed.map((signal) => (
           <motion.div
             key={signal.title}
-            variants={item}
+            variants={itemVariants}
             className="flex items-start justify-between gap-4 rounded-2xl glass-card neon-border p-4"
           >
             <div>

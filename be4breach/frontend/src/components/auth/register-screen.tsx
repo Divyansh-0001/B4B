@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 import { cn } from "@/lib/utils";
@@ -31,6 +31,7 @@ export function RegisterScreen() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [role, setRole] = React.useState<"member" | "client">("member");
+  const shouldReduceMotion = useReducedMotion();
 
   const isLoading = status === "loading";
 
@@ -52,9 +53,11 @@ export function RegisterScreen() {
     <div className="bg-background">
       <section className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.5, ease: "easeOut" }
+          }
           className="w-full max-w-lg"
         >
           <Card className="border-border/60 bg-card/80 shadow-xl">

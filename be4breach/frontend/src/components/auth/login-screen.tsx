@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Chrome, ShieldCheck } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 import { Badge } from "@/components/ui/badge";
@@ -17,6 +17,7 @@ export function LoginScreen() {
   const { user, login, loginWithGoogle, status, error, clearError } = useAuth();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const shouldReduceMotion = useReducedMotion();
 
   const isLoading = status === "loading";
   const isAuthenticated = status === "authenticated" && user;
@@ -60,9 +61,11 @@ export function LoginScreen() {
       </div>
       <section className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.5, ease: "easeOut" }
+          }
           className="w-full max-w-lg"
         >
           <Card className="border-white/10 bg-white/5 text-white shadow-2xl backdrop-blur neon-border">

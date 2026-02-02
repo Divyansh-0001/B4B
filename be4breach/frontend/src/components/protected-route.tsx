@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,7 @@ export function ProtectedRoute({
   description = "Sign in with the correct role to continue.",
 }: ProtectedRouteProps) {
   const { user, status } = useAuth();
+  const shouldReduceMotion = useReducedMotion();
 
   if (status === "loading") {
     return (
@@ -33,9 +34,9 @@ export function ProtectedRoute({
     return (
       <div className="mx-auto flex min-h-[60vh] w-full max-w-4xl items-center justify-center px-6 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.4 }}
         >
           <Card className="w-full max-w-md border-border/60 bg-card/80 shadow-xl">
             <CardHeader className="space-y-2">
