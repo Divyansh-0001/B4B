@@ -38,9 +38,8 @@ def init_db() -> None:
         admin_role = _ensure_role(
             db, "admin", "Full administrative access to the platform."
         )
-        member_role = _ensure_role(
-            db, "member", "Standard access for security operators."
-        )
+        _ensure_role(db, "member", "Standard access for security operators.")
+        _ensure_role(db, "client", "Customer-facing access for stakeholders.")
 
         if settings.ADMIN_BOOTSTRAP_EMAIL and settings.ADMIN_BOOTSTRAP_PASSWORD:
             user = db.scalar(

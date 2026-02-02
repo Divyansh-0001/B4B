@@ -8,6 +8,13 @@ from app.models.role import Role
 from app.models.user import User, UserRole
 from app.schemas.user import UserCreate
 
+ROLE_DEFINITIONS = {
+    "member": "Standard access for security operators.",
+    "client": "Customer-facing access for security stakeholders.",
+    "admin": "Full administrative access to the platform.",
+}
+ASSIGNABLE_ROLES = {"member", "client"}
+
 
 def get_user_by_email(db: Session, email: str) -> User | None:
     return db.scalar(select(User).where(User.email == email))
@@ -46,7 +53,10 @@ def create_user(db: Session, user_in: UserCreate) -> User:
     )
     db.add(user)
     db.flush()
-    assign_default_role(db, user)
+    if user_in.requested_role:
+        assign_role_by_name(db, user, user_in.requested_role)
+    else:
+        assign_default_role(db, user)
     db.commit()
     db.refresh(user)
     return user
@@ -66,10 +76,15 @@ def user_role_names(user: User) -> list[str]:
 
 
 def assign_default_role(db: Session, user: User) -> None:
-    member_role = _ensure_role(
-        db, "member", "Standard access for security operators."
-    )
-    _assign_role(db, user, member_role)
+    assign_role_by_name(db, user, "member")
+
+
+def assign_role_by_name(db: Session, user: User, role_name: str) -> None:
+    if role_name not in ASSIGNABLE_ROLES:
+        raise ValueError("Role assignment is not permitted.")
+    description = ROLE_DEFINITIONS.get(role_name, "")
+    role = _ensure_role(db, role_name, description)
+    _assign_role(db, user, role)
 
 
 def update_oauth_profile(

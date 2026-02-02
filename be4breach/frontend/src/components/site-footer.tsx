@@ -9,8 +9,8 @@ const footerLinks = {
   ],
   Resources: [
     { href: "/about", label: "Company" },
-    { href: "/auth/login", label: "Developer access" },
-    { href: "/auth/register", label: "Partner onboarding" },
+    { href: "/login", label: "Developer access" },
+    { href: "/register", label: "Partner onboarding" },
   ],
   Company: [
     { href: "/about", label: "Mission & values" },
@@ -35,7 +35,7 @@ export function SiteFooter() {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild>
-                <Link href="/auth/register">Book a readiness call</Link>
+                <Link href="/register">Book a readiness call</Link>
               </Button>
               <Button asChild variant="outline">
                 <Link href="/platform">Explore the platform</Link>

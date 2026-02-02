@@ -277,7 +277,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-3">
               <Button asChild size="lg">
-                <Link href="/auth/register">Book a readiness call</Link>
+                <Link href="/register">Book a readiness call</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="/platform">View platform capabilities</Link>

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Optional, Literal
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
@@ -12,11 +12,13 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     password: str = Field(min_length=8, max_length=128)
+    requested_role: Optional[Literal["member", "client"]] = None
 
 
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+    role: Optional[Literal["member", "client", "admin"]] = None
 
 
 class UserRead(UserBase):

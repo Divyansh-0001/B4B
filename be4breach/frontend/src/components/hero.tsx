@@ -78,7 +78,7 @@ export function Hero() {
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
-              <Link href="/auth/register">
+              <Link href="/register">
                 Request access <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

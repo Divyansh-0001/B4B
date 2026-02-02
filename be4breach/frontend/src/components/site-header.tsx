@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
+import { AuthActions } from "@/components/auth/auth-actions";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
 
 const navItems = [
   { href: "/platform", label: "Platform" },
@@ -37,16 +37,7 @@ export function SiteHeader() {
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
-          <Button
-            asChild
-            variant="ghost"
-            className="hidden border border-transparent hover:border-border/70 sm:inline-flex"
-          >
-            <Link href="/auth/login">Sign in</Link>
-          </Button>
-          <Button asChild className="shadow-sm">
-            <Link href="/auth/register">Request access</Link>
-          </Button>
+          <AuthActions />
         </div>
       </div>
     </header>

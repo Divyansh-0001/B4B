@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import admin, auth, health, users
+from app.api.routes import admin, auth, health, secure, users
 from app.core.config import settings
 from app.db.init_db import init_db
+from app.middleware.auth import AuthMiddleware
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -18,6 +19,11 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+)
+
+app.add_middleware(
+    AuthMiddleware,
+    protected_prefixes=(f"{settings.API_V1_STR}/secure",),
 )
 
 
@@ -38,3 +44,4 @@ app.include_router(health.router, prefix=settings.API_V1_STR)
 app.include_router(auth.router, prefix=settings.API_V1_STR)
 app.include_router(users.router, prefix=settings.API_V1_STR)
 app.include_router(admin.router, prefix=settings.API_V1_STR)
+app.include_router(secure.router, prefix=settings.API_V1_STR)
