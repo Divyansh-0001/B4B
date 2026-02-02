@@ -1,5 +1,6 @@
 import asyncio
 import logging
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,7 +17,26 @@ def create_app() -> FastAPI:
     configure_logging()
     settings = get_settings()
 
-    app = FastAPI(title=settings.project_name)
+    @asynccontextmanager
+    async def lifespan(app: FastAPI):
+        try:
+            validate_settings(settings)
+        except Exception as exc:
+            logger.error("startup_validation_failed error=%s", exc)
+            raise
+
+        loop = asyncio.get_running_loop()
+        loop.set_exception_handler(_handle_async_exception)
+
+        if not settings.database_url:
+            logger.warning(
+                "database_unconfigured detail=BE4BREACH_DATABASE_URL not set"
+            )
+        logger.info("startup_complete environment=%s", settings.environment)
+
+        yield
+
+    app = FastAPI(title=settings.project_name, lifespan=lifespan)
     app.state.settings = settings
 
     register_exception_handlers(app)
@@ -35,23 +55,6 @@ def create_app() -> FastAPI:
         )
     else:
         logger.info("cors_disabled reason=no_allowed_origins_configured")
-
-    @app.on_event("startup")
-    async def startup_event() -> None:
-        try:
-            validate_settings(settings)
-        except Exception as exc:
-            logger.error("startup_validation_failed error=%s", exc)
-            raise
-
-        loop = asyncio.get_running_loop()
-        loop.set_exception_handler(_handle_async_exception)
-
-        if not settings.database_url:
-            logger.warning(
-                "database_unconfigured detail=BE4BREACH_DATABASE_URL not set"
-            )
-        logger.info("startup_complete environment=%s", settings.environment)
 
     @app.get("/health", tags=["health"])
     def health() -> dict:

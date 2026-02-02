@@ -7,9 +7,9 @@ requires-python = ">=3.11"
 dependencies = [
   "alembic",
   "authlib",
+  "bcrypt",
   "fastapi",
   "httpx",
-  "passlib[bcrypt]",
   "psycopg[binary]",
   "pydantic-settings",
   "python-jose[cryptography]",

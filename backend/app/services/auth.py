@@ -93,7 +93,15 @@ async def rotate_refresh_token(db: AsyncSession, refresh_token: str) -> dict:
     )
     stored = result.scalar_one_or_none()
     now = datetime.now(timezone.utc)
-    if not stored or stored.revoked_at is not None or stored.expires_at <= now:
+    if not stored:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="invalid_refresh_token"
+        )
+    stored_expires_at = stored.expires_at
+    if stored_expires_at.tzinfo is None:
+        stored_expires_at = stored_expires_at.replace(tzinfo=timezone.utc)
+    if stored.revoked_at is not None or stored_expires_at <= now:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="invalid_refresh_token"
