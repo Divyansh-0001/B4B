@@ -1,3 +1,85 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --surface: 0 0% 100%;
+    --elevated: 210 40% 99%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 35%;
+    --primary: 220 55% 20%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 197 74% 95%;
+    --secondary-foreground: 216 32% 17%;
+    --accent: 199 75% 88%;
+    --border: 214 32% 91%;
+    --ring: 212 80% 45%;
+    --shadow: 220 20% 20%;
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 18px;
+
+    --grid-gap: clamp(16px, 2vw, 24px);
+    --container-max: 1200px;
+    --font-sans: "Inter", "SF Pro Text", "SF Pro Display", "Segoe UI", "Helvetica Neue",
+      Arial, system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100%;
+    font-family: var(--font-sans);
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+}
+
+@layer utilities {
+  .layout-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(20px, 4vw, 40px);
+    padding-right: clamp(20px, 4vw, 40px);
+  }
+
+  .layout-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--grid-gap);
+  }
+
+  @media (max-width: 1024px) {
+    .layout-grid {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .layout-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+}
