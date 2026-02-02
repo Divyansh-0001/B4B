@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { AlertTriangle, DatabaseZap, Radar } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { AnimatedSection } from "@/components/animated-section";
@@ -48,7 +49,7 @@ const incidentQueue = [
   },
 ];
 
-export default function DashboardPage() {
+function DashboardContent() {
   const searchParams = useSearchParams();
   const { user } = useAuth();
 
@@ -145,5 +146,19 @@ export default function DashboardPage() {
         </AnimatedSection>
       </div>
     </ProtectedRoute>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <React.Suspense
+      fallback={
+        <div className="mx-auto flex min-h-[60vh] w-full max-w-4xl items-center justify-center px-6 py-16">
+          <div className="h-32 w-full max-w-md animate-pulse rounded-2xl border border-border/60 bg-card/70" />
+        </div>
+      }
+    >
+      <DashboardContent />
+    </React.Suspense>
   );
 }
