@@ -1,0 +1,20 @@
+{
+  "name": "be4breach-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Be4Breach Platform Monorepo",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "dev:backend": "cd backend && uvicorn app.main:app --reload",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && pip install -r requirements.txt"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
