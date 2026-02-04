@@ -1,105 +1,159 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Shield, Lock, Users, ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Shield, ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
+  // Animation variants with reduced-motion support
+  const containerVariants = {
+    initial: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.5,
+        staggerChildren: shouldReduceMotion ? 0 : 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    initial: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.8,
+        ease: [0.22, 1, 0.36, 1], // Custom easing for cinematic feel
+      },
+    },
+  };
+
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
+      {/* Radial gradient overlay for depth */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]" />
+      
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="mx-auto max-w-4xl text-center"
+        variants={containerVariants}
+        initial="initial"
+        animate="animate"
+        className="relative z-10 mx-auto max-w-5xl text-center"
       >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border-2 border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm"
-        >
-          <Shield className="h-4 w-4" />
-          <span>Enterprise Security Platform</span>
+        {/* Badge */}
+        <motion.div variants={itemVariants}>
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-black/40 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-md shadow-lg shadow-primary/20">
+            <Shield className="h-4 w-4 text-primary" />
+            <span>Trusted by Fortune 500 Companies</span>
+          </div>
         </motion.div>
 
+        {/* Main Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="mb-6 text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl"
+          variants={itemVariants}
+          className="mb-6 bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl xl:text-8xl"
         >
-          Be4Breach Platform
+          Enterprise-grade
+          <br />
+          <span className="bg-gradient-to-r from-primary via-red-500 to-primary bg-clip-text">
+            Cybersecurity Solutions
+          </span>
         </motion.h1>
 
+        {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="mb-12 text-xl text-gray-300 sm:text-2xl"
+          variants={itemVariants}
+          className="mb-12 text-xl leading-relaxed text-gray-300 sm:text-2xl lg:text-3xl"
         >
-          Advanced security monitoring with role-based access control,
-          <br />
-          OAuth2 authentication, and real-time threat detection.
+          Protect your digital world with{" "}
+          <span className="font-semibold text-white">holistic defense</span>
         </motion.p>
 
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="flex flex-wrap items-center justify-center gap-4"
+          variants={itemVariants}
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Button size="lg" className="group">
-            Get Started
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button size="lg" variant="outline" className="border-white bg-white/10 text-white backdrop-blur-sm hover:bg-white/20">
-            Learn More
-          </Button>
+          <Link href="/login">
+            <motion.div
+              whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+              whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+            >
+              <Button 
+                size="lg" 
+                className="group h-14 gap-2 px-8 text-base shadow-2xl shadow-primary/30"
+              >
+                Get Started
+                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
+          </Link>
+          
+          <Link href="#contact">
+            <motion.div
+              whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+              whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+            >
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="h-14 gap-2 border-white/20 bg-white/5 px-8 text-base text-white backdrop-blur-md hover:bg-white/10"
+              >
+                <Play className="h-5 w-5" />
+                Contact Us
+              </Button>
+            </motion.div>
+          </Link>
+        </motion.div>
+
+        {/* Trust indicators */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-16 flex flex-wrap items-center justify-center gap-8 opacity-60"
+        >
+          <div className="text-sm text-gray-400">
+            <span className="font-semibold text-white">256-bit</span> Encryption
+          </div>
+          <div className="h-4 w-px bg-gray-600" />
+          <div className="text-sm text-gray-400">
+            <span className="font-semibold text-white">SOC 2</span> Certified
+          </div>
+          <div className="h-4 w-px bg-gray-600" />
+          <div className="text-sm text-gray-400">
+            <span className="font-semibold text-white">24/7</span> Monitoring
+          </div>
         </motion.div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.8 }}
-        className="mt-24 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3"
-      >
-        <FeatureCard
-          icon={<Lock className="h-8 w-8" />}
-          title="JWT Authentication"
-          description="Secure token-based authentication with OAuth2 SSO support"
-        />
-        <FeatureCard
-          icon={<Users className="h-8 w-8" />}
-          title="Role-Based Access"
-          description="Granular permissions for Admin, Client, and User roles"
-        />
-        <FeatureCard
-          icon={<Shield className="h-8 w-8" />}
-          title="Real-Time Security"
-          description="Monitor and respond to threats in real-time"
-        />
-      </motion.div>
+      {/* Floating particles effect (subtle, GPU-optimized) */}
+      <div className="pointer-events-none absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-primary/30"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={shouldReduceMotion ? {} : {
+              y: [0, -30, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Bottom fade */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
     </div>
-  );
-}
-
-interface FeatureCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-function FeatureCard({ icon, title, description }: FeatureCardProps) {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      className="rounded-lg bg-white/5 p-6 backdrop-blur-sm transition-all hover:bg-white/10"
-    >
-      <div className="mb-4 text-primary">{icon}</div>
-      <h3 className="mb-2 text-xl font-semibold text-white">{title}</h3>
-      <p className="text-gray-400">{description}</p>
-    </motion.div>
   );
 }
