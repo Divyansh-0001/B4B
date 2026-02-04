@@ -6,8 +6,10 @@ import { Hero } from "@/components/Hero";
 import { Section } from "@/components/layout/Section";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
 import { Button } from "@/components/ui/button";
-import { H2, H3, Lead, Muted } from "@/components/ui/typography";
+import { H2, H3, Lead, Muted, P } from "@/components/ui/typography";
 import { StaggerChildren, StaggerItem } from "@/components/ui/StaggerChildren";
+import { TestimonialCarousel, Testimonial } from "@/components/ui/TestimonialCarousel";
+import { ClientLogos } from "@/components/ClientLogos";
 import { Footer } from "@/components/layout/Footer";
 import { 
   Shield, 
@@ -26,6 +28,31 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+  // Testimonials - Add real testimonials here
+  const testimonials: Testimonial[] = [
+    {
+      id: 1,
+      quote: "Organizations of all sizes rely on Be4Breach for comprehensive security products and services that protect their digital infrastructure.",
+      author: "Security Director",
+      role: "Chief Information Security Officer",
+      company: "Enterprise Client"
+    },
+    {
+      id: 2,
+      quote: "Be4Breach provides exceptional penetration testing services with detailed reporting and actionable recommendations that significantly improved our security posture.",
+      author: "IT Manager",
+      role: "Head of IT Security",
+      company: "Technology Company"
+    },
+    {
+      id: 3,
+      quote: "Their cloud security expertise helped us migrate to the cloud safely and cost-effectively while maintaining the highest security standards.",
+      author: "CTO",
+      role: "Chief Technology Officer",
+      company: "SaaS Provider"
+    }
+  ];
+
   const services = [
     {
       icon: Globe,
@@ -155,6 +182,26 @@ export default function Home() {
               </AnimatedCard.Description>
             </AnimatedCard.Header>
           </AnimatedCard>
+        </div>
+      </Section>
+
+      {/* Client Trust Section */}
+      <Section className="bg-background">
+        <div className="text-center">
+          <H2 className="mb-4">Trusted by Organizations Worldwide</H2>
+          <P className="mx-auto max-w-2xl text-muted-foreground">
+            Organizations of all sizes rely on Be4Breach for security products and services
+          </P>
+        </div>
+
+        {/* Client Logos */}
+        <div className="mt-12">
+          <ClientLogos />
+        </div>
+
+        {/* Testimonials */}
+        <div className="mt-16">
+          <TestimonialCarousel testimonials={testimonials} />
         </div>
       </Section>
 
