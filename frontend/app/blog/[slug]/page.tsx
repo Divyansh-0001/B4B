@@ -1,5 +1,3 @@
-"use client";
-
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";

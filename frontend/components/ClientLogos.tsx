@@ -51,6 +51,7 @@ export function ClientLogos({ clients }: ClientLogosProps) {
             className="flex items-center justify-center"
           >
             {client.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={client.logo}
                 alt={client.name}
