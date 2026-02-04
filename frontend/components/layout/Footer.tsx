@@ -16,10 +16,13 @@ export function Footer() {
               <div className="rounded-lg bg-primary p-2">
                 <Shield className="h-5 w-5 text-white" />
               </div>
-              <span className="text-lg font-bold text-white">Be4Breach Platform</span>
+              <span className="text-lg font-bold text-white">Be4Breach</span>
             </div>
+            <p className="mb-2 text-sm text-gray-400">
+              Young, ambitious leader in penetration testing, cloud security, and next-gen cybersecurity services.
+            </p>
             <p className="mb-4 text-sm text-gray-400">
-              Enterprise security platform with role-based access control and advanced threat detection.
+              Headquartered in Pune, India · Serving clients globally
             </p>
             <div className="flex gap-4">
               <a
@@ -27,6 +30,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 transition-colors hover:text-white"
+                aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -35,6 +39,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 transition-colors hover:text-white"
+                aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
               </a>
@@ -43,29 +48,35 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 transition-colors hover:text-white"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Links */}
+          {/* Services */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-white">Product</h3>
+            <h3 className="mb-4 text-sm font-semibold text-white">Services</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-sm text-gray-400 hover:text-white">
-                  Features
+                  Penetration Testing
                 </Link>
               </li>
               <li>
                 <Link href="/" className="text-sm text-gray-400 hover:text-white">
-                  Pricing
+                  Cloud Security
                 </Link>
               </li>
               <li>
                 <Link href="/" className="text-sm text-gray-400 hover:text-white">
-                  Documentation
+                  Threat Intelligence
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="text-sm text-gray-400 hover:text-white">
+                  Security Consulting
                 </Link>
               </li>
             </ul>
@@ -76,18 +87,23 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-semibold text-white">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-sm text-gray-400 hover:text-white">
-                  About
+                <Link href="/about" className="text-sm text-gray-400 hover:text-white">
+                  About Us
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-sm text-gray-400 hover:text-white">
+                <Link href="/login" className="text-sm text-gray-400 hover:text-white">
+                  Client Portal
+                </Link>
+              </li>
+              <li>
+                <Link href="#contact" className="text-sm text-gray-400 hover:text-white">
                   Contact
                 </Link>
               </li>
               <li>
                 <Link href="/" className="text-sm text-gray-400 hover:text-white">
-                  Privacy
+                  Privacy Policy
                 </Link>
               </li>
             </ul>
@@ -97,7 +113,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-8 border-t border-white/10 pt-8">
           <p className="text-center text-sm text-gray-400">
-            &copy; {currentYear} Be4Breach Platform. All rights reserved.
+            &copy; {currentYear} Be4Breach. All rights reserved. · Pune, India
           </p>
         </div>
       </div>

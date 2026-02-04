@@ -47,7 +47,7 @@ export function Hero() {
         <motion.div variants={itemVariants}>
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-black/40 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-md shadow-lg shadow-primary/20">
             <Shield className="h-4 w-4 text-primary" />
-            <span>Trusted by Fortune 500 Companies</span>
+            <span>Pune, India · Global Cybersecurity Leader</span>
           </div>
         </motion.div>
 
@@ -56,10 +56,10 @@ export function Hero() {
           variants={itemVariants}
           className="mb-6 bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl xl:text-8xl"
         >
-          Enterprise-grade
+          Next-Gen
           <br />
           <span className="bg-gradient-to-r from-primary via-red-500 to-primary bg-clip-text">
-            Cybersecurity Solutions
+            Cybersecurity Services
           </span>
         </motion.h1>
 
@@ -68,8 +68,9 @@ export function Hero() {
           variants={itemVariants}
           className="mb-12 text-xl leading-relaxed text-gray-300 sm:text-2xl lg:text-3xl"
         >
-          Protect your digital world with{" "}
-          <span className="font-semibold text-white">holistic defense</span>
+          Penetration Testing · Cloud Security · Threat Intelligence
+          <br />
+          <span className="font-semibold text-white">Predict. Protect. Engineer.</span>
         </motion.p>
 
         {/* CTAs */}
@@ -115,15 +116,15 @@ export function Hero() {
           className="mt-16 flex flex-wrap items-center justify-center gap-8 opacity-60"
         >
           <div className="text-sm text-gray-400">
-            <span className="font-semibold text-white">256-bit</span> Encryption
+            <span className="font-semibold text-white">Penetration</span> Testing
           </div>
           <div className="h-4 w-px bg-gray-600" />
           <div className="text-sm text-gray-400">
-            <span className="font-semibold text-white">SOC 2</span> Certified
+            <span className="font-semibold text-white">Cloud</span> Security
           </div>
           <div className="h-4 w-px bg-gray-600" />
           <div className="text-sm text-gray-400">
-            <span className="font-semibold text-white">24/7</span> Monitoring
+            <span className="font-semibold text-white">24/7</span> Support
           </div>
         </motion.div>
       </motion.div>
