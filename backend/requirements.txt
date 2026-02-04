@@ -30,3 +30,10 @@ python-json-logger==3.2.1
 
 # Monitoring
 psutil==6.1.1
+
+# Rate Limiting
+slowapi==0.1.9
+
+# Security
+python-multipart==0.0.18
+bleach==6.2.0

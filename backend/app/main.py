@@ -9,9 +9,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import settings
 from app.core.logging import configure_logging, get_logger
 from app.core.middleware import ErrorHandlerMiddleware, LoggingMiddleware
+from app.core.security_headers import SecurityHeadersMiddleware
+from app.core.rate_limit import limiter
 from app.core.health import check_database, get_health_response
 from app.db.session import init_db, get_db
 from app.api import auth, users
+from app.services.role import RoleService
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 
 # Configure logging first
 configure_logging()
@@ -26,8 +31,16 @@ async def lifespan(app: FastAPI):
     try:
         await init_db()
         logger.info("database_initialized")
+        
+        # Ensure default roles exist
+        from app.db.session import AsyncSessionLocal
+        async with AsyncSessionLocal() as db:
+            await RoleService.ensure_default_roles(db)
+            await db.commit()
+        logger.info("default_roles_ensured")
+        
     except Exception as e:
-        logger.error("database_initialization_failed", error=str(e), exc_info=True)
+        logger.error("startup_initialization_failed", error=str(e), exc_info=True)
         # Don't crash - continue with degraded functionality
     
     yield
@@ -46,9 +59,14 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# Add rate limiting
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 # Add custom middleware (order matters - last added = first executed)
-app.add_middleware(ErrorHandlerMiddleware)  # Catches all errors
-app.add_middleware(LoggingMiddleware)       # Logs requests
+app.add_middleware(SecurityHeadersMiddleware)  # Add security headers
+app.add_middleware(ErrorHandlerMiddleware)     # Catches all errors
+app.add_middleware(LoggingMiddleware)          # Logs requests
 
 # Set up CORS
 app.add_middleware(

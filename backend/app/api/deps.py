@@ -1,6 +1,6 @@
 """API dependencies."""
 
-from typing import Annotated
+from typing import Annotated, List
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -12,3 +12,10 @@ from app.models.user import User
 DBSession = Annotated[AsyncSession, Depends(get_db)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 CurrentSuperUser = Annotated[User, Depends(get_current_active_superuser)]
+
+
+async def get_current_user_with_roles(user: CurrentUser) -> User:
+    """Get current user and populate roles list."""
+    # Extract role names from user_roles relationship
+    user.roles = [ur.role.name for ur in user.user_roles]
+    return user

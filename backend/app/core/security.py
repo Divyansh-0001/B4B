@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import settings
 from app.db.session import get_db
 from app.models.user import User
+from app.models.user_role import UserRole
 from app.schemas.token import TokenPayload
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -93,6 +94,7 @@ async def get_current_user(
 ) -> User:
     """Get the current authenticated user."""
     from sqlalchemy import select
+    from sqlalchemy.orm import selectinload
 
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -104,7 +106,12 @@ async def get_current_user(
     if token_data.sub is None:
         raise credentials_exception
 
-    result = await db.execute(select(User).filter(User.id == int(token_data.sub)))
+    # Eagerly load user roles
+    result = await db.execute(
+        select(User)
+        .options(selectinload(User.user_roles).selectinload(UserRole.role))
+        .filter(User.id == int(token_data.sub))
+    )
     user = result.scalar_one_or_none()
 
     if user is None:
@@ -121,9 +128,15 @@ async def get_current_user(
 
 async def get_current_active_superuser(
     current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
 ) -> User:
     """Get the current user and verify they are a superuser."""
-    if current_user.role != "admin":
+    from app.services.role import RoleService
+    
+    # Check if user has admin role
+    is_admin = await RoleService.user_has_role(db, current_user.id, "admin")
+    
+    if not is_admin:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="The user doesn't have enough privileges"

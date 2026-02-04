@@ -1,8 +1,8 @@
 """Authentication API routes."""
 
-from datetime import timedelta
+from datetime import timedelta, datetime, timezone
 from typing import Any
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, HTTPException, status, Depends, Request
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.responses import RedirectResponse
 import secrets
@@ -11,10 +11,13 @@ from app.core.config import settings
 from app.core.security import create_access_token, create_refresh_token, decode_access_token
 from app.core.logging import get_logger
 from app.core.exceptions import AuthenticationError, ValidationError
+from app.core.rate_limit import limiter
+from app.core.sanitization import sanitize_email, validate_password_strength
 from app.schemas.token import Token, TokenRefresh
 from app.schemas.user import UserCreate, User as UserSchema
 from app.services.user import UserService
 from app.services.auth import google_oauth_service
+from app.services.audit import AuditService
 from app.api.deps import DBSession
 
 router = APIRouter()
@@ -25,13 +28,41 @@ oauth_states = {}
 
 
 @router.post("/register", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
-async def register(user_create: UserCreate, db: DBSession) -> Any:
-    """Register a new user."""
+@limiter.limit("5/minute")  # Rate limit: 5 registrations per minute per IP
+async def register(request: Request, user_create: UserCreate, db: DBSession) -> Any:
+    """Register a new user with rate limiting and input validation."""
+    ip_address, user_agent = AuditService.get_request_info(request)
+    
     try:
+        # Sanitize and validate email
+        user_create.email = sanitize_email(user_create.email)
+        
+        # Validate password strength
+        is_valid, error_msg = validate_password_strength(user_create.password)
+        if not is_valid:
+            await AuditService.log_action(
+                db, "register", "failure",
+                details={"email": user_create.email, "reason": "weak_password"},
+                error_message=error_msg,
+                ip_address=ip_address,
+                user_agent=user_agent
+            )
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=error_msg
+            )
+        
         # Check if user exists
         user = await UserService.get_by_email(db, user_create.email)
         if user:
             logger.warning("registration_failed_duplicate_email", email=user_create.email)
+            await AuditService.log_action(
+                db, "register", "failure",
+                details={"email": user_create.email},
+                error_message="Email already registered",
+                ip_address=ip_address,
+                user_agent=user_agent
+            )
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Email already registered"
@@ -39,7 +70,20 @@ async def register(user_create: UserCreate, db: DBSession) -> Any:
         
         # Create user
         user = await UserService.create(db, user_create)
-        logger.info("user_registered", user_id=user.id, email=user.email, role=user.role)
+        
+        # Log successful registration
+        await AuditService.log_action(
+            db, "register", "success",
+            user_id=user.id,
+            resource_type="user",
+            resource_id=user.id,
+            details={"email": user.email},
+            ip_address=ip_address,
+            user_agent=user_agent
+        )
+        
+        await db.commit()
+        logger.info("user_registered", user_id=user.id, email=user.email)
         return user
         
     except HTTPException:
@@ -53,16 +97,31 @@ async def register(user_create: UserCreate, db: DBSession) -> Any:
 
 
 @router.post("/login", response_model=Token)
+@limiter.limit("10/minute")  # Rate limit: 10 login attempts per minute per IP
 async def login(
+    request: Request,
     db: DBSession,
     form_data: OAuth2PasswordRequestForm = Depends()
 ) -> Any:
-    """Login with email and password. Returns access and refresh tokens."""
+    """Login with email and password. Returns access and refresh tokens with rate limiting."""
+    ip_address, user_agent = AuditService.get_request_info(request)
+    
     try:
-        user = await UserService.authenticate(db, form_data.username, form_data.password)
+        # Sanitize email
+        email = sanitize_email(form_data.username)
+        
+        user = await UserService.authenticate(db, email, form_data.password)
         
         if not user:
-            logger.warning("login_failed_invalid_credentials", email=form_data.username)
+            logger.warning("login_failed_invalid_credentials", email=email)
+            await AuditService.log_action(
+                db, "login", "failure",
+                details={"email": email},
+                error_message="Invalid credentials",
+                ip_address=ip_address,
+                user_agent=user_agent
+            )
+            await db.commit()
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Incorrect email or password",
@@ -71,10 +130,22 @@ async def login(
         
         if not user.is_active:
             logger.warning("login_failed_inactive_user", user_id=user.id)
+            await AuditService.log_action(
+                db, "login", "failure",
+                user_id=user.id,
+                details={"email": email},
+                error_message="Inactive user",
+                ip_address=ip_address,
+                user_agent=user_agent
+            )
+            await db.commit()
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Inactive user"
             )
+        
+        # Update last login
+        user.last_login_at = datetime.now(timezone.utc)
         
         # Create tokens
         access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -89,6 +160,16 @@ async def login(
             expires_delta=refresh_token_expires
         )
         
+        # Log successful login
+        await AuditService.log_action(
+            db, "login", "success",
+            user_id=user.id,
+            details={"email": user.email},
+            ip_address=ip_address,
+            user_agent=user_agent
+        )
+        
+        await db.commit()
         logger.info("user_logged_in", user_id=user.id, email=user.email)
         
         return {
