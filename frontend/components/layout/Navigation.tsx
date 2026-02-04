@@ -20,6 +20,7 @@ const links: NavigationLink[] = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
   { href: "/dashboard", label: "Dashboard", requiresAuth: true },
   { href: "/login", label: "Client Portal" },
 ];
