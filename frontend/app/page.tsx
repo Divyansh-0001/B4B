@@ -1,45 +1,66 @@
 "use client";
 
+import Link from "next/link";
 import { VideoBackground } from "@/components/VideoBackground";
 import { Hero } from "@/components/Hero";
 import { Section } from "@/components/layout/Section";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
+import { Button } from "@/components/ui/button";
 import { H2, H3, Lead, Muted } from "@/components/ui/typography";
 import { StaggerChildren, StaggerItem } from "@/components/ui/StaggerChildren";
 import { Footer } from "@/components/layout/Footer";
-import { Shield, Lock, Users, Zap, Eye, Database } from "lucide-react";
+import { 
+  Shield, 
+  Lock, 
+  Users, 
+  Zap, 
+  Eye, 
+  Database,
+  Globe,
+  Target,
+  Cloud,
+  Cpu,
+  Smartphone,
+  Mail,
+  ArrowRight
+} from "lucide-react";
 
 export default function Home() {
   const services = [
     {
-      icon: Shield,
+      icon: Globe,
       title: "Penetration Testing",
-      description: "Comprehensive security assessments to identify vulnerabilities before attackers do",
+      description: "Be4Breach conducts web, cloud, mobile, network, IoT, and wireless penetration tests to find vulnerabilities before attackers do.",
     },
     {
-      icon: Database,
+      icon: Target,
+      title: "Breach Impact Analysis",
+      description: "Assess enterprise security posture against real-world adversaries.",
+    },
+    {
+      icon: Cloud,
       title: "Cloud Security",
-      description: "Secure your cloud infrastructure with advanced protection and compliance",
+      description: "Ensure scalable cloud infrastructure protection, reduce risks and costs.",
     },
     {
-      icon: Eye,
-      title: "Threat Intelligence",
-      description: "Predict and prevent sophisticated attacks with next-gen threat analysis",
+      icon: Cpu,
+      title: "SCADA/OT Penetration Testing",
+      description: "Simulate attacks on industrial control systems to find vulnerabilities and improve compliance.",
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile App Penetration Testing",
+      description: "Identify and fix vulnerabilities in mobile applications and devices using standard frameworks like OWASP MASTG.",
+    },
+    {
+      icon: Mail,
+      title: "Phishing Simulation",
+      description: "AI-driven phishing awareness simulations and reporting to build human firewalls.",
     },
     {
       icon: Lock,
       title: "Security Engineering",
-      description: "Custom security solutions engineered for your specific needs",
-    },
-    {
-      icon: Zap,
-      title: "Incident Response",
-      description: "Rapid response to security incidents with expert guidance and remediation",
-    },
-    {
-      icon: Users,
-      title: "Security Consulting",
-      description: "Strategic security planning and long-term collaboration for robust protection",
+      description: "Design and deploy measures that protect systems from unauthorized access.",
     },
   ];
 
@@ -77,17 +98,17 @@ export default function Home() {
         </div>
         
         <StaggerChildren className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
+          {services.slice(0, 6).map((service, index) => (
             <StaggerItem key={index}>
-              <AnimatedCard className="h-full">
+              <AnimatedCard className="group h-full border-t-4 border-primary/50 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
                 <AnimatedCard.Header>
-                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
                     <service.icon className="h-6 w-6 text-primary" />
                   </div>
                   <AnimatedCard.Title className="text-lg">
                     {service.title}
                   </AnimatedCard.Title>
-                  <AnimatedCard.Description className="mt-2">
+                  <AnimatedCard.Description className="mt-2 text-sm leading-relaxed">
                     {service.description}
                   </AnimatedCard.Description>
                 </AnimatedCard.Header>
@@ -95,6 +116,15 @@ export default function Home() {
             </StaggerItem>
           ))}
         </StaggerChildren>
+
+        <div className="mt-8 text-center">
+          <Link href="/services">
+            <Button size="lg" variant="outline">
+              View All Services
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
       </Section>
 
       {/* Mission & Vision */}

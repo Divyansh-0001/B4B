@@ -18,6 +18,7 @@ interface NavigationLink {
 const links: NavigationLink[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
   { href: "/dashboard", label: "Dashboard", requiresAuth: true },
   { href: "/login", label: "Client Portal" },
 ];
