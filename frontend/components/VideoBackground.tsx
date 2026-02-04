@@ -9,7 +9,7 @@ interface VideoBackgroundProps {
 
 export function VideoBackground({
   videoSrc,
-  fallbackColor = "from-blue-950 via-slate-900 to-black",
+  fallbackColor = "from-neutral-900 via-neutral-950 to-black",
 }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasVideo, setHasVideo] = useState(!!videoSrc);

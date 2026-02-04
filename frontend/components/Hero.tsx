@@ -17,7 +17,7 @@ export function Hero() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm"
+          className="mb-8 inline-flex items-center gap-2 rounded-full border-2 border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm"
         >
           <Shield className="h-4 w-4" />
           <span>Enterprise Security Platform</span>
@@ -53,7 +53,7 @@ export function Hero() {
             Get Started
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
-          <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm hover:bg-white/20">
+          <Button size="lg" variant="outline" className="border-white bg-white/10 text-white backdrop-blur-sm hover:bg-white/20">
             Learn More
           </Button>
         </motion.div>
