@@ -24,5 +24,9 @@ pydantic==2.10.5
 pydantic-settings==2.7.1
 email-validator==2.2.0
 
-# CORS
-fastapi-cors==0.0.6
+# Logging
+structlog==24.4.0
+python-json-logger==3.2.1
+
+# Monitoring
+psutil==6.1.1
