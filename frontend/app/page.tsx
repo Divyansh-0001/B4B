@@ -205,6 +205,93 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* Latest Blog Posts */}
+      <Section className="bg-background">
+        <div className="text-center">
+          <H2 className="mb-4">Latest Insights</H2>
+          <Muted className="mx-auto max-w-2xl">
+            Expert security insights and best practices from the Be4Breach team
+          </Muted>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatedCard className="group border-l-4 border-primary/50 hover:border-primary">
+            <AnimatedCard.Header>
+              <div className="mb-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary w-fit">
+                Data Security
+              </div>
+              <H3 className="mt-3 text-lg group-hover:text-primary transition-colors">
+                Five Measures Tech Firms Can Take to Halt Data Breaches
+              </H3>
+              <Muted className="mt-2 text-sm">
+                Critical security measures to prevent unauthorized access and protect sensitive data
+              </Muted>
+            </AnimatedCard.Header>
+            <AnimatedCard.Footer>
+              <Link href="/blog/halt-data-breaches" className="w-full">
+                <Button variant="ghost" size="sm" className="w-full group/btn">
+                  Read Article
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                </Button>
+              </Link>
+            </AnimatedCard.Footer>
+          </AnimatedCard>
+
+          <AnimatedCard className="group border-l-4 border-primary/50 hover:border-primary">
+            <AnimatedCard.Header>
+              <div className="mb-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary w-fit">
+                Cloud Technology
+              </div>
+              <H3 className="mt-3 text-lg group-hover:text-primary transition-colors">
+                Docker&apos;s Five Most Unusual and Amazing Use Cases
+              </H3>
+              <Muted className="mt-2 text-sm">
+                Innovative ways organizations leverage Docker beyond traditional containerization
+              </Muted>
+            </AnimatedCard.Header>
+            <AnimatedCard.Footer>
+              <Link href="/blog/docker-use-cases" className="w-full">
+                <Button variant="ghost" size="sm" className="w-full group/btn">
+                  Read Article
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                </Button>
+              </Link>
+            </AnimatedCard.Footer>
+          </AnimatedCard>
+
+          <AnimatedCard className="group border-l-4 border-primary/50 hover:border-primary">
+            <AnimatedCard.Header>
+              <div className="mb-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary w-fit">
+                Cloud Security
+              </div>
+              <H3 className="mt-3 text-lg group-hover:text-primary transition-colors">
+                Critical PAM Controls for Modern Cloud Environments
+              </H3>
+              <Muted className="mt-2 text-sm">
+                Essential Privileged Access Management controls for securing cloud infrastructure
+              </Muted>
+            </AnimatedCard.Header>
+            <AnimatedCard.Footer>
+              <Link href="/blog/pam-controls-cloud" className="w-full">
+                <Button variant="ghost" size="sm" className="w-full group/btn">
+                  Read Article
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                </Button>
+              </Link>
+            </AnimatedCard.Footer>
+          </AnimatedCard>
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link href="/blog">
+            <Button size="lg" variant="outline">
+              View All Articles
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
+      </Section>
+
       {/* Core Values */}
       <Section className="bg-gradient-to-br from-neutral-950 via-neutral-900 to-black text-white">
         <div className="text-center">
