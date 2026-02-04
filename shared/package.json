@@ -1,0 +1,11 @@
+{
+  "name": "@be4breach/shared",
+  "version": "0.1.0",
+  "description": "Shared types and constants for Be4Breach Platform",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
