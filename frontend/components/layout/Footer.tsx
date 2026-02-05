@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Shield, Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Twitter, Linkedin } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,11 +13,8 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="mb-4 flex items-center gap-2">
-              <div className="rounded-lg bg-primary p-2">
-                <Shield className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-lg font-bold text-white">Be4Breach</span>
+            <div className="mb-4">
+              <Logo width={140} height={42} />
             </div>
             <p className="mb-2 text-sm text-gray-400">
               Young, ambitious leader in penetration testing, cloud security, and next-gen cybersecurity services.

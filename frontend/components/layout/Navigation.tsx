@@ -4,8 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/Logo";
 import { useAuth } from "@/lib/auth/context";
 import { cn } from "@/lib/utils";
 
@@ -45,11 +46,9 @@ export function Navigation() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="rounded-lg bg-primary p-2"
             >
-              <Shield className="h-5 w-5 text-white" />
+              <Logo width={140} height={42} />
             </motion.div>
-            <span className="text-lg font-bold text-white">Be4Breach</span>
           </Link>
 
           {/* Desktop Navigation */}

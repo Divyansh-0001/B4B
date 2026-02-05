@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Mail, Lock, AlertCircle, Loader2, Chrome } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/Logo";
 import { useAuth } from "@/lib/auth/context";
 
 function LoginContent() {
@@ -74,11 +75,8 @@ function LoginContent() {
           className="mb-8 text-center"
         >
           <div className="mb-4 flex justify-center">
-            <div className="rounded-2xl bg-primary/10 p-4 backdrop-blur-sm">
-              <div className="h-12 w-12 rounded-xl bg-primary" />
-            </div>
+            <Logo width={200} height={60} />
           </div>
-          <h1 className="text-3xl font-bold text-white">Be4Breach Platform</h1>
           <p className="mt-2 text-sm text-gray-400">
             Enterprise Security Management
           </p>

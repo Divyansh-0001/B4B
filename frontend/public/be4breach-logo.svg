@@ -1,0 +1,18 @@
+<svg width="335" height="140" viewBox="0 0 335 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield with red fill -->
+  <path d="M60 20L30 35V70C30 90 45 105 60 110C75 105 90 90 90 70V35L60 20Z" fill="#E10600"/>
+  <path d="M60 25L35 37V70C35 88 48 100 60 105C72 100 85 88 85 70V37L60 25Z" stroke="black" stroke-width="2"/>
+  
+  <!-- Orbital ring -->
+  <ellipse cx="60" cy="65" rx="45" ry="20" stroke="black" stroke-width="3" fill="none" transform="rotate(-20 60 65)"/>
+  
+  <!-- Be4Breach text -->
+  <text x="120" y="75" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="black">
+    Be4<tspan fill="#E10600">Breach</tspan>
+  </text>
+  
+  <!-- Tagline -->
+  <text x="120" y="95" font-family="Arial, sans-serif" font-size="14" fill="#666">
+    Your Security, Our <tspan fill="#E10600">Passion</tspan>
+  </text>
+</svg>
