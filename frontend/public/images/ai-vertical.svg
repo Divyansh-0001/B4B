@@ -1,0 +1,41 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#0A0A0A"/>
+  
+  <!-- Brain/Neural network -->
+  <g transform="translate(100, 80)">
+    <!-- Brain outline -->
+    <ellipse cx="150" cy="120" rx="90" ry="80" stroke="#E10600" stroke-width="3" fill="none" opacity="0.8"/>
+    
+    <!-- Neural nodes -->
+    <circle cx="120" cy="80" r="6" fill="#E10600"/>
+    <circle cx="180" cy="80" r="6" fill="#E10600"/>
+    <circle cx="100" cy="120" r="6" fill="#E10600"/>
+    <circle cx="150" cy="100" r="6" fill="#E10600"/>
+    <circle cx="200" cy="120" r="6" fill="#E10600"/>
+    <circle cx="120" cy="160" r="6" fill="#E10600"/>
+    <circle cx="180" cy="160" r="6" fill="#E10600"/>
+    
+    <!-- Connections -->
+    <line x1="120" y1="80" x2="150" y2="100" stroke="#FFFFFF" stroke-width="2" opacity="0.4"/>
+    <line x1="180" y1="80" x2="150" y2="100" stroke="#FFFFFF" stroke-width="2" opacity="0.4"/>
+    <line x1="150" y1="100" x2="100" y2="120" stroke="#FFFFFF" stroke-width="2" opacity="0.4"/>
+    <line x1="150" y1="100" x2="200" y2="120" stroke="#FFFFFF" stroke-width="2" opacity="0.4"/>
+    <line x1="100" y1="120" x2="120" y2="160" stroke="#FFFFFF" stroke-width="2" opacity="0.4"/>
+    <line x1="200" y1="120" x2="180" y2="160" stroke="#FFFFFF" stroke-width="2" opacity="0.4"/>
+    
+    <!-- AI chip -->
+    <rect x="130" y="135" width="40" height="40" rx="4" fill="#E10600" opacity="0.2" stroke="#E10600" stroke-width="2"/>
+    <text x="150" y="162" font-family="monospace" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">AI</text>
+  </g>
+  
+  <!-- Text -->
+  <text x="320" y="160" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFFFFF">
+    AI <tspan fill="#E10600">Solutions</tspan>
+  </text>
+  <text x="320" y="200" font-family="Arial, sans-serif" font-size="24" fill="#999999">
+    Secure AI Engineering
+  </text>
+  
+  <!-- Red accent line -->
+  <rect x="320" y="220" width="100" height="4" fill="#E10600"/>
+</svg>

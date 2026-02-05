@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme - WHITE backgrounds with RED accents */
+    --background: 0 0% 100%;          /* Pure White #FFFFFF */
+    --foreground: 0 0% 15%;            /* Dark Charcoal for text */
+    
+    --card: 0 0% 100%;                 /* White */
+    --card-foreground: 0 0% 15%;       /* Dark Charcoal */
+    
+    --popover: 0 0% 100%;              /* White */
+    --popover-foreground: 0 0% 15%;    /* Dark Charcoal */
+    
+    --primary: 2 100% 44%;             /* RED #E10600 */
+    --primary-foreground: 0 0% 100%;   /* White text on RED */
+    
+    --secondary: 0 0% 96%;             /* Light Gray (near white) */
+    --secondary-foreground: 0 0% 15%;  /* Dark Charcoal */
+    
+    --muted: 0 0% 96%;                 /* Light Gray */
+    --muted-foreground: 0 0% 40%;      /* Medium Gray */
+    
+    --accent: 2 100% 44%;              /* RED accent */
+    --accent-foreground: 0 0% 100%;    /* White */
+    
+    --destructive: 2 100% 44%;         /* RED for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White */
+    
+    --border: 0 0% 90%;                /* Light Gray border */
+    --input: 0 0% 90%;                 /* Light Gray input border */
+    --ring: 2 100% 44%;                /* RED focus ring */
+    
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark theme - CHARCOAL backgrounds with RED accents */
+    --background: 0 0% 12%;            /* Dark Charcoal #1F1F1F */
+    --foreground: 0 0% 100%;           /* White text */
+    
+    --card: 0 0% 15%;                  /* Charcoal Card */
+    --card-foreground: 0 0% 100%;      /* White */
+    
+    --popover: 0 0% 15%;               /* Charcoal */
+    --popover-foreground: 0 0% 100%;   /* White */
+    
+    --primary: 2 100% 44%;             /* RED #E10600 */
+    --primary-foreground: 0 0% 100%;   /* White */
+    
+    --secondary: 0 0% 20%;             /* Dark Gray */
+    --secondary-foreground: 0 0% 100%; /* White */
+    
+    --muted: 0 0% 20%;                 /* Dark Gray */
+    --muted-foreground: 0 0% 70%;      /* Light Gray */
+    
+    --accent: 2 100% 44%;              /* RED accent */
+    --accent-foreground: 0 0% 100%;    /* White */
+    
+    --destructive: 2 100% 50%;         /* Slightly brighter RED */
+    --destructive-foreground: 0 0% 100%; /* White */
+    
+    --border: 0 0% 25%;                /* Dark border */
+    --input: 0 0% 25%;                 /* Dark input border */
+    --ring: 2 100% 44%;                /* RED focus ring */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
