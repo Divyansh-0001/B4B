@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { VideoBackground } from "@/components/VideoBackground";
 import { Hero } from "@/components/Hero";
+import { CoreVerticalsShowcase } from "@/components/sections/CoreVerticalsShowcase";
 import { Section } from "@/components/layout/Section";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
 import { Button } from "@/components/ui/button";
@@ -98,6 +99,9 @@ export default function Home() {
         <VideoBackground redOverlay />
         <Hero />
       </div>
+
+      {/* Core Verticals Showcase */}
+      <CoreVerticalsShowcase />
       
       {/* About Section */}
       <Section className="bg-background">
