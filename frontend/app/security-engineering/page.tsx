@@ -31,8 +31,10 @@ export default function SecurityEngineeringPage() {
       <Section>
         <Container size="lg">
           <P className="mb-12 text-center text-lg leading-relaxed text-muted-foreground">
-            Build robust security architectures from the ground up with defense-in-depth strategies, 
-            zero-trust principles, and modern security engineering practices.
+            Security engineering embeds protection into systems during design rather than bolting it on afterward. 
+            We help organizations architect security controls that scale with business growth, implement zero-trust 
+            principles that assume breach, and build infrastructure where security failures require multiple 
+            simultaneous control breakdowns—not just one mistake.
           </P>
 
           <div className="grid gap-8 md:grid-cols-2">

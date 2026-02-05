@@ -86,7 +86,8 @@ export default function ContactPage() {
           <FadeIn direction="up" className="text-center">
             <H1 className="mb-6 text-white">Get In Touch</H1>
             <Lead className="text-gray-300">
-              Have questions about our services? We&apos;re here to help secure your digital assets
+              Discuss your security requirements with our team. We respond to all inquiries 
+              within one business day.
             </Lead>
           </FadeIn>
         </Container>
@@ -173,7 +174,7 @@ export default function ContactPage() {
                   <AnimatedCard.Header>
                     <H2>Send Us a Message</H2>
                     <Muted>
-                      Fill out the form below and we&apos;ll get back to you within 24 hours
+                      Describe your security requirements and we&apos;ll respond within one business day
                     </Muted>
                   </AnimatedCard.Header>
 

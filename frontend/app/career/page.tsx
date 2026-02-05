@@ -25,7 +25,8 @@ export default function CareerPage() {
               Build the Future of Cybersecurity
             </H1>
             <Lead className="text-gray-300">
-              Innovation, efficiency, and adaptability drive our culture at Be4Breach
+              Join a team where technical depth matters, continuous learning is expected, 
+              and security expertise directly protects real organizations
             </Lead>
           </FadeIn>
         </Container>
@@ -36,9 +37,10 @@ export default function CareerPage() {
           <div className="mb-12 text-center">
             <H2 className="mb-6">Why Join Be4Breach</H2>
             <P className="mx-auto max-w-3xl leading-relaxed text-muted-foreground">
-              At Be4Breach, we believe talent drives innovation. Our work culture emphasizes continuous learning, 
-              technical excellence, and collaborative problem-solving. Join a team of security professionals 
-              protecting organizations worldwide from evolving cyber threats.
+              Security work attracts people who enjoy solving hard problems. At Be4Breach, you&apos;ll work alongside 
+              experienced practitioners who take pride in finding vulnerabilities others miss. We value technical curiosity, 
+              detailed analysis, and the discipline to follow methodologies even when shortcuts beckon. If you want to build 
+              expertise in offensive security, this is where you do it.
             </P>
           </div>
 

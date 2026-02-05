@@ -31,8 +31,10 @@ export default function PhishingSimulationPage() {
       <Section>
         <Container size="lg">
           <P className="mb-12 text-center text-lg leading-relaxed text-muted-foreground">
-            Transform your employees into your strongest defense layer with realistic phishing campaigns 
-            that educate, measure awareness, and build lasting security culture.
+            Technical controls fail when users click malicious links. Phishing simulation campaigns measure how your 
+            organization responds to realistic social engineering attacks, then provide targeted training for users who 
+            fall for simulations. Regular testing builds muscle memory for spotting suspicious emails, reducing your 
+            organization&apos;s susceptibility to credential theft and malware delivery.
           </P>
 
           <div className="grid gap-8 md:grid-cols-2">

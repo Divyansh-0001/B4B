@@ -146,7 +146,8 @@ export default function ServicesPage() {
               Comprehensive Cybersecurity Solutions
             </H1>
             <Lead className="text-gray-300">
-              Next-generation security services protecting your digital assets from emerging threats
+              Security testing and advisory services designed to identify and mitigate real-world 
+              vulnerabilities before they become incidents
             </Lead>
           </FadeIn>
         </Container>
@@ -208,8 +209,8 @@ export default function ServicesPage() {
           <div className="text-center">
             <H2 className="mb-6">Why Choose Be4Breach</H2>
             <Muted className="mx-auto max-w-3xl">
-              We combine cutting-edge technology with deep expertise to deliver 
-              comprehensive security solutions that protect your organization
+              Every service we offer focuses on one goal: reducing your attack surface through systematic 
+              testing and evidence-based security improvements
             </Muted>
           </div>
 

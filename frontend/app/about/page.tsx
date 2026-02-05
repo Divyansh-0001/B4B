@@ -36,15 +36,14 @@ export default function AboutPage() {
           <div className="text-center">
             <H2 className="mb-6">Who We Are</H2>
             <P className="text-lg leading-relaxed">
-              Be4Breach is a young, ambitious leader in{" "}
-              <span className="font-semibold text-primary">penetration testing</span>,{" "}
-              <span className="font-semibold text-primary">cloud security</span>, and{" "}
-              <span className="font-semibold text-primary">next-gen cybersecurity services</span>.
+              Be4Breach was founded on a singular conviction: organizations deserve security partners who understand 
+              that breaches are preventable, not inevitable. We combine offensive security expertise with defensive 
+              strategy to protect the systems that power modern enterprises.
             </P>
             <P className="mt-6 text-lg leading-relaxed">
-              With our headquarters in <span className="font-semibold">Pune, India</span>, 
-              we protect digital systems, predict threats, and engineer innovative solutions 
-              for organizations across the globe.
+              Operating from <span className="font-semibold">Pune, India</span>, our team conducts security 
+              assessments for organizations worldwide—from financial institutions to critical infrastructure providers. 
+              We test systems the way adversaries attack them, then help build defenses that actually hold.
             </P>
           </div>
         </Container>
@@ -61,9 +60,9 @@ export default function AboutPage() {
                 </div>
                 <H2 className="mb-4 text-primary">Our Mission</H2>
                 <P className="leading-relaxed">
-                  To form long-term collaborations globally, build strong security 
-                  infrastructures, and ensure complete client satisfaction through 
-                  innovative, reliable, and trusted cybersecurity solutions.
+                  Partner with organizations to establish sustainable security programs that withstand evolving threats. 
+                  We deliver testing and advisory services that strengthen security posture without disrupting operations, 
+                  building long-term relationships grounded in technical excellence and measurable risk reduction.
                 </P>
               </div>
             </FadeIn>
@@ -75,9 +74,10 @@ export default function AboutPage() {
                 </div>
                 <H2 className="mb-4 text-primary">Our Vision</H2>
                 <P className="leading-relaxed">
-                  Combat rising attacker sophistication and ensure that data, applications, 
-                  and digital assets are protected from unauthorized access, tampering, 
-                  theft, and disruption through cutting-edge security practices.
+                  Make proactive security testing the foundation of every organization&apos;s defense strategy. 
+                  As threats become more sophisticated, we aim to be the security partner that helps organizations 
+                  stay ahead—identifying vulnerabilities before they become incidents, and building resilience 
+                  into infrastructure from the ground up.
                 </P>
               </div>
             </FadeIn>
@@ -106,9 +106,9 @@ export default function AboutPage() {
                     Protect Critical Data
                   </AnimatedCard.Title>
                   <AnimatedCard.Description className="mt-3 text-base">
-                    We safeguard your most valuable digital assets with unwavering vigilance 
-                    and state-of-the-art security measures, ensuring your critical data 
-                    remains secure at all times.
+                    Security is not a checkbox—it&apos;s a discipline. We treat every assessment as if defending 
+                    our own infrastructure, understanding that the data we help protect powers critical business 
+                    operations, personal information, and organizational trust.
                   </AnimatedCard.Description>
                 </AnimatedCard.Header>
               </AnimatedCard>
@@ -124,9 +124,9 @@ export default function AboutPage() {
                     Cost-Effective Long-Term Security
                   </AnimatedCard.Title>
                   <AnimatedCard.Description className="mt-3 text-base">
-                    Our solutions deliver maximum value and return on investment, 
-                    providing sustainable security that grows with your organization 
-                    without breaking the budget.
+                    Security spending must justify itself. Our assessments focus on reducing actual risk, not generating 
+                    endless reports. We help prioritize fixes based on business impact, ensuring security investments 
+                    deliver measurable protection improvements.
                   </AnimatedCard.Description>
                 </AnimatedCard.Header>
               </AnimatedCard>
@@ -142,8 +142,9 @@ export default function AboutPage() {
                     Client Communication & Support
                   </AnimatedCard.Title>
                   <AnimatedCard.Description className="mt-3 text-base">
-                    We maintain transparent, responsive communication with our clients, 
-                    providing dedicated support and guidance throughout your security journey.
+                    Security projects fail when communication breaks down. We explain findings in business terms, 
+                    provide context for technical risks, and remain available for questions long after reports are delivered. 
+                    Clear communication builds better security outcomes.
                   </AnimatedCard.Description>
                 </AnimatedCard.Header>
               </AnimatedCard>
@@ -159,8 +160,9 @@ export default function AboutPage() {
                     Trusted, Reliable Services
                   </AnimatedCard.Title>
                   <AnimatedCard.Description className="mt-3 text-base">
-                    Our proven track record and commitment to excellence make us a 
-                    reliable partner you can trust with your organization&apos;s security.
+                    Consistency matters in security partnerships. We maintain the same testing rigor whether conducting 
+                    our first assessment or our fiftieth for a client. Our team follows documented methodologies, 
+                    maintains confidentiality, and delivers on commitments.
                   </AnimatedCard.Description>
                 </AnimatedCard.Header>
               </AnimatedCard>

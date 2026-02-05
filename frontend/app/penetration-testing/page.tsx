@@ -32,8 +32,10 @@ export default function PenetrationTestingPage() {
       <Section>
         <Container size="lg">
           <P className="mb-12 text-center text-lg leading-relaxed text-muted-foreground">
-            Be4Breach conducts systematic penetration testing to identify security weaknesses before malicious actors exploit them. 
-            Our methodology combines automated scanning with manual expert analysis to uncover vulnerabilities that automated tools miss.
+            Penetration testing reveals how an attacker would compromise your systems—before they actually do. 
+            Our assessments simulate real-world attack scenarios across your entire technology stack, identifying 
+            exploitable vulnerabilities that put your organization at risk. We don&apos;t just run scanners; 
+            we think like attackers to find the weaknesses that matter.
           </P>
 
           <StaggerChildren className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

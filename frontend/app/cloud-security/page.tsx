@@ -32,8 +32,10 @@ export default function CloudSecurityPage() {
       <Section>
         <Container size="lg">
           <P className="mb-12 text-center text-lg leading-relaxed text-muted-foreground">
-            Secure your cloud environment with comprehensive configuration reviews, continuous monitoring, 
-            and compliance-aligned security controls across AWS, Azure, and Google Cloud Platform.
+            Cloud misconfigurations remain among the most common causes of data breaches. Our cloud security 
+            assessments examine IAM policies, storage permissions, network configurations, and service integrations 
+            to identify exposures before they lead to incidents. We help organizations leverage cloud scalability 
+            without accepting unnecessary risk.
           </P>
 
           <StaggerChildren className="grid gap-6 md:grid-cols-2">

@@ -31,8 +31,10 @@ export default function SCADAOTTestingPage() {
       <Section>
         <Container size="lg">
           <P className="mb-12 text-center text-lg leading-relaxed text-muted-foreground">
-            Simulate targeted attacks on SCADA systems and operational technology to identify vulnerabilities 
-            in industrial control environments while ensuring safety and operational continuity.
+            Industrial systems face unique security challenges. Legacy protocols, long equipment lifecycles, and 
+            safety-critical operations require specialized testing approaches. We assess SCADA and OT environments 
+            with deep understanding of industrial protocols, air-gap requirements, and operational constraints—identifying 
+            security weaknesses without disrupting production systems.
           </P>
 
           <div className="grid gap-8 md:grid-cols-2">

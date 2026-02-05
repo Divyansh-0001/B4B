@@ -31,8 +31,10 @@ export default function BreachImpactAnalysisPage() {
       <Section>
         <Container size="lg">
           <P className="mb-12 text-center text-lg leading-relaxed text-muted-foreground">
-            Understand the true impact of a security breach on your organization through simulated attack scenarios, 
-            data exposure analysis, and quantified business risk assessment.
+            Understanding your organization&apos;s exposure requires more than vulnerability lists. Breach impact 
+            analysis quantifies what attackers could actually accomplish if they compromised your systems—which data 
+            they could exfiltrate, which operations they could disrupt, and what business consequences would follow. 
+            This analysis informs security investment decisions with business context.
           </P>
 
           <div className="grid gap-8 md:grid-cols-2">

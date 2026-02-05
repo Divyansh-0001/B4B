@@ -44,8 +44,8 @@ export default function AISolutionsPage() {
               Secure AI Engineering & Solutions
             </H1>
             <Lead className="text-gray-300">
-              Production-ready AI systems with security-first architecture,
-              responsible deployment, and enterprise-grade reliability
+              Building AI systems that enhance security operations while remaining 
+              secure themselves—from threat detection to secure model deployment
             </Lead>
           </FadeIn>
         </Container>

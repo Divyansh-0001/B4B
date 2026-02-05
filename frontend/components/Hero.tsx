@@ -56,10 +56,10 @@ export function Hero() {
           variants={itemVariants}
           className="mb-6 bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl xl:text-8xl"
         >
-          Next-Gen
+          Security Testing
           <br />
           <span className="bg-gradient-to-r from-primary via-red-500 to-primary bg-clip-text">
-            Cybersecurity Services
+            Before Breaches Happen
           </span>
         </motion.h1>
 
@@ -68,9 +68,9 @@ export function Hero() {
           variants={itemVariants}
           className="mb-12 text-xl leading-relaxed text-gray-300 sm:text-2xl lg:text-3xl"
         >
-          Penetration Testing · Cloud Security · Threat Intelligence
+          Offensive security testing and proactive defense strategies
           <br />
-          <span className="font-semibold text-white">Predict. Protect. Engineer.</span>
+          <span className="font-semibold text-white">for enterprises that cannot afford compromise</span>
         </motion.p>
 
         {/* CTAs */}

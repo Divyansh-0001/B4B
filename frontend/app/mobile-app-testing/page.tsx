@@ -31,8 +31,10 @@ export default function MobileAppTestingPage() {
       <Section>
         <Container size="lg">
           <P className="mb-12 text-center text-lg leading-relaxed text-muted-foreground">
-            Identify and remediate vulnerabilities in mobile applications before they reach production. 
-            Our testing follows industry-standard OWASP Mobile Application Security Testing Guide (MASTG) methodology.
+            Mobile applications handle sensitive data on devices you don&apos;t control. Our mobile security assessments 
+            examine code, data storage, network communications, and authentication mechanisms across iOS and Android platforms. 
+            We identify vulnerabilities before attackers reverse-engineer your app or intercept user data, 
+            following OWASP MASTG standards adapted to your specific implementation.
           </P>
 
           <div className="grid gap-8 md:grid-cols-2">

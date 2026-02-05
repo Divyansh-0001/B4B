@@ -45,8 +45,8 @@ export default function CybersecurityPage() {
               Enterprise Cybersecurity Services
             </H1>
             <Lead className="text-gray-300">
-              Proactive defense through offensive security, real-world attack simulation,
-              and comprehensive security operations
+              Testing your defenses before adversaries do—offensive security assessments 
+              that reveal real vulnerabilities in real systems
             </Lead>
           </FadeIn>
         </Container>
