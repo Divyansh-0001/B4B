@@ -28,6 +28,7 @@ export default function ServicesPage() {
     {
       icon: Globe,
       title: "Penetration Testing",
+      slug: "penetration-testing",
       description: "Be4Breach conducts web, cloud, mobile, network, IoT, and wireless penetration tests to find vulnerabilities before attackers do.",
       features: [
         "Web Application Testing",
@@ -42,6 +43,7 @@ export default function ServicesPage() {
     {
       icon: Target,
       title: "Breach Impact Analysis",
+      slug: "breach-impact-analysis",
       description: "Assess enterprise security posture against real-world adversaries.",
       features: [
         "Real-World Attack Simulation",
@@ -56,6 +58,7 @@ export default function ServicesPage() {
     {
       icon: Cloud,
       title: "Cloud Security",
+      slug: "cloud-security",
       description: "Ensure scalable cloud infrastructure protection, reduce risks and costs.",
       features: [
         "Cloud Configuration Review",
@@ -70,6 +73,7 @@ export default function ServicesPage() {
     {
       icon: Cpu,
       title: "SCADA/OT Penetration Testing",
+      slug: "scada-ot-testing",
       description: "Simulate attacks on industrial control systems to find vulnerabilities and improve compliance.",
       features: [
         "Industrial Control Systems",
@@ -84,6 +88,7 @@ export default function ServicesPage() {
     {
       icon: Smartphone,
       title: "Mobile App Penetration Testing",
+      slug: "mobile-app-testing",
       description: "Identify and fix vulnerabilities in mobile applications and devices using standard frameworks like OWASP MASTG.",
       features: [
         "iOS Security Testing",
@@ -98,6 +103,7 @@ export default function ServicesPage() {
     {
       icon: Mail,
       title: "Phishing Simulation",
+      slug: "phishing-simulation",
       description: "AI-driven phishing awareness simulations and reporting to build human firewalls.",
       features: [
         "Realistic Phishing Campaigns",
@@ -112,6 +118,7 @@ export default function ServicesPage() {
     {
       icon: Lock,
       title: "Security Engineering",
+      slug: "security-engineering",
       description: "Design and deploy measures that protect systems from unauthorized access.",
       features: [
         "Security Architecture Design",
@@ -151,44 +158,44 @@ export default function ServicesPage() {
           <StaggerChildren className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <StaggerItem key={index}>
-                <AnimatedCard className="group h-full border-t-4 border-primary transition-shadow hover:shadow-xl hover:shadow-primary/10">
-                  <AnimatedCard.Header>
-                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
-                      <service.icon className="h-7 w-7 text-primary" />
-                    </div>
-                    <AnimatedCard.Title className="text-xl">
-                      {service.title}
-                    </AnimatedCard.Title>
-                    <AnimatedCard.Description className="mt-3 text-base leading-relaxed">
-                      {service.description}
-                    </AnimatedCard.Description>
-                  </AnimatedCard.Header>
-                  
-                  <AnimatedCard.Content>
-                    <div className="space-y-2">
-                      <P className="text-sm font-semibold text-foreground">
-                        Key Capabilities:
-                      </P>
-                      <ul className="space-y-2">
-                        {service.features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </AnimatedCard.Content>
+                <Link href={`/${service.slug}`}>
+                  <AnimatedCard className="group h-full border-t-4 border-primary transition-shadow hover:shadow-xl hover:shadow-primary/10">
+                    <AnimatedCard.Header>
+                      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
+                        <service.icon className="h-7 w-7 text-primary" />
+                      </div>
+                      <AnimatedCard.Title className="text-xl">
+                        {service.title}
+                      </AnimatedCard.Title>
+                      <AnimatedCard.Description className="mt-3 text-base leading-relaxed">
+                        {service.description}
+                      </AnimatedCard.Description>
+                    </AnimatedCard.Header>
+                    
+                    <AnimatedCard.Content>
+                      <div className="space-y-2">
+                        <P className="text-sm font-semibold text-foreground">
+                          Key Capabilities:
+                        </P>
+                        <ul className="space-y-2">
+                          {service.features.map((feature, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </AnimatedCard.Content>
 
-                  <AnimatedCard.Footer>
-                    <Link href="/login" className="w-full">
+                    <AnimatedCard.Footer>
                       <Button variant="outline" className="w-full group/btn">
                         Learn More
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                       </Button>
-                    </Link>
-                  </AnimatedCard.Footer>
-                </AnimatedCard>
+                    </AnimatedCard.Footer>
+                  </AnimatedCard>
+                </Link>
               </StaggerItem>
             ))}
           </StaggerChildren>
