@@ -4,6 +4,7 @@ import Link from "next/link";
 import { VideoBackground } from "@/components/VideoBackground";
 import { Hero } from "@/components/Hero";
 import { CoreVerticalsShowcase } from "@/components/sections/CoreVerticalsShowcase";
+import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
 import { Section } from "@/components/layout/Section";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
 import { Button } from "@/components/ui/button";
@@ -116,6 +117,17 @@ export default function Home() {
             build strong security postures, and ensure complete client satisfaction.
           </Muted>
         </div>
+      </Section>
+
+      {/* Features Grid */}
+      <Section className="bg-background">
+        <div className="text-center mb-8">
+          <H2 className="mb-4">Enterprise Security Capabilities</H2>
+          <Muted className="mx-auto max-w-2xl">
+            Comprehensive security services protecting organizations from evolving cyber threats
+          </Muted>
+        </div>
+        <FeaturesSectionWithHoverEffects />
       </Section>
 
       {/* Services section */}
